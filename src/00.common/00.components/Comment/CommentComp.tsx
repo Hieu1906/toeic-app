@@ -31,7 +31,11 @@ import { sendMail } from "../../02.service/sendMailService";
 
 const { confirm } = Modal;
 
-interface ICommentUpdateProps {}
+interface ICommentUpdateProps {
+  colectionName: string;
+  colectionReaction: string;
+  width?:number;
+}
 interface CommentsStates {
   allComments: CommentItem[];
   commentParent: CommentItem[];
@@ -114,12 +118,12 @@ export class CommentComp extends BaseComponent<
   async getReaction() {
     let [checkUserReaction, allReaction] = await Promise.all([
       reactionService.getItemByQuery<Reaction>(
-        "RCTest",
+        this.props.colectionReaction,
         "Uid",
         "==",
         this.state.currentUser?.Uid as string
       ),
-      reactionService.getAll<Reaction>("RCTest"),
+      reactionService.getAll<Reaction>(this.props.colectionReaction),
     ]);
 
     if (checkUserReaction && checkUserReaction.length > 0) {
@@ -139,12 +143,12 @@ export class CommentComp extends BaseComponent<
   }
   // bắt sự kiện khi hover vào 1 bình luận
   protected mouseEnter = (index?: number) => {
-    this.setState({ isHover: true, keyHover: index });
+    this.setState({ isHover: true, keyHover: index as any });
   };
 
   // bắt sự kiện khi di chuột khỏi  1 bình luận
   protected mouseLeave = (index?: number) => {
-    this.setState({ isHover: false, keyHover: undefined });
+    this.setState({ isHover: false, keyHover: undefined as any });
   };
 
   //hiển thị popup xác xác nhận việc có xóa comment đi hay không
@@ -158,7 +162,7 @@ export class CommentComp extends BaseComponent<
         this.setState({
           loadingComment: true,
         });
-        await commentService.delete("Test", IdComment);
+        await commentService.delete(this.props.colectionName, IdComment);
         await this.getComment();
         this.setState({
           loadingComment: false,
@@ -219,14 +223,14 @@ export class CommentComp extends BaseComponent<
       loadingComment: true,
     });
     let a = firebase.firestore.Timestamp.fromDate(moment().toDate());
-    await commentService.save<CommentItem>("Test", "", {
+    await commentService.save<CommentItem>(this.props.colectionName, "", {
       Content: value,
       JobTitle: this.state.currentUser?.JobTitle as string,
       LoginName: this.state.currentUser?.LoginName as string,
       Uid: this.state.currentUser?.Uid as string,
       Created: firebase.firestore.Timestamp.fromDate(moment().toDate()) as any,
       Email: this.state.currentUser?.Email as string,
-      PhotoUrl: this.state.currentUser?.PhotoUrl,
+      PhotoUrl: this.state.currentUser?.PhotoUrl as any,
       ParentId: ParentId ? ParentId : "",
     });
     await sendMail.sendEmail({
@@ -246,14 +250,14 @@ export class CommentComp extends BaseComponent<
     this.setState({
       loadingComment: true,
     });
-    await commentService.update<CommentItem>("Test", keyDoc, {
+    await commentService.update<CommentItem>(this.props.colectionName, keyDoc, {
       Content: this.state.inputEdit as string,
       JobTitle: this.state.currentUser?.JobTitle as string,
       LoginName: this.state.currentUser?.LoginName as string,
       Uid: this.state.currentUser?.Uid as string,
       Created: firebase.firestore.Timestamp.fromDate(moment().toDate()) as any,
       Email: this.state.currentUser?.Email as string,
-      PhotoUrl: this.state.currentUser?.PhotoUrl,
+      PhotoUrl: this.state.currentUser?.PhotoUrl as string,
     });
     await this.getComment();
     this.setState({
@@ -264,7 +268,7 @@ export class CommentComp extends BaseComponent<
   }
   async getComment() {
     let allComments = await commentService.getAll<CommentItem>(
-      "Test",
+      this.props.colectionName,
       "Created"
     );
     let commentParent = allComments.filter((item) => {
@@ -281,7 +285,7 @@ export class CommentComp extends BaseComponent<
       <div
         style={{ maxHeight: 500 }}
         className={styles.comments__container__wrapComment__contentComment}
-        key={comment.KeyDoc}
+        key={comment.KeyDoc as any}
       >
         <div
           className={
@@ -341,7 +345,7 @@ export class CommentComp extends BaseComponent<
                     minHeight: "50px",
                   }}
                   placeholder="Aa"
-                  value={this.state.inputEdit}
+                  value={this.state.inputEdit as string}
                   autoSize={{ minRows: 1, maxRows: 5 }}
                   onChange={(e) => {
                     this.setState({ inputEdit: e });
@@ -371,7 +375,7 @@ export class CommentComp extends BaseComponent<
                               borderRadius: "50%",
                               marginRight: 10,
                             }}
-                            src={item.PhotoUrl}
+                            src={item.PhotoUrl as string}
                           />
                           <span>{item.LoginName}</span>
                         </Mentions.Option>
@@ -432,8 +436,8 @@ export class CommentComp extends BaseComponent<
                         onClick={() => {
                           this.setState({
                             isEdit: true,
-                            keyEdit: comment.KeyDoc,
-                            inputEdit: comment.Content,
+                            keyEdit: comment.KeyDoc as any,
+                            inputEdit: comment.Content as any,
                           });
                         }}
                         style={{ fontSize: 16 }}
@@ -495,7 +499,7 @@ export class CommentComp extends BaseComponent<
                     minHeight: "50px",
                   }}
                   autoFocus={true}
-                  value={this.state.inputReply}
+                  value={this.state.inputReply as string}
                   autoSize={{ minRows: 1, maxRows: 5 }}
                   onChange={(e) => {
                     this.setState({ inputReply: e });
@@ -525,7 +529,7 @@ export class CommentComp extends BaseComponent<
                               borderRadius: "50%",
                               marginRight: 10,
                             }}
-                            src={item.PhotoUrl}
+                            src={item.PhotoUrl as string}
                           />
                           <span>{item.LoginName}</span>
                         </Mentions.Option>
@@ -585,7 +589,7 @@ export class CommentComp extends BaseComponent<
               onClick={() => {
                 this.setState({
                   isReply: true,
-                  keyReply: comment.KeyDoc,
+                  keyReply: comment.KeyDoc as any,
                 });
               }}
               className={
@@ -688,7 +692,7 @@ export class CommentComp extends BaseComponent<
                             borderRadius: "50%",
                             marginRight: 10,
                           }}
-                          src={item.PhotoUrl}
+                          src={item.PhotoUrl as string}
                         />
                         <span>{item.LoginName}</span>
                       </Mentions.Option>
@@ -797,14 +801,14 @@ export class CommentComp extends BaseComponent<
   async saveReaction(label: string) {
     //check xem user đã từng reaction chưa nểu rồi cập nhaajt ko thì tạo mới
     let checkUserReaction = await reactionService.getItemByQuery<Reaction>(
-      "RCTest",
+      this.props.colectionReaction,
       "Uid",
       "==",
       this.state.currentUser?.Uid as string
     );
     if (checkUserReaction && checkUserReaction.length > 0) {
       await reactionService.update<Reaction>(
-        "RCTest",
+        this.props.colectionReaction,
         checkUserReaction[0].KeyDoc as string,
         {
           Uid: this.state.currentUser?.Uid as string,
@@ -813,7 +817,7 @@ export class CommentComp extends BaseComponent<
         }
       );
     } else {
-      await reactionService.save<Reaction>("RCTest", "", {
+      await reactionService.save<Reaction>(this.props.colectionReaction, "", {
         Uid: this.state.currentUser?.Uid as string,
         LoginName: this.state.currentUser?.LoginName as string,
         Reaction: label as string,

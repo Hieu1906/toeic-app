@@ -299,7 +299,7 @@ export default class List600WordsToeic extends BaseComponent<
               style={{ fontSize: 25, color: "#33ABE5", marginRight: 10 }}
             />
             <Select
-              key={this.state.selectedCa?.value}
+              key={this.state.selectedCa?.value as any}
               value={this.state.selectedCa?.value}
               showSearch
               onSelect={async (value) => {

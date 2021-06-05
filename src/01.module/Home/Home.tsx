@@ -10,7 +10,7 @@ import { UpcomingBirthdays } from "../UpcommingStudent/UpcomingBirthday";
 import { NewEmployees } from "../NewMember/NewEmployees";
 
 import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
-import { Select, Skeleton, Menu, Dropdown, Button } from "antd";
+import { Select, Skeleton, Menu, Dropdown, Button, message } from "antd";
 
 import { orderBy } from "lodash";
 import {
@@ -43,6 +43,8 @@ import { PermissionUser } from "../../00.common/01.model/PermissionUser";
 import { Permission } from "../../00.common/const";
 
 import { CommentComp } from "../../00.common/00.components/Comment/CommentComp";
+import { requestAccessService } from "../../00.common/02.service/RequestAccess";
+import { RequestAccess } from "../../00.common/01.model/RequestAccess";
 const { Option } = Select;
 interface propsHome {
   inforUser: {
@@ -100,14 +102,14 @@ export default class Home extends BaseComponent<propsHome, stateHome> {
         MemberInfor: {
           Address: "",
           Alias: "",
-          DateOfBirth: undefined,
+          DateOfBirth: undefined as any,
           Email: this.props.inforUser.Email,
-          Sex: undefined,
+          Sex: undefined as any,
           LoginName: this.props.inforUser.LoginName,
           Uid: this.props.inforUser.Uid,
-          JobTitle: undefined,
-          KeyDoc: undefined,
-          PhoneNumber: this.props.inforUser.PhoneNumber,
+          JobTitle: undefined as any,
+          KeyDoc: undefined as any,
+          PhoneNumber: this.props.inforUser.PhoneNumber as any,
           PhotoUrl: this.props.inforUser.PhotoUrl,
         },
       });
@@ -115,7 +117,7 @@ export default class Home extends BaseComponent<propsHome, stateHome> {
         LoginName: this.props.inforUser.LoginName,
         Deleted: false,
         Uid: this.props.inforUser.Uid,
-        Permission: Permission.ReadAndWrite,
+        Permission: Permission.ReadOnly,
       });
     } else {
       await this.setState({
@@ -124,6 +126,33 @@ export default class Home extends BaseComponent<propsHome, stateHome> {
     }
 
     await this.getPermission();
+  }
+
+  async requestAccess() {
+    let checkSendRequest =
+      await requestAccessService.getItemByQuery<RequestAccess>(
+        "RequestAccess",
+        "Uid",
+        "==",
+        this.state.MemberInfor.Uid
+      );
+    if (checkSendRequest && checkSendRequest.length > 0) {
+      message.info(
+        "Bạn đã gửi yêu cầu tới quản trị viên , vui lòng đợi cho tới khi quản trị viên phê duyệt và nhận lại thông báo!",
+        10
+      );
+    } else {
+      requestAccessService.save<RequestAccess>("RequestAccess", "", {
+        LoginName: this.state.MemberInfor.LoginName,
+        Status: "Pending",
+        Uid: this.state.MemberInfor.Uid,
+        Permission: this.state.userPermission.Permission,
+      });
+      message.info(
+        "Yêu cầu của bạn đã gửi đi, vui lòng đợi cho tới khi quản trị viên phê duyệt và nhận lại thông báo!",
+        10
+      );
+    }
   }
   getMenu() {
     return (
@@ -397,9 +426,7 @@ export default class Home extends BaseComponent<propsHome, stateHome> {
                   <Route path="/600-tu-toeic">
                     <Words600Com />
                   </Route>
-                  <Route path="/de-thi">
-                    <CommentComp />
-                  </Route>
+                  <Route path="/de-thi"></Route>
                   <Route path="/theme-detail">
                     <div>Mẹo thi</div>
                   </Route>
@@ -435,8 +462,15 @@ export default class Home extends BaseComponent<propsHome, stateHome> {
                         >
                           <h3>
                             Bạn không có quyền truy cập site này , vui lòng{" "}
-                            <a> nhấn vào đây </a>
-                            để yêu cầu cấp quyền truye cập
+                            <a
+                              onClick={async () => {
+                                await this.requestAccess();
+                              }}
+                            >
+                              {" "}
+                              nhấn vào đây{" "}
+                            </a>
+                            để yêu cầu cấp quyền truy cập
                           </h3>
                         </div>
                       </div>

@@ -1,4 +1,5 @@
 import { BaseComponent } from "../../../00.common/00.components/BaseComponent";
+import { CommentComp } from "../../../00.common/00.components/Comment/CommentComp";
 import styles from "./Part1.module.scss";
 interface part1State {}
 
@@ -1216,6 +1217,10 @@ export class ParPart1 extends BaseComponent<part1Props, part1State> {
               Làm bài tập Part 1
             </a>
           </p>
+          <CommentComp
+            colectionName={"CommentPart1"}
+            colectionReaction={"CommentReactionPart1"}
+          />
         </div>
       </div>
     );

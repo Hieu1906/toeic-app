@@ -3,12 +3,12 @@
 //   font-family: "Montserrat", sans-serif;
 // }
 .comments {
-  width: 700px;
+ 
+  width:75%;
   display: flex;
   justify-content: center;
   margin-top: 100px;
-  margin-left: 150px;
-  margin-bottom: 100px;
+  margin-bottom: 200px;
   flex-direction: column;
   &__action {
     margin-bottom: 20px;
@@ -38,7 +38,7 @@
       height: 24px;
       left: 0px;
       font-weight: 400;
-      font-family: 'Montserrat', sans-serif;
+      font-family: "Montserrat", sans-serif;
       font-size: 16px;
       line-height: 24px;
       color: #595959;
@@ -89,7 +89,7 @@
             justify-content: center;
             &__name {
               font-size: 14px;
-              font-family: 'Montserrat', sans-serif;
+              font-family: "Montserrat", sans-serif;
               font-weight: 600;
               color: #595959;
             }
@@ -109,7 +109,7 @@
           background: #f5f6f8;
           border-radius: 0px 20px 0px 20px;
           &__content {
-            font-family: 'Montserrat', sans-serif;
+            font-family: "Montserrat", sans-serif;
             font-style: normal;
             font-weight: normal;
             font-size: 14px;
@@ -120,7 +120,7 @@
             margin: 13px 0px 13px 28px;
           }
           &__reply {
-            font-family: 'Montserrat', sans-serif;
+            font-family: "Montserrat", sans-serif;
             font-style: normal;
             font-weight: normal;
             font-size: 14px;

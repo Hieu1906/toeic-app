@@ -14,6 +14,7 @@ export const LIST_COMPONET_ADMIN = {
   PART_5: "PART_5",
   PART_6: "PART_6",
   PART_7: "PART_7",
+  REQUESTACCESS: "PERMISSION",
 };
 
 export const ANSWER_PART1 = {
@@ -67,6 +68,24 @@ export const ANSWER_PART3_4_5 = {
   D: {
     key: "D",
     value: "0001",
+  },
+};
+
+export const STATUS = {
+  APPROVE: {
+    TitleE: "APPROVE",
+    Title: "Đã phê duyệt",
+    Color: "#34A853",
+  },
+  REJECT: {
+    TitleE: "REJECT",
+    Title: "Đã từ chối",
+    Color: "#EA4335",
+  },
+  Pending: {
+    TitleE: "Pending",
+    Title: "Chờ phê duyệt",
+    Color: "#FFBA00",
   },
 };
 

@@ -16,6 +16,7 @@ import ListToeicPart4 from "./Practice/Toeic_Part4/ListItemPart4";
 import ListToeicPart5 from "./Practice/Toeic_Part5/ListItemPart5";
 import ListToeicPart6 from "./Practice/Toeic_Part6/ListItemPart6";
 import ListToeicPart7 from "./Practice/Toeic_Part7/ListItemPart7";
+import RequestAccessCom from "./Practice/Permission/RequestAccess";
 
 const { SubMenu } = Menu;
 const { Header, Content, Sider } = Layout;
@@ -55,6 +56,8 @@ export default class MainPage extends BaseComponent<
       element = <ListToeicPart6 />;
     } else if (keyContent == LIST_COMPONET_ADMIN.PART_7) {
       element = <ListToeicPart7 />;
+    } else if (keyContent == LIST_COMPONET_ADMIN.REQUESTACCESS) {
+      element = <RequestAccessCom />;
     }
     this.setState({
       element,
@@ -131,12 +134,11 @@ export default class MainPage extends BaseComponent<
               <SubMenu
                 key="sub3"
                 icon={<NotificationOutlined />}
-                title="subnav 3"
+                title="Thiết lập"
               >
-                <Menu.Item key="9">option9</Menu.Item>
-                <Menu.Item key="10">option10</Menu.Item>
-                <Menu.Item key="11">option11</Menu.Item>
-                <Menu.Item key="12">option12</Menu.Item>
+                <Menu.Item key={LIST_COMPONET_ADMIN.REQUESTACCESS}>
+                  Cấp quyền truy cập
+                </Menu.Item>
               </SubMenu>
             </Menu>
           </Sider>
