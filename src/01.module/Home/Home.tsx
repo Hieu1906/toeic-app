@@ -45,6 +45,7 @@ import { Permission } from "../../00.common/const";
 import { CommentComp } from "../../00.common/00.components/Comment/CommentComp";
 import { requestAccessService } from "../../00.common/02.service/RequestAccess";
 import { RequestAccess } from "../../00.common/01.model/RequestAccess";
+import { ExamComp } from "../Exam/Exam";
 const { Option } = Select;
 interface propsHome {
   inforUser: {
@@ -426,7 +427,9 @@ export default class Home extends BaseComponent<propsHome, stateHome> {
                   <Route path="/600-tu-toeic">
                     <Words600Com />
                   </Route>
-                  <Route path="/de-thi"></Route>
+                  <Route path="/de-thi">
+                    <ExamComp />
+                  </Route>
                   <Route path="/theme-detail">
                     <div>Mẹo thi</div>
                   </Route>

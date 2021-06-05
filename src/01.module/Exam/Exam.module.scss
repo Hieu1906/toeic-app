@@ -1,0 +1,92 @@
+.container {
+  background-color: #eaefec;
+  padding: 50px 350px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  &__header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    &__item {
+      width: 270px;
+      height: 60px;
+      font-size: 20px;
+      border-radius: 10px;
+      text-align: center;
+      margin-right: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-weight: 600;
+      transition: height 1s;
+      &:hover {
+        height: 70px;
+      }
+    }
+  }
+}
+.examPracticeItem {
+  padding: 15px !important;
+  background-color: #fff;
+  border-radius: 50px;
+  padding: 0 10px 0 0;
+  overflow: hidden;
+  display: flex;
+  &__img {
+    border-right: 1px solid #ccc;
+    padding-right: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &__infor {
+    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    &__title {
+      font-weight: 600;
+      font-size: 15px;
+
+      line-height: 1.7;
+      margin: 0 0 2px;
+    }
+    &__des {
+      font-size: 14px;
+      text-transform: uppercase;
+      line-height: 1.7;
+    }
+    &__a {
+      color: #33abe5;
+    }
+    &__btns {
+      display: flex;
+      margin-top: 15px;
+      &__button {
+        display: inline-block;
+        padding: 5px 10px;
+        min-width: 70px;
+        font-size: 12px;
+        font-family: roboto-bold;
+
+        border-radius: 20px;
+        color: #fff;
+        text-decoration: none;
+        text-align: center;
+        text-transform: uppercase;
+      }
+    }
+  }
+}
+.examPracticeItemExpand {
+  background-color: #fff;
+  border-radius: 50px;
+  padding: 0 10px 0 0;
+  overflow: hidden;
+}
