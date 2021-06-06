@@ -40,12 +40,14 @@ import { permissionService } from "../../00.common/02.service/permissionService"
 import { MemberInfor } from "../../00.common/01.model/MemberInfor";
 import { TopMenu } from "../../00.common/01.model/TopMenu";
 import { PermissionUser } from "../../00.common/01.model/PermissionUser";
-import { Permission } from "../../00.common/const";
+import { Permission, ROUTER } from "../../00.common/const";
 
 import { CommentComp } from "../../00.common/00.components/Comment/CommentComp";
 import { requestAccessService } from "../../00.common/02.service/RequestAccess";
 import { RequestAccess } from "../../00.common/01.model/RequestAccess";
 import { ExamComp } from "../Exam/Exam";
+import { ListExamPart1 } from "../Exam/ExamPart1/ListExamPart1";
+import { ExamPart1 } from "../Exam/ExamPart1/ExamPart1";
 const { Option } = Select;
 interface propsHome {
   inforUser: {
@@ -321,20 +323,33 @@ export default class Home extends BaseComponent<propsHome, stateHome> {
                         className={styles.HomePageApp__header__left__topMenu}
                       >
                         {this.state.allTopMenu.map((item) => (
-                          <Link
-                            to={`/${item.Code}`}
-                            className={
-                              styles.HomePageApp__header__left__topMenu__item
-                            }
-                            style={{ zIndex: 1000 }}
-                          >
-                            <Dropdown
-                              trigger={["hover"]}
-                              overlay={this.getSubitems(item.SubItem)}
-                            >
-                              <div> {item.Title}</div>
-                            </Dropdown>
-                          </Link>
+                          <>
+                            {item.SubItem && item.SubItem.length > 0 ? (
+                              <div
+                                className={
+                                  styles.HomePageApp__header__left__topMenu__itemSub
+                                }
+                                style={{ zIndex: 1000 }}
+                              >
+                                <Dropdown
+                                  trigger={["hover"]}
+                                  overlay={this.getSubitems(item.SubItem)}
+                                >
+                                  <div> {item.Title}</div>
+                                </Dropdown>
+                              </div>
+                            ) : (
+                              <Link
+                                to={`/${item.Code}`}
+                                className={
+                                  styles.HomePageApp__header__left__topMenu__item
+                                }
+                                style={{ zIndex: 1000 }}
+                              >
+                                <div> {item.Title}</div>
+                              </Link>
+                            )}
+                          </>
                         ))}
                       </div>
                     </div>
@@ -395,19 +410,19 @@ export default class Home extends BaseComponent<propsHome, stateHome> {
                 }}
               >
                 <Switch>
-                  <Route exact path="/">
+                  <Route exact path={ROUTER.ROOT}>
                     <QuickLinkApp />
                     <StoryStudentToeic />
                     <UpcomingBirthdays />
                     <NewEmployees />
                   </Route>
-                  <Route path="/ngu-phap">
+                  <Route path={ROUTER.NGU_PHAP}>
                     <GrammarCom></GrammarCom>
                   </Route>
-                  <Route path="/huong-dan">
+                  <Route path={ROUTER.HUONG_DAN}>
                     <div>Hướng dẫn</div>
                   </Route>
-                  <Route path="/meo-thi">
+                  <Route path={ROUTER.MEO_THI}>
                     <div
                       style={{
                         height: 800,
@@ -424,17 +439,17 @@ export default class Home extends BaseComponent<propsHome, stateHome> {
                       />
                     </div>
                   </Route>
-                  <Route path="/600-tu-toeic">
+                  <Route path={ROUTER.TOEIC_600_TU}>
                     <Words600Com />
                   </Route>
-                  <Route path="/de-thi">
+                  <Route path={ROUTER.DE_THI}>
                     <ExamComp />
                   </Route>
-                  <Route path="/theme-detail">
+                  <Route path={ROUTER.DE_THI}>
                     <div>Mẹo thi</div>
                   </Route>
 
-                  <Route path="/admin">
+                  <Route path={ROUTER.QUAN_TRI}>
                     {this.state &&
                     this.state.userPermission !== undefined &&
                     this.state.userPermission.Permission ==
@@ -480,14 +495,33 @@ export default class Home extends BaseComponent<propsHome, stateHome> {
                     )}
                   </Route>
 
-                  <Route path="/part1">
+                  <Route path={ROUTER.PAR_PART1}>
                     <ParPart1 />
                   </Route>
-                  <Route path="/part2">
+                  <Route path={ROUTER.PAR_PART2}>
                     <ParPart2 />
                   </Route>
-                  <Route path="/part3">
+                  <Route path={ROUTER.PAR_PART3}>
                     <ParPart3 />
+                  </Route>
+                  <Route path={ROUTER.PAR_PART4}>
+                    <ParPart1 />
+                  </Route>
+                  <Route path={ROUTER.PAR_PART5}>
+                    <ParPart2 />
+                  </Route>
+                  <Route path={ROUTER.PAR_PART6}>
+                    <ParPart3 />
+                  </Route>
+                  <Route path={ROUTER.PAR_PART7}>
+                    <ParPart1 />
+                  </Route>
+
+                  <Route path={ROUTER.lIST_EXAM_PART1}>
+                    <ListExamPart1 />
+                  </Route>
+                  <Route path={ROUTER.EXAM_PART1}>
+                    <ExamPart1 />
                   </Route>
                 </Switch>
               </div>

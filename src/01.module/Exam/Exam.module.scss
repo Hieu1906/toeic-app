@@ -1,6 +1,6 @@
 .container {
   background-color: #eaefec;
-  padding: 50px 350px;
+  padding: 50px 150px;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -10,8 +10,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 50%;
+    width: 70%;
     &__item {
+      cursor: pointer;
       width: 270px;
       height: 60px;
       font-size: 20px;
@@ -89,4 +90,80 @@
   border-radius: 50px;
   padding: 0 10px 0 0;
   overflow: hidden;
+}
+.examShortExam {
+  cursor: pointer;
+  border-radius: 50px;
+  transition: box-shadow 0.2s linear;
+  padding: 10px;
+  background-color: #fff;
+  width: fit-content;
+  display: flex;
+  &__calendar {
+    margin-left: 15px;
+    position: relative;
+    width: 54px;
+    height: 61px;
+    background: url(https://firebasestorage.googleapis.com/v0/b/toeic-project.appspot.com/o/CommonDoc%2FExam%2FPart1%2Fcalendar.webp?alt=media&token=9df4ee5e-06eb-44cb-beed-48a17f96a19d)
+      no-repeat;
+    background-size: cover;
+    &__year {
+      position: absolute;
+      font-weight: 400;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 12px;
+      color: #fff;
+      top: 4px;
+    }
+    &__month {
+      position: absolute;
+      font-family: roboto-bold;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #666;
+      font-size: 14px;
+      top: 42px;
+      font-weight: 600;
+    }
+    &__date {
+      font-weight: 600;
+      position: absolute;
+      font-family: roboto-bold;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 20px;
+      top: 20px;
+      color: #666;
+    }
+  }
+  &__content {
+    margin-right: 15px;
+    padding: 6px 0 0 15px;
+    position: relative;
+    &__infor {
+      display: block;
+      padding: 3px 25px 3px 12px;
+      min-width: 111px;
+      background-color: #33abe5;
+      color: #fff;
+      font-size: 15px;
+
+      border-radius: 40px;
+      font-weight: 700;
+    }
+    &__inforTime {
+      font-weight: 700;
+      display: block;
+      padding: 3px 25px 3px 12px;
+      min-width: 111px;
+      background-color: #33abe5;
+      color: #fff;
+      font-size: 15px;
+
+      border-radius: 40px;
+      background-color: #7bd7b1;
+      margin-top: 3px;
+    }
+  }
 }

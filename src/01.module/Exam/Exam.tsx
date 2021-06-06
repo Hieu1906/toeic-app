@@ -1,13 +1,25 @@
-import { Checkbox, Col, Row } from "antd";
+import { Button, Checkbox, Col, Row } from "antd";
 import { BaseComponent } from "../../00.common/00.components/BaseComponent";
 import { ItemsPracticeExam } from "./constParam";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPen, faClock } from "@fortawesome/free-solid-svg-icons";
+import Countdown from "react-countdown";
 import styles from "./Exam.module.scss";
+import React from "react";
+import { Link } from "react-router-dom";
+import { ROUTER } from "../../00.common/const";
 interface ExamProps {}
-interface ExamState {}
+interface ExamState {
+  autoStart: boolean;
+}
 
 export class ExamComp extends BaseComponent<ExamProps, ExamState> {
+  public refCountdown = React.createRef<Countdown>();
   constructor(props: ExamProps) {
     super(props);
+    this.state = {
+      autoStart: false,
+    };
   }
 
   renderExamPractice() {
@@ -34,20 +46,25 @@ export class ExamComp extends BaseComponent<ExamProps, ExamState> {
                   ))}
 
                   <div className={styles.examPracticeItem__infor__btns}>
-                    <a
-                      href={item.LinkPractice}
-                      style={{ backgroundColor: "#33ABE5", marginRight: 10 }}
-                      className={styles.examPracticeItem__infor__btns__button}
-                    >
-                      Luyện
-                    </a>
-                    <a
-                      href={item.LinkStudy}
-                      style={{ backgroundColor: "#999999" }}
-                      className={styles.examPracticeItem__infor__btns__button}
-                    >
-                      Học
-                    </a>
+                    <Link to={ROUTER.lIST_EXAM_PART1}>
+                      {" "}
+                      <a
+                        href={item.LinkPractice}
+                        style={{ backgroundColor: "#FFBA00", marginRight: 10 }}
+                        className={styles.examPracticeItem__infor__btns__button}
+                      >
+                        Luyện
+                      </a>
+                    </Link>
+                    <Link to={ROUTER.PAR_PART1}>
+                      <a
+                        href={item.LinkStudy}
+                        style={{ backgroundColor: "#999999" }}
+                        className={styles.examPracticeItem__infor__btns__button}
+                      >
+                        Học
+                      </a>
+                    </Link>
                   </div>
                 </div>
               </div>
@@ -55,7 +72,7 @@ export class ExamComp extends BaseComponent<ExamProps, ExamState> {
           ))}
         </Row>
         <Row gutter={32} style={{ marginTop: 30 }}>
-          <Col span={8} >
+          <Col span={8}>
             <div className={styles.examPracticeItem}>
               <div className={styles.examPracticeItem__img}>
                 <img src={ItemsPracticeExam[3].ImgUrl} />
@@ -157,8 +174,8 @@ export class ExamComp extends BaseComponent<ExamProps, ExamState> {
             </div>
           </Col>
         </Row>
-        <Row gutter={32}  style={{ marginTop: 30}} >
-          {ItemsPracticeExam.slice(5,8).map((item) => (
+        <Row gutter={32} style={{ marginTop: 30 }}>
+          {ItemsPracticeExam.slice(5, 8).map((item) => (
             <Col span={8}>
               <div className={styles.examPracticeItem}>
                 <div className={styles.examPracticeItem__img}>
@@ -203,7 +220,28 @@ export class ExamComp extends BaseComponent<ExamProps, ExamState> {
   }
   renderAuditions() {}
 
-  renderShortExam() {}
+  renderShortExam() {
+    return (
+      <div className={styles.examShortExam}>
+        <div className={styles.examShortExam__calendar}>
+          <span className={styles.examShortExam__calendar__year}>14</span>
+          <span className={styles.examShortExam__calendar__month}>06</span>
+          <span className={styles.examShortExam__calendar__date}>04</span>
+        </div>
+        <div className={styles.examShortExam__content}>
+          <span className={styles.examShortExam__content__infor}>
+            <FontAwesomeIcon icon={faPen} style={{ marginRight: 20 }} />
+            51 câu
+          </span>
+          <span className={styles.examShortExam__content__inforTime}>
+            {" "}
+            <FontAwesomeIcon icon={faClock} style={{ marginRight: 20 }} />
+            39 phút
+          </span>
+        </div>
+      </div>
+    );
+  }
   render() {
     return (
       <div className={styles.container}>
@@ -228,7 +266,9 @@ export class ExamComp extends BaseComponent<ExamProps, ExamState> {
           </div>
         </div>
 
+       
         <div style={{ width: "100%", marginTop: 50 }}>
+          {/* {this.renderExamPractice()} */}
           {this.renderExamPractice()}
         </div>
       </div>

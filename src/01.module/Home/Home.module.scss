@@ -23,13 +23,14 @@
       &__title {
         margin-left: 20px;
         font-weight: 400;
-        font-size: 25px;
+        font-size: 21px;
         color: white;
       }
       &__topMenu {
         margin-left: 20px;
         display: flex;
         &__item {
+          font-size: 13px;
           cursor: pointer;
           background-color: #00baff;
           width: fit-content;
@@ -41,6 +42,17 @@
           &:hover {
             background-color: white;
           }
+        }
+        &__itemSub {
+          font-size: 13px;
+          cursor: pointer;
+          background-color: #00baff;
+          width: fit-content;
+          padding: 5px;
+          text-underline-position: inherit;
+          color: white;
+          margin-right: 15px;
+          border-radius: 15px;
         }
       }
     }

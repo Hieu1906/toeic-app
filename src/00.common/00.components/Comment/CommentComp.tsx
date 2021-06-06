@@ -34,7 +34,7 @@ const { confirm } = Modal;
 interface ICommentUpdateProps {
   colectionName: string;
   colectionReaction: string;
-  width?:number;
+  width?: number;
 }
 interface CommentsStates {
   allComments: CommentItem[];
@@ -498,7 +498,6 @@ export class CommentComp extends BaseComponent<
                     flex: 1,
                     minHeight: "50px",
                   }}
-                  autoFocus={true}
                   value={this.state.inputReply as string}
                   autoSize={{ minRows: 1, maxRows: 5 }}
                   onChange={(e) => {
@@ -660,7 +659,6 @@ export class CommentComp extends BaseComponent<
                   flex: 1,
                   minHeight: "50px",
                 }}
-                autoFocus={true}
                 placeholder="Thêm @ để nhắc đến ai "
                 value={this.state.input}
                 autoSize={{ minRows: 1, maxRows: 5 }}
