@@ -12,8 +12,15 @@ import styles from "./ListExamPart1.module.scss";
 import React from "react";
 import { ROUTER } from "../../../00.common/const";
 import { Link } from "react-router-dom";
+import { ToeicPart1 } from "../../../00.common/01.model/ToeicPart1";
+import { toeicPart1ExamService } from "../../../00.common/02.service/toeicPart1ExamService";
+import { ToeicPart1Exam } from "../../../00.common/01.model/ToeicPart1Exam";
+import moment from "moment";
+import Item from "antd/lib/list/Item";
 interface ListExamPart1Props {}
-interface ListExamPart2State {}
+interface ListExamPart2State {
+  allData: ToeicPart1Exam[];
+}
 
 export class ListExamPart1 extends BaseComponent<
   ListExamPart1Props,
@@ -21,11 +28,24 @@ export class ListExamPart1 extends BaseComponent<
 > {
   constructor(props: ListExamPart1Props) {
     super(props);
+    this.state = {
+      allData: [],
+    };
+    this.onMount(async () => {
+      await this.getAllData();
+    });
+  }
+  async getAllData() {
+    let allData = await toeicPart1ExamService.getAll<ToeicPart1Exam>(
+      "ToeicPart1Exam",
+      ""
+    );
+    this.setState({ allData });
   }
 
-  renderItem(item: any) {
+  renderItem(item: ToeicPart1Exam) {
     return (
-      <Link to={`${ROUTER.EXAM_PART1}?id=9`}>
+      <Link to={`${ROUTER.EXAM_PART1}?keyDoc=${item.KeyDoc}`}>
         <div className={styles.Contanier__leftcontent__item}>
           <div
             className={styles.Contanier__leftcontent__item__round}
@@ -35,11 +55,11 @@ export class ListExamPart1 extends BaseComponent<
               fontWeight: 600,
             }}
           >
-            Test 1
+            {item.Title}
           </div>
           <div className={styles.Contanier__leftcontent__item__infor}>
             <div className={styles.Contanier__leftcontent__item__infor__title}>
-              Đề thi Toeic Part 1 - Ets 2020 - Test 2 - Có đáp án chi tiết
+              Đề thi Toeic Part 1 - Ets 2020 - {item.Title}- Có đáp án chi tiết
             </div>
             <div style={{ display: "flex", justifyContent: "space-between" }}>
               <div
@@ -57,7 +77,7 @@ export class ListExamPart1 extends BaseComponent<
                       icon={faUser}
                       style={{ marginRight: 5, color: "#909399" }}
                     />
-                    Hiếu kayo
+                    {item.Creator.Title}
                   </span>
                 </div>
                 <div
@@ -69,7 +89,10 @@ export class ListExamPart1 extends BaseComponent<
                     icon={faCalendar}
                     style={{ marginRight: 5, color: "#909399" }}
                   />
-                  19/06/1998
+
+                  {moment(
+                    new Date(item.Created.seconds * 1000).toUTCString()
+                  ).format("DD/MM/YYYY")}
                 </div>
                 <div
                   className={
@@ -80,7 +103,7 @@ export class ListExamPart1 extends BaseComponent<
                     icon={faClock}
                     style={{ marginRight: 5, color: "#909399" }}
                   />
-                  6 phút
+                  {item.Time / 60} phút
                 </div>
                 <div
                   className={
@@ -91,7 +114,7 @@ export class ListExamPart1 extends BaseComponent<
                     icon={faQuestionCircle}
                     style={{ marginRight: 5, color: "#909399" }}
                   />
-                  10 câu
+                  {item.LookUpKeyDoc.length} câu
                 </div>
               </div>
               <div
@@ -141,7 +164,8 @@ export class ListExamPart1 extends BaseComponent<
       <div className={styles.Contanier}>
         <div className={styles.Contanier__leftcontent}>
           <h3>Series: Bộ đề thi Toeic Part 1 - Có đáp án chi tiết</h3>
-          {[1, 2, 3, 4].map((item) => this.renderItem(item))}
+          {this.state.allData.length > 0 &&
+            this.state.allData.map((item) => this.renderItem(item))}
         </div>
         <div className={styles.Contanier__rightContent}>
           <img

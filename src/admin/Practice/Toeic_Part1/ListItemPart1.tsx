@@ -27,7 +27,7 @@ import { toeicPart1Service } from "../../../00.common/02.service/toeicPart1Servi
 import ModalToeicPart1 from "./ModalToeicPart1";
 import { ANSWER_PART1 } from "../../../00.common/const";
 import { ToeicPart1 } from "../../../00.common/01.model/ToeicPart1";
-// import { toeicPart1ExamService } from "../../../00.common/02.service/toeicPart1ExamService";
+import { toeicPart1ExamService } from "../../../00.common/02.service/toeicPart1ExamService";
 import { ToeicPart1Exam } from "../../../00.common/01.model/ToeicPart1Exam";
 import { MemberInfor } from "../../../00.common/01.model/MemberInfor";
 import { userInforService } from "../../../00.common/02.service/userInforService";
@@ -206,21 +206,22 @@ export default class ListToeicPart1 extends BaseComponent<
 
       const value = this.formRefModal.current!.getFieldsValue();
       console.log(value);
-      // await toeicPart1ExamService.save<ToeicPart1Exam>("ToeicPart1Exam", "", {
+      console.log(this.state.selectedRowKeys)
+      await toeicPart1ExamService.save<ToeicPart1Exam>("ToeicPart1Exam", "", {
         
-      //   CountItem: 0,
-      //   Created: firebase.firestore.Timestamp.fromDate(
-      //     moment().toDate()
-      //   ) as any,
-      //   Creator: {
-      //     Title: this.state.currentUser?.LoginName as string,
-      //     Id: this.state.currentUser?.Uid as string,
-      //   },
-      //   DoExam: 0,
-      //   LookUpKeyDoc: this.state.selectedRowKeys,
-      //   ...value,
-      //   View: 0,
-      // } as any);
+        CountItem: 0,
+        Created: firebase.firestore.Timestamp.fromDate(
+          moment().toDate()
+        ) as any,
+        Creator: {
+          Title: this.state.currentUser?.LoginName as string,
+          Id: this.state.currentUser?.Uid as string,
+        },
+        DoExam: 0,
+        LookUpKeyDoc: this.state.selectedRowKeys,
+        ...value,
+        View: 0,
+      } as any);
       this.formRefModal.current!.resetFields();
     } catch (error) {}
   }
@@ -458,7 +459,7 @@ export default class ListToeicPart1 extends BaseComponent<
               <Col span={24}>
                 <Form.Item
                   label="Tên "
-                  name="Level"
+                  name="Title"
                   rules={[
                     { required: true, message: "Thiếu thông tin tên bài thi!" },
                   ]}
