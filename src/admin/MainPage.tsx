@@ -43,7 +43,9 @@ export default class MainPage extends BaseComponent<
     } else if (keyContent == LIST_COMPONET_ADMIN.LIST_600WORDS) {
       element = <List600WordsToeic />;
     } else if (keyContent == LIST_COMPONET_ADMIN.PART_1) {
-      element = <ListToeicPart1 />;
+      element = <ListToeicPart1 type={"Part1"} />;
+    } else if (keyContent == LIST_COMPONET_ADMIN.EXAM_Part1) {
+      element = <ListToeicPart1 type={"ListExam"} />;
     } else if (keyContent == LIST_COMPONET_ADMIN.PART_2) {
       element = <ListToeicPart2 />;
     } else if (keyContent == LIST_COMPONET_ADMIN.PART_3) {
@@ -82,7 +84,7 @@ export default class MainPage extends BaseComponent<
           </Menu>
         </Header>
         <Layout>
-          <Sider width={200} className="site-layout-background">
+          <Sider width={250} className="site-layout-background">
             <Menu
               onClick={(e) => {
                 this.renderContent(e.key as string);
@@ -111,6 +113,9 @@ export default class MainPage extends BaseComponent<
               >
                 <Menu.Item key={LIST_COMPONET_ADMIN.PART_1}>
                   Toeic Part 1
+                </Menu.Item>
+                <Menu.Item key={LIST_COMPONET_ADMIN.EXAM_Part1}>
+                  Danh Sách đề thi part 1
                 </Menu.Item>
                 <Menu.Item key={LIST_COMPONET_ADMIN.PART_2}>
                   Toeic Part 2

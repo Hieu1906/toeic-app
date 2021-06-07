@@ -7,7 +7,9 @@ import Oclock from "./CircleTimerItem";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPowerOff } from "@fortawesome/free-solid-svg-icons";
 
-interface FormExamProps {}
+interface FormExamProps {
+  ExamPart1?: JSX.Element;
+}
 interface FormExamState {
   isPlaying: boolean;
 }
@@ -46,7 +48,7 @@ export class FormExamCom extends BaseComponent<FormExamProps, FormExamState> {
     return (
       <div className={styles.container}>
         <div className={styles.container__header}>
-          <div style={{ width: "30%" }}>
+          <div style={{ width: "350px", padding: "15px" }}>
             <Countdown
               autoStart={false}
               ref={this.refCountdown}
@@ -81,6 +83,9 @@ export class FormExamCom extends BaseComponent<FormExamProps, FormExamState> {
           >
             Start
           </Button>
+        </div>
+        <div className={styles.container__content}>
+          {this.props.ExamPart1 && this.props.ExamPart1}
         </div>
       </div>
     );
