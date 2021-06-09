@@ -45,7 +45,7 @@ export class ListExamPart1 extends BaseComponent<
 
   renderItem(item: ToeicPart1Exam) {
     return (
-      <Link to={`${ROUTER.EXAM_PART1}?keyDoc=${item.KeyDoc}`}>
+      <Link to={`${ROUTER.EXAM_PART1}?keyDoc=${item.KeyDoc}`} key={item.KeyDoc}>
         <div className={styles.Contanier__leftcontent__item}>
           <div
             className={styles.Contanier__leftcontent__item__round}
