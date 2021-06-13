@@ -165,7 +165,7 @@ export class ListExamPart1 extends BaseComponent<
         <div className={styles.Contanier__leftcontent}>
           <h3>Series: Bộ đề thi Toeic Part 1 - Có đáp án chi tiết</h3>
           {this.state.allData.length > 0 &&
-            this.state.allData.map((item) => this.renderItem(item))}
+            this.state.allData.concat(this.state.allData.concat(this.state.allData)).map((item) => this.renderItem(item))}
         </div>
         <div className={styles.Contanier__rightContent}>
           <img

@@ -1,12 +1,33 @@
 .container {
   background-color: #d4d4d4;
-  padding: 30px 140px;
+  padding: 10px 140px;
+  &__iconMoveTop {
+    position: fixed;
+    bottom: 20px;
+    height: 50px;
+    width: 50px;
+    z-index: 100;
+    left: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   &__header {
     display: flex;
-    background-color: white;
-    flex-direction: row-reverse;
     align-items: center;
-    width: 100%;
+    flex-direction: row-reverse;
+  
+    background-color: white;
+  }
+  &__headerStart {
+    position: fixed;
+    bottom: 20px;
+    width: fit-content;
+    z-index: 100;
+    right: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   &__content {
     background-color: white;

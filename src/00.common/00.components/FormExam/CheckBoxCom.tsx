@@ -1,13 +1,13 @@
-import { Checkbox, Row, Col } from "antd";
+import { Checkbox, Row, Col, Button } from "antd";
 import React from "react";
 import { BaseComponent } from "../BaseComponent";
 
 interface CheckBoxProps {
   onChange: (value: string) => void;
+  disabled: boolean;
 }
 interface CheckBoxState {
   selectedvalue: any;
-  viewResult: boolean;
 }
 
 export class CheckBoxCom extends BaseComponent<CheckBoxProps, CheckBoxState> {
@@ -15,17 +15,17 @@ export class CheckBoxCom extends BaseComponent<CheckBoxProps, CheckBoxState> {
     super(props);
     this.state = {
       selectedvalue: undefined,
-      viewResult: false,
     };
   }
 
-  renderView(viewResult: boolean) {
+  renderView() {
     return (
       <div>
         <Checkbox.Group
-          disabled={this.state.viewResult}
+          disabled={this.props.disabled}
           value={[this.state.selectedvalue]}
           onChange={async (value) => {
+           
             if (value.length >= 2) {
               await this.setState({
                 selectedvalue: value[value.length - 1],
@@ -63,6 +63,6 @@ export class CheckBoxCom extends BaseComponent<CheckBoxProps, CheckBoxState> {
   }
 
   render() {
-    return this.renderView(this.state.viewResult);
+    return <div>{this.renderView()}</div>;
   }
 }

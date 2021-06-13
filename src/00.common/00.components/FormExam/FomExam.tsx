@@ -1,10 +1,11 @@
 import { BaseComponent } from "../BaseComponent";
 import styles from "./FormExam.module.scss";
-import { Button } from "antd";
-import Countdown from "react-countdown";
+import { Button, Checkbox, Col, message, Row, Spin, Modal } from "antd";
+import Countdown, { CountdownRenderProps } from "react-countdown";
 import React from "react";
 import Oclock from "./CircleTimerItem";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { UpOutlined } from "@ant-design/icons";
 import { faPowerOff } from "@fortawesome/free-solid-svg-icons";
 import { ToeicPart1 } from "../../01.model/ToeicPart1";
 import ReactAudioPlayer from "react-audio-player";
@@ -15,10 +16,14 @@ interface FormExamProps {
 }
 interface FormExamState {
   isPlaying: boolean;
-  selectedValue: { keyDoc: string; value: string; result: string }[];
- 
+  selectedValueP: { keyDoc: string; value: string; result: string }[];
+  viewResult: boolean;
+  loading: boolean;
+  isStart: boolean;
+  compeleted: boolean; // khởi tạo để kiểm tra xem khi nào cần update dom do phần đồng hồ bị delay
 }
 
+const { confirm } = Modal;
 export class FormExamCom extends BaseComponent<FormExamProps, FormExamState> {
   public refCountdown = React.createRef<Countdown>();
   public refCheckBoxPart1 = React.createRef<CheckBoxCom>();
@@ -27,19 +32,37 @@ export class FormExamCom extends BaseComponent<FormExamProps, FormExamState> {
     super(props);
     this.state = {
       isPlaying: false,
-      selectedValue: [],
-     
+      selectedValueP: [],
+      viewResult: false,
+      loading: false,
+      isStart: false,
+      compeleted: false,
     };
-   
   }
-  // Random component
-  Completionist = () => <span>You are good to go!</span>;
+  showConfirm() {
+    confirm({
+      title: "Bạn có muốn kết thúc bài kiểm tra tại đây",
+
+      onOk: () => {
+        this.setState({
+          viewResult: true,
+        });
+      },
+      onCancel() {
+        console.log("Cancel");
+      },
+    });
+  }
 
   // Renderer callback with condition
-  renderer = ({ total, completed }) => {
-    if (completed) {
-      // Render a completed state
-      return this.Completionist();
+  renderer = ({ total }) => {
+    if (this.state.compeleted) {
+      this.setState({
+        viewResult: true,
+      });
+
+      message.info("Bạn đã kết thúc bài làm");
+      return <span>You are good to go!</span>;
     } else {
       // Render a countdown
       return (
@@ -48,12 +71,141 @@ export class FormExamCom extends BaseComponent<FormExamProps, FormExamState> {
             Size={85}
             time={total / 1000}
             isPlaying={this.state.isPlaying}
-            ShowHour={true}
+            ShowHour={false}
           />
         </span>
       );
     }
   };
+
+  renderCheckBoxResult(keyDoc: string, result: string) {
+    let itemSelected = this.state.selectedValueP.find((item) => {
+      return item.keyDoc == keyDoc;
+    });
+
+    return (
+      <>
+        {!itemSelected ? (
+          <Row>
+            <Col>
+              <span style={{ color: "red" }}>Bạn chưa trả lời câu hỏi này</span>
+            </Col>
+            <Col span={24}>
+              <Checkbox checked={result == "1000"}>A</Checkbox>
+            </Col>
+            <Col span={24}>
+              <Checkbox checked={result == "0100"}>B</Checkbox>
+            </Col>
+            <Col span={24}>
+              <Checkbox checked={result == "0010"}>C</Checkbox>
+            </Col>
+            <Col span={24}>
+              <Checkbox checked={result == "0001"}>D</Checkbox>
+            </Col>
+          </Row>
+        ) : (
+          <>
+            {itemSelected.value == itemSelected.result ? (
+              <Row>
+                <Col span={24}>
+                  <Checkbox checked={itemSelected.result == "1000"}>
+                    <span
+                      style={{
+                        color: itemSelected.result == "1000" ? "green" : "",
+                      }}
+                    >
+                      A {itemSelected.result == "1000" ? "Đúng" : ""}
+                    </span>
+                  </Checkbox>
+                </Col>
+                <Col span={24}>
+                  <Checkbox checked={itemSelected.result == "0100"}>
+                    <span
+                      style={{
+                        color: itemSelected.result == "0100" ? "green" : "",
+                      }}
+                    >
+                      B {itemSelected.result == "0100" ? "Đúng" : ""}
+                    </span>
+                  </Checkbox>
+                </Col>
+                <Col span={24}>
+                  <Checkbox checked={itemSelected.result == "0010"}>
+                    <span
+                      style={{
+                        color: itemSelected.result == "0010" ? "green" : "",
+                      }}
+                    >
+                      C {itemSelected.result == "0010" ? "Đúng" : ""}
+                    </span>
+                  </Checkbox>
+                </Col>
+                <Col span={24}>
+                  <Checkbox checked={itemSelected.result == "0001"}>
+                    <span
+                      style={{
+                        color: itemSelected.result == "0001" ? "green" : "",
+                      }}
+                    >
+                      D {itemSelected.result == "0001" ? "Đúng" : ""}
+                    </span>
+                  </Checkbox>
+                </Col>
+              </Row>
+            ) : (
+              <Row>
+                <Col span={24}>
+                  <Checkbox checked={itemSelected.result == "1000"}>
+                    <span> A</span>{" "}
+                    <span style={{ color: "green" }}>
+                      {itemSelected.result == "1000" ? "Đúng" : ""}
+                    </span>
+                    <span style={{ color: "red" }}>
+                      {itemSelected.value == "1000" ? "Sai" : ""}
+                    </span>
+                  </Checkbox>
+                </Col>
+                <Col span={24}>
+                  <Checkbox checked={itemSelected.result == "0100"}>
+                    <span> B</span>
+                    <span style={{ color: "green" }}>
+                      {itemSelected.result == "0100" ? "Đúng" : ""}
+                    </span>
+                    <span style={{ color: "red" }}>
+                      {itemSelected.value == "0100" ? "Sai" : ""}
+                    </span>
+                  </Checkbox>
+                </Col>
+                <Col span={24}>
+                  <Checkbox checked={itemSelected.result == "0010"}>
+                    <span> C</span>
+                    <span style={{ color: "green" }}>
+                      {itemSelected.result == "0010" ? "Đúng" : ""}
+                    </span>
+                    <span style={{ color: "red" }}>
+                      {" "}
+                      {itemSelected.value == "0010" ? "Sai" : ""}
+                    </span>
+                  </Checkbox>
+                </Col>
+                <Col span={24}>
+                  <Checkbox checked={itemSelected.result == "0001"}>
+                    <span> D</span>
+                    <span style={{ color: "green" }}>
+                      {itemSelected.result == "0001" ? "Đúng" : ""}
+                    </span>
+                    <span style={{ color: "red" }}>
+                      {itemSelected.value == "0001" ? "Sai" : ""}
+                    </span>
+                  </Checkbox>
+                </Col>
+              </Row>
+            )}
+          </>
+        )}
+      </>
+    );
+  }
 
   renderFormItemsPart1(alldata: ToeicPart1[]) {
     return (
@@ -101,14 +253,23 @@ export class FormExamCom extends BaseComponent<FormExamProps, FormExamState> {
               >
                 <img src={item.ImgUrl} />
               </div>
-              <ReactAudioPlayer src={item.AudioUrl} autoPlay={false} controls />
+              <ReactAudioPlayer
+                src={this.state.isStart ? item.AudioUrl : undefined}
+                autoPlay={false}
+                controls
+              />
             </div>
-            <CheckBoxCom
-              ref={this.refCheckBoxPart1}
-              onChange={(value) => {
-                this.handeValueInput(item, value);
-              }}
-            />
+            {!this.state.viewResult ? (
+              <CheckBoxCom
+                disabled={!this.state.isStart}
+                ref={this.refCheckBoxPart1}
+                onChange={(value) => {
+                  this.handeValueInput(item, value);
+                }}
+              />
+            ) : (
+              <>{this.renderCheckBoxResult(item.KeyDoc, item.Answer)}</>
+            )}
           </div>
         ))}
       </div>
@@ -121,8 +282,8 @@ export class FormExamCom extends BaseComponent<FormExamProps, FormExamState> {
       value: string;
       result: string;
     }[] = [];
-    if (this.state.selectedValue.length > 0) {
-      listValue = this.state.selectedValue.filter((item) => {
+    if (this.state.selectedValueP.length > 0) {
+      listValue = this.state.selectedValueP.filter((item) => {
         return item.keyDoc !== itemInput.KeyDoc;
       });
     }
@@ -134,64 +295,98 @@ export class FormExamCom extends BaseComponent<FormExamProps, FormExamState> {
       });
     }
     this.setState({
-      selectedValue: listValue,
+      selectedValueP: listValue,
     });
   }
 
   render() {
     return (
       <div className={styles.container}>
-        <div className={styles.container__header}>
-          <div style={{ width: "350px", padding: "15px" }}>
-            <Countdown
-              autoStart={false}
-              ref={this.refCountdown}
-              date={Date.now() + 70000}
-              renderer={this.renderer}
-            />
+        {!this.state.viewResult && (
+          <div
+            className={
+              !this.state.isStart
+                ? styles.container__header
+                : styles.container__headerStart
+            }
+          >
+            <Button
+              onClick={() => {
+                window.scrollTo({ top: 0, behavior: "auto" });
+              }}
+              className={styles.container__iconMoveTop}
+              shape="circle"
+              type="default"
+              icon={<UpOutlined style={{ fontWeight: "bold", fontSize: 20 }} />}
+            ></Button>
+
+            <div style={{ width: "350px", padding: "15px" }}>
+              <Countdown
+                autoStart={false}
+                ref={this.refCountdown}
+                date={Date.now() + 10000}
+                renderer={(props: CountdownRenderProps) => {
+                  return this.renderer({
+                    total: props.total,
+                  });
+                }}
+              />
+            </div>
+
+            {!this.state.isStart && (
+              <Button
+                style={{ marginRight: 30 }}
+                type={"primary"}
+                onClick={() => {
+                  this.refCountdown.current?.start();
+
+                  this.setState({
+                    isPlaying: true,
+                    isStart: true,
+                  });
+                  setTimeout(() => {
+                    this.setState({ compeleted: true });
+                  }, 10000);
+                }}
+              >
+                Bắt đầu
+              </Button>
+            )}
+            {this.state.isStart && (
+              <Button
+                style={{ marginLeft: 10, marginRight: 10 }}
+                icon={
+                  <FontAwesomeIcon
+                    icon={faPowerOff}
+                    style={{ marginLeft: 5 }}
+                  />
+                }
+                type={"primary"}
+                onClick={() => {
+                  if (
+                    this.state.selectedValueP.length <
+                    this.props.dataPart1!.length
+                  ) {
+                    this.showConfirm();
+                  } else {
+                    this.setState({
+                      viewResult: true,
+                    });
+                  }
+                }}
+              >
+                Nộp bài
+              </Button>
+            )}
           </div>
-          <Button
-            icon={
-              <FontAwesomeIcon icon={faPowerOff} style={{ marginRight: 5 }} />
-            }
-            danger
-            type={"primary"}
-            onClick={() => {
-              this.refCountdown.current?.stop();
-              this.setState({
-                isPlaying: false,
-              });
-            }}
-          >
-            Pause
-          </Button>
-          <Button
-            style={{ marginRight: 30 }}
-            type={"primary"}
-            onClick={() => {
-              this.refCountdown.current?.start();
-              this.setState({
-                isPlaying: true,
-              });
-            }}
-          >
-            Start
-          </Button>
-          <Button
-            icon={
-              <FontAwesomeIcon icon={faPowerOff} style={{ marginLeft: 5 }} />
-            }
-            type={"primary"}
-            onClick={() => {}}
-          >
-            Nộp bài
-          </Button>
-        </div>
-        <div className={styles.container__content}>
-          {this.props.dataPart1 &&
-            this.props.dataPart1.length > 0 &&
-            this.renderFormItemsPart1(this.props.dataPart1)}
-        </div>
+        )}
+        <Spin spinning={this.state.loading} tip="Đang xử lí ">
+          <div className={styles.container__content} style={{ marginTop: 10 }}>
+            {this.props.dataPart1 &&
+              this.props.dataPart1.length > 0 &&
+              this.renderFormItemsPart1(this.props.dataPart1)}
+          </div>
+        </Spin>
       </div>
     );
   }
