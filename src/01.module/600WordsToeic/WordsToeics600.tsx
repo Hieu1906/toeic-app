@@ -6,7 +6,6 @@ import React from "react";
 import ThemeDetailModalCom from "./ThemeDetail";
 import { WordsToeic } from "../../00.common/01.model/600WordsToeic";
 import { userInforService } from "../../00.common/02.service/userInforService";
-import { createNoSubstitutionTemplateLiteral } from "typescript";
 import { MemberInfor } from "../../00.common/01.model/MemberInfor";
 interface Worrds600Props {}
 

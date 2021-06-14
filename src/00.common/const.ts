@@ -8,7 +8,7 @@ export const LIST_COMPONET_ADMIN = {
   LIST_600WORDS: "LIST_600WORDS",
   LIST_THEME_6000WORDS: "LIST_THEME_6000WORDS",
   PART_1: "PART_1",
-  EXAM_Part1:"EXAM_Part1",
+  EXAM_Part1: "EXAM_Part1",
   PART_2: "PART_2",
   PART_3: "PART_3",
   PART_4: "PART_4",
@@ -118,5 +118,5 @@ export const ROUTER = {
   //PHẦN THI THỬ
   lIST_EXAM_PART1: "/listExamPart1",
   EXAM_PART1: "/examPart1",
-
+  MY_WORDS: "/myWords",
 };

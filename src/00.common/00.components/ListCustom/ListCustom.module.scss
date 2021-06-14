@@ -1,0 +1,43 @@
+.flip {
+  width: auto;
+  :global {
+    .react-card-front {
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+    }
+    .react-card-back {
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+    }
+  }
+  &__front {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    color: #fff;
+    padding: 50px 20px;
+    height: 100%;
+    transition: 0.3s all ease-in-out;
+    & h1 {
+      color: #fff;
+      font-size: 30px;
+    }
+  }
+  &__back {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    color: #fff;
+    padding: 50px 20px;
+    height: 100%;
+    transition: 0.3s all ease-in-out;
+
+    color: rgb(46, 44, 44);
+    & h1 {
+      font-size: 30px;
+      color: rgb(46, 44, 44);
+    }
+  }
+}

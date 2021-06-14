@@ -17,7 +17,7 @@ import ModalWordToeic from "./ModalToeicWord";
 
 import _ from "lodash";
 import ModalTheme from "./ModalCreateTheme";
-import { ListCustom } from "../../00.common/00.components/ListCustom";
+import { ListCustom } from "../../00.common/00.components/ListCustom/ListCustom";
 import { WordsToeic } from "../../00.common/01.model/600WordsToeic";
 
 interface List600WordProps {}

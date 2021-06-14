@@ -1,3 +1,5 @@
+import { ROUTER } from "../../00.common/const";
+
 export const ItemsPracticeExam = [
   {
     Title: "Phần 1",
@@ -14,7 +16,7 @@ export const ItemsPracticeExam = [
         Link: "",
       },
     ],
-    LinkPractice: "",
+    LinkPractice: ROUTER.lIST_EXAM_PART1,
     LinkStudy: "",
   },
   {

@@ -46,7 +46,7 @@ export class ExamComp extends BaseComponent<ExamProps, ExamState> {
                   ))}
 
                   <div className={styles.examPracticeItem__infor__btns}>
-                    <Link to={ROUTER.lIST_EXAM_PART1}>
+                    <Link to={item.LinkPractice}>
                       {" "}
                       <a
                         href={item.LinkPractice}
@@ -56,7 +56,7 @@ export class ExamComp extends BaseComponent<ExamProps, ExamState> {
                         Luyện
                       </a>
                     </Link>
-                    <Link to={ROUTER.PAR_PART1}>
+                    <Link to={item.LinkStudy}>
                       <a
                         href={item.LinkStudy}
                         style={{ backgroundColor: "#999999" }}

@@ -48,6 +48,7 @@ import { RequestAccess } from "../../00.common/01.model/RequestAccess";
 import { ExamComp } from "../Exam/Exam";
 import { ListExamPart1 } from "../Exam/ExamPart1/ListExamPart1";
 import { ExamPart1 } from "../Exam/ExamPart1/ExamPart1";
+import { MyWord } from "../MyWords/MyWords";
 const { Option } = Select;
 interface propsHome {
   inforUser: {
@@ -185,7 +186,7 @@ export default class Home extends BaseComponent<propsHome, stateHome> {
             />
           }
         >
-          Ghi chú của tôi
+          <Link to={ROUTER.MY_WORDS}> Từ Vựng của tôi</Link>
         </Menu.Item>
         <Menu.Item
           style={{ borderBottom: "grey solid 1px", fontWeight: 400 }}
@@ -522,6 +523,9 @@ export default class Home extends BaseComponent<propsHome, stateHome> {
                   </Route>
                   <Route path={ROUTER.EXAM_PART1}>
                     <ExamPart1 />
+                  </Route>
+                  <Route path={ROUTER.MY_WORDS}>
+                    <MyWord />
                   </Route>
                 </Switch>
               </div>
