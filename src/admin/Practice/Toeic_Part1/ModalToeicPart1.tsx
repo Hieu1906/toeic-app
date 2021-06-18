@@ -17,7 +17,7 @@ import { BaseComponent } from "../../../00.common/00.components/BaseComponent";
 import { UploadFile } from "../../../00.common/00.components/UploadFile";
 import { toeicPart1Service } from "../../../00.common/02.service/toeicPart1Service";
 import { ANSWER_PART1 } from "../../../00.common/const";
-import { storage } from "../../../firebase.config";
+import { storage } from "../../../firebase.config.js";
 
 interface ModalToeicPart1Props {
   onSave: () => void;

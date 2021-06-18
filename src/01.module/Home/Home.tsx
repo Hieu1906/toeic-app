@@ -33,6 +33,7 @@ import Words600Com from "../600WordsToeic/WordsToeics600";
 import MainPage from "../../admin/MainPage";
 import { ParPart1 } from "../Practice/Part1/Part1";
 import { ParPart3 } from "../Practice/Part3/Part3";
+import Part4 from "../Practice/Part4Nghia/Part4";
 import { ModalUpdateUser } from "../MySetting/UpdateInforUser";
 import firebase from "firebase";
 import { userInforService } from "../../00.common/02.service/userInforService";
@@ -506,7 +507,7 @@ export default class Home extends BaseComponent<propsHome, stateHome> {
                     <ParPart3 />
                   </Route>
                   <Route path={ROUTER.PAR_PART4}>
-                    <ParPart1 />
+                    <Part4 />
                   </Route>
                   <Route path={ROUTER.PAR_PART5}>
                     <ParPart2 />

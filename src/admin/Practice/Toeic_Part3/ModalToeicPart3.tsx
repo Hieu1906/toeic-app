@@ -20,7 +20,7 @@ import { UploadFile } from "../../../00.common/00.components/UploadFile";
 import { ExclamationCircleOutlined } from "@ant-design/icons";
 import { ANSWER_PART1 } from "../../../00.common/const";
 import { toeicPart3Service } from "../../../00.common/02.service/toeicPart3Service";
-import { storage } from "../../../firebase.config";
+import { storage } from "../../../firebase.config.js";
 const { TextArea } = Input;
 interface ModalToeicPart3Props {
   onSave: () => void;

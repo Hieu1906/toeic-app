@@ -17,7 +17,7 @@ import { BaseComponent } from "../../../00.common/00.components/BaseComponent";
 import { UploadFile } from "../../../00.common/00.components/UploadFile";
 
 import { ANSWER_PART3_4_5 } from "../../../00.common/const";
-import { storage } from "../../../firebase.config";
+import { storage } from "../../../firebase.config.js";
 import { toeicPart2Service } from "../../../00.common/02.service/toeicPart2Service";
 
 interface ModalToeicPart2Props {

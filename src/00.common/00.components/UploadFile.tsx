@@ -3,7 +3,7 @@ import ReactAudioPlayer from "react-audio-player";
 import CustomUploadButton from "react-firebase-file-uploader/lib/CustomUploadButton";
 import { BaseComponent } from "./BaseComponent";
 import { UploadOutlined } from "@ant-design/icons";
-import { storage } from "../../firebase.config";
+import { storage } from "../../firebase.config.js";
 interface UploadFileState {
   filenames: any[];
   downloadURLs: any[];

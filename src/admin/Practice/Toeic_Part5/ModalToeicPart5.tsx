@@ -17,7 +17,7 @@ import _, { pick } from "lodash";
 import { BaseComponent } from "../../../00.common/00.components/BaseComponent";
 
 import { ANSWER_PART3_4_5 } from "../../../00.common/const";
-import { storage } from "../../../firebase.config";
+import { storage } from "../../../firebase.config.js";
 import { toeicPart5Service } from "../../../00.common/02.service/toeicPart5Service";
 import TextArea from "antd/lib/input/TextArea";
 

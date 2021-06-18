@@ -1,5 +1,5 @@
 import _ from "lodash";
-import { firestore } from "../../firebase.config";
+import { firestore, storage } from "../../firebase.config.js";
 
 export default class ServiceBase {
   public async getAll<T>(nameCollection: string, sortField?: string) {

@@ -18,7 +18,7 @@ import { BaseComponent } from "../../../00.common/00.components/BaseComponent";
 
 import { ExclamationCircleOutlined } from "@ant-design/icons";
 import { ANSWER_PART1 } from "../../../00.common/const";
-import { storage } from "../../../firebase.config";
+import { storage } from "../../../firebase.config.js";
 import { toeicPart7Service } from "../../../00.common/02.service/toeicPart7Service";
 const { TextArea } = Input;
 interface ModalToeicPart7Props {
