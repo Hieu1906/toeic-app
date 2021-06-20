@@ -1,0 +1,72 @@
+.Part5Container {
+  width: 100%;
+  background-color: #ebebeb;
+  &__Content {
+    margin: 0px 100px;
+    padding: 30px  100px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    &__img {
+      margin: 50px 0px;
+    }
+    &__introduce {
+      display: flex;
+      flex-direction: column;
+      &__text_p {
+        flex-direction: column;
+        color: #333;
+        font-weight: 400;
+        font-size: 18px;
+      }
+      &__li {
+        margin: 15px 0px;
+      }
+    }
+    &__tableOfContents {
+      margin: 50px 20px;
+      display: flex;
+      flex-direction: column;
+      &__row {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        &__item {
+          margin: 20;
+        }
+      }
+    }
+    &__textGreen {
+      margin-top: 30px;
+      margin-bottom: 18px;
+      color: #87c52e;
+      text-align: left;
+      font-size: 30px;
+    }
+    &__ul {
+      font-size: 18px;
+    }
+    &__textBlue {
+      color: #19a4f9;
+      margin-top: 20px;
+      margin-bottom: 18px;
+      font-size: 24px;
+    }
+    &__li {
+      margin-top: 10px;
+    }
+    &__button {
+      color: rgb(255, 255, 255);
+      max-width: 300px;
+      margin: 15px auto;
+      padding: 10px 20px;
+      font-size: 22px;
+      line-height: 30px;
+      background-image: linear-gradient(to bottom right, #33abe5, #235ddb);
+      border-radius: 24px;
+      text-decoration-line: none;
+      display: block;
+      text-align: center;
+    }
+  }
+}

@@ -50,6 +50,7 @@ import { ExamComp } from "../Exam/Exam";
 import { ListExamPart1 } from "../Exam/ExamPart1/ListExamPart1";
 import { ExamPart1 } from "../Exam/ExamPart1/ExamPart1";
 import { MyWord } from "../MyWords/MyWords";
+import { ParPart5 } from "../Practice/Part5/Part5";
 const { Option } = Select;
 interface propsHome {
   inforUser: {
@@ -510,7 +511,7 @@ export default class Home extends BaseComponent<propsHome, stateHome> {
                     <Part4 />
                   </Route>
                   <Route path={ROUTER.PAR_PART5}>
-                    <ParPart2 />
+                    <ParPart5 />
                   </Route>
                   <Route path={ROUTER.PAR_PART6}>
                     <ParPart3 />
