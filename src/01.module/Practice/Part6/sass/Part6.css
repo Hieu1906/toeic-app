@@ -20,6 +20,19 @@
   .part6 em {
     margin: 20px 0;
     display: inline-block; }
+  .part6 img {
+    margin: 30px 0;
+    display: inline-block; }
+  .part6 a {
+    display: inline-block;
+    max-width: 300px;
+    background-image: linear-gradient(to bottom right, #33abe5, #235DDB);
+    text-decoration-line: none;
+    text-align: center;
+    border-radius: 24px;
+    padding: 10px 20px;
+    font-size: 22px;
+    color: #fff; }
   .part6 button {
     color: #fff;
     background-color: #5bc0de;
@@ -49,5 +62,13 @@
     margin: 0 0 20px;
     font-size: 17.5px;
     border-left: 5px solid #eee; }
+  .part6-answer {
+    height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: all  0.3s  ease-in-out; }
+    .part6-answer.active {
+      opacity: 1;
+      height: 100%; }
 
 /*# sourceMappingURL=Part6.css.map */
