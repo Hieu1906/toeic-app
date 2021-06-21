@@ -51,6 +51,8 @@ import { ListExamPart1 } from "../Exam/ExamPart1/ListExamPart1";
 import { ExamPart1 } from "../Exam/ExamPart1/ExamPart1";
 import { MyWord } from "../MyWords/MyWords";
 import { ParPart5 } from "../Practice/Part5/Part5";
+import Part6 from '../Practice/Part6/Part6'
+import Part7 from "../Practice/Part7/Part7";
 import Part6 from "../Practice/Part6/Part6";
 import { NounFunction } from "../Grammar/NounFunction/NounFunction";
 const { Option } = Select;
@@ -517,7 +519,7 @@ export default class Home extends BaseComponent<propsHome, stateHome> {
                     <Part6 />
                   </Route>
                   <Route path={ROUTER.PAR_PART7}>
-                    <ParPart1 />
+                    <Part7 />
                   </Route>
                   <Route path={ROUTER.lIST_EXAM_PART1}>
                     <ListExamPart1 />
