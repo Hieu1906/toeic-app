@@ -1,19 +1,103 @@
 .grammar {
-  display: flex;
-  flex-direction: column;
   width: 100%;
-  color: red;
-  &__header {
+  background-color: #ebebeb;
+  padding: 10px 100px;
+  &__container {
     background-color: white;
-    padding: 10px;
-    border: 1px solid #cfcfcf;
-    &__title {
-      width: 100%;
-      text-align: center;
-      font-weight: 700;
+    &__header {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      &__title {
+        margin: 0 0 30px;
+        padding-top: 20px;
+        color: #fa5b0f;
+        font-size: 36px;
+      }
+      &__navigation {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: center;
+        margin-bottom: 30px;
+        width: 100%;
+        &__item {
+          margin: 7px;
+          border-color: #dbdbdb;
+          border-radius: 7px;
+          border-style: solid;
+          border-width: 2px;
+          padding: 7px;
+          flex: 0 0 220px;
+          font-size: 16px;
+          text-align: center;
+        }
+      }
     }
-    &__select {
-      font-weight: normal;
+    &__divider {
+      width: 99%;
+      margin: auto;
+      border-radius: 5px;
+      background-color: #0478d1;
+      height: 50px;
+    }
+    &__search {
+      position: relative;
+      padding: 40px;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      margin: 20px 10px;
+      &__choice {
+        font-size: 18px;
+      }
+    }
+    &__content {
+      margin-top: 50px;
+      width: 100%;
+      padding: 0px 30px;
+      &__header {
+        color: #0478d1;
+        font-size: 24px;
+        font-weight: 500;
+        line-height: 1.1;
+      }
+      &__wapperItems {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+
+        &__item {
+          width: 18%;
+          min-height: 257px;
+          padding: 20px;
+          text-align: center;
+          box-shadow: 0 0 5px #888;
+          border-radius: 5px;
+          display: flex;
+          flex-direction: column;
+          margin: 20px;
+          justify-content: space-between;
+
+          &__block1 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          }
+          &__block2 {
+            color: #fff;
+            background-color: #2d96c8;
+            text-decoration: none;
+            display: inline-block;
+            min-width: 70px;
+            padding: 8px 12px;
+            margin-top: 10px;
+            font-size: 16px;
+            border-radius: 20px;
+          }
+        }
+      }
     }
   }
 }
