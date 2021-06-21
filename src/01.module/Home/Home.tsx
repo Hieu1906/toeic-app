@@ -51,7 +51,8 @@ import { ListExamPart1 } from "../Exam/ExamPart1/ListExamPart1";
 import { ExamPart1 } from "../Exam/ExamPart1/ExamPart1";
 import { MyWord } from "../MyWords/MyWords";
 import { ParPart5 } from "../Practice/Part5/Part5";
-import Part6 from '../Practice/Part6/Part6'
+import Part6 from "../Practice/Part6/Part6";
+import { NounFunction } from "../Grammar/NounFunction/NounFunction";
 const { Option } = Select;
 interface propsHome {
   inforUser: {
@@ -452,7 +453,6 @@ export default class Home extends BaseComponent<propsHome, stateHome> {
                   <Route path={ROUTER.DE_THI}>
                     <div>Mẹo thi</div>
                   </Route>
-
                   <Route path={ROUTER.QUAN_TRI}>
                     {this.state &&
                     this.state.userPermission !== undefined &&
@@ -498,7 +498,6 @@ export default class Home extends BaseComponent<propsHome, stateHome> {
                       </div>
                     )}
                   </Route>
-
                   <Route path={ROUTER.PAR_PART1}>
                     <ParPart1 />
                   </Route>
@@ -520,7 +519,6 @@ export default class Home extends BaseComponent<propsHome, stateHome> {
                   <Route path={ROUTER.PAR_PART7}>
                     <ParPart1 />
                   </Route>
-
                   <Route path={ROUTER.lIST_EXAM_PART1}>
                     <ListExamPart1 />
                   </Route>
@@ -529,6 +527,10 @@ export default class Home extends BaseComponent<propsHome, stateHome> {
                   </Route>
                   <Route path={ROUTER.MY_WORDS}>
                     <MyWord />
+                  </Route>
+                  //danh sách bài học
+                  <Route path={ROUTER.NOUNFUNTION}>
+                    <NounFunction />
                   </Route>
                 </Switch>
               </div>
