@@ -34,6 +34,24 @@ export default class MainPage extends BaseComponent<
     this.state = {
       element: <List600WordsToeic />,
     };
+    this.onMount(() => {
+      let key = this.getParameterByName("key");
+
+      if (key) {
+        this.renderContent(key as string);
+      }
+    });
+  }
+
+  public getParameterByName(name: string) {
+    let url = window.location.href;
+    // eslint-disable-next-line
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+      results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return "";
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
   }
 
   renderContent(keyContent: string) {
@@ -47,7 +65,9 @@ export default class MainPage extends BaseComponent<
     } else if (keyContent == LIST_COMPONET_ADMIN.EXAM_Part1) {
       element = <ListToeicPart1 type={"ListExam"} />;
     } else if (keyContent == LIST_COMPONET_ADMIN.PART_2) {
-      element = <ListToeicPart2 />;
+      element = <ListToeicPart2 type={"Part2"} />;
+    } else if (keyContent == LIST_COMPONET_ADMIN.EXAM_Part2) {
+      element = <ListToeicPart2 type={"ListExam"} />;
     } else if (keyContent == LIST_COMPONET_ADMIN.PART_3) {
       element = <ListToeicPart3 />;
     } else if (keyContent == LIST_COMPONET_ADMIN.PART_4) {
@@ -80,7 +100,7 @@ export default class MainPage extends BaseComponent<
             mode="horizontal"
             defaultSelectedKeys={["2"]}
           >
-            <Menu.Item key="1">nav 1</Menu.Item>
+            <Menu.Item key="1">Quản trị</Menu.Item>
           </Menu>
         </Header>
         <Layout>
@@ -120,6 +140,9 @@ export default class MainPage extends BaseComponent<
                 <Menu.Item key={LIST_COMPONET_ADMIN.PART_2}>
                   Toeic Part 2
                 </Menu.Item>
+                <Menu.Item key={LIST_COMPONET_ADMIN.EXAM_Part2}>
+                  Danh Sách đề thi part 1
+                </Menu.Item>
                 <Menu.Item key={LIST_COMPONET_ADMIN.PART_3}>
                   Toeic Part 3
                 </Menu.Item>
@@ -158,7 +181,7 @@ export default class MainPage extends BaseComponent<
               <Breadcrumb style={{ margin: "16px 0" }}>
                 <Breadcrumb.Item>Home</Breadcrumb.Item>
                 <Breadcrumb.Item>List</Breadcrumb.Item>
-                <Breadcrumb.Item>App</Breadcrumb.Item>
+                <Breadcrumb.Item>Setting</Breadcrumb.Item>
               </Breadcrumb>
             </div>
             <Content
