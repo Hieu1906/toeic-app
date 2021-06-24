@@ -1,0 +1,35 @@
+.NounFuntion {
+  width: 100%;
+  background-color: #ebebeb;
+  padding: 0px 100px;
+  &__container {
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    &__header {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin-top: 50px;
+      &__title {
+        color: #fa5b0f;
+        margin-bottom: 10px;
+      }
+      &__iconWrapper {
+        margin: 30px auto 45px;
+        text-align: center;
+        background: #fafafa;
+        border: 1px solid #ccc;
+        padding: 10px;
+        border-radius: 3px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  }
+}

@@ -1,3 +1,4 @@
+import { NounFunction } from "./../01.module/Grammar/NounFunction/NounFunction";
 export const Permission = {
   FullControl: "FullControl",
   ReadOnly: "ReadOnly",
@@ -9,6 +10,7 @@ export const LIST_COMPONET_ADMIN = {
   LIST_THEME_6000WORDS: "LIST_THEME_6000WORDS",
   PART_1: "PART_1",
   EXAM_Part1: "EXAM_Part1",
+  EXAM_Part2: "EXAM_Part2",
   PART_2: "PART_2",
   PART_3: "PART_3",
   PART_4: "PART_4",
@@ -119,4 +121,6 @@ export const ROUTER = {
   lIST_EXAM_PART1: "/listExamPart1",
   EXAM_PART1: "/examPart1",
   MY_WORDS: "/myWords",
+  //danh sách bài học
+  NOUNFUNTION: "/nounFunction",
 };

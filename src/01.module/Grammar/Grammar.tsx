@@ -7,6 +7,8 @@ import { Radio } from "antd";
 import { grammarService } from "../../00.common/02.service/grammarService";
 import { GrammarItem } from "../../00.common/01.model/Grammar";
 import _ from "lodash";
+import { Link } from "react-router-dom";
+import { ROUTER } from "../../00.common/const";
 const { Search } = Input;
 
 interface GrammarProps {}
@@ -82,13 +84,15 @@ export default class GrammarCom extends BaseComponent<
                 />
                 {item.Title}
               </div>
-              <div
-                className={
-                  styles.grammar__container__content__wapperItems__item__block2
-                }
-              >
-                Học
-              </div>
+              <Link to={item.UrlCode}>
+                <div
+                  className={
+                    styles.grammar__container__content__wapperItems__item__block2
+                  }
+                >
+                  Học
+                </div>
+              </Link>
             </Col>
           ))}
         </div>
@@ -197,11 +201,7 @@ export default class GrammarCom extends BaseComponent<
                 onSearch={async (value) => {
                   let dataFilter = this.state.allData.filter((item) => {
                     let a = item.Title.toLocaleLowerCase();
-                    return (
-                      a.indexOf(
-                        value.toLocaleLowerCase()
-                      ) > -1
-                    );
+                    return a.indexOf(value.toLocaleLowerCase()) > -1;
                   });
 
                   await this.setState({

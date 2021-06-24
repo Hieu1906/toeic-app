@@ -42,8 +42,6 @@ import { MemberInfor } from "../../00.common/01.model/MemberInfor";
 import { TopMenu } from "../../00.common/01.model/TopMenu";
 import { PermissionUser } from "../../00.common/01.model/PermissionUser";
 import { Permission, ROUTER } from "../../00.common/const";
-
-import { CommentComp } from "../../00.common/00.components/Comment/CommentComp";
 import { requestAccessService } from "../../00.common/02.service/RequestAccess";
 import { RequestAccess } from "../../00.common/01.model/RequestAccess";
 import { ExamComp } from "../Exam/Exam";
@@ -53,6 +51,11 @@ import { MyWord } from "../MyWords/MyWords";
 import { ParPart5 } from "../Practice/Part5/Part5";
 import Part6 from '../Practice/Part6/Part6'
 import Part7 from "../Practice/Part7/Part7";
+
+import Part6 from "../Practice/Part6/Part6";
+import Part7 from "../Practice/Part7/Part7";
+
+import { NounFunction } from "../Grammar/NounFunction/NounFunction";
 const { Option } = Select;
 interface propsHome {
   inforUser: {
@@ -453,7 +456,6 @@ export default class Home extends BaseComponent<propsHome, stateHome> {
                   <Route path={ROUTER.DE_THI}>
                     <div>Mẹo thi</div>
                   </Route>
-
                   <Route path={ROUTER.QUAN_TRI}>
                     {this.state &&
                     this.state.userPermission !== undefined &&
@@ -499,7 +501,6 @@ export default class Home extends BaseComponent<propsHome, stateHome> {
                       </div>
                     )}
                   </Route>
-
                   <Route path={ROUTER.PAR_PART1}>
                     <ParPart1 />
                   </Route>
@@ -521,7 +522,6 @@ export default class Home extends BaseComponent<propsHome, stateHome> {
                   <Route path={ROUTER.PAR_PART7}>
                     <Part7 />
                   </Route>
-
                   <Route path={ROUTER.lIST_EXAM_PART1}>
                     <ListExamPart1 />
                   </Route>
@@ -530,6 +530,10 @@ export default class Home extends BaseComponent<propsHome, stateHome> {
                   </Route>
                   <Route path={ROUTER.MY_WORDS}>
                     <MyWord />
+                  </Route>
+                  //danh sách bài học
+                  <Route path={ROUTER.NOUNFUNTION}>
+                    <NounFunction />
                   </Route>
                 </Switch>
               </div>
