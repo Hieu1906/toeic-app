@@ -42,8 +42,6 @@ import { MemberInfor } from "../../00.common/01.model/MemberInfor";
 import { TopMenu } from "../../00.common/01.model/TopMenu";
 import { PermissionUser } from "../../00.common/01.model/PermissionUser";
 import { Permission, ROUTER } from "../../00.common/const";
-
-import { CommentComp } from "../../00.common/00.components/Comment/CommentComp";
 import { requestAccessService } from "../../00.common/02.service/RequestAccess";
 import { RequestAccess } from "../../00.common/01.model/RequestAccess";
 import { ExamComp } from "../Exam/Exam";
@@ -52,6 +50,9 @@ import { ExamPart1 } from "../Exam/ExamPart1/ExamPart1";
 import { MyWord } from "../MyWords/MyWords";
 import { ParPart5 } from "../Practice/Part5/Part5";
 import Part6 from '../Practice/Part6/Part6'
+import Part7 from "../Practice/Part7/Part7";
+
+import Part6 from "../Practice/Part6/Part6";
 import Part7 from "../Practice/Part7/Part7";
 
 import { NounFunction } from "../Grammar/NounFunction/NounFunction";

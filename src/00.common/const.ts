@@ -10,6 +10,7 @@ export const LIST_COMPONET_ADMIN = {
   LIST_THEME_6000WORDS: "LIST_THEME_6000WORDS",
   PART_1: "PART_1",
   EXAM_Part1: "EXAM_Part1",
+  EXAM_Part2: "EXAM_Part2",
   PART_2: "PART_2",
   PART_3: "PART_3",
   PART_4: "PART_4",
