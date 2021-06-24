@@ -53,7 +53,7 @@ import { MyWord } from "../MyWords/MyWords";
 import { ParPart5 } from "../Practice/Part5/Part5";
 import Part6 from '../Practice/Part6/Part6'
 import Part7 from "../Practice/Part7/Part7";
-import Part6 from "../Practice/Part6/Part6";
+
 import { NounFunction } from "../Grammar/NounFunction/NounFunction";
 const { Option } = Select;
 interface propsHome {
