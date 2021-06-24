@@ -79,9 +79,7 @@ export class QuickLinkApp extends BaseComponent<propsHomePage, staeHomepage> {
               style={{ backgroundImage: `url(${this.state.img3_viewImg})` }}
             >
               <div
-                className={
-                  styles.QuickLink__block1__infor__img3_viewImg__text
-                }
+                className={styles.QuickLink__block1__infor__img3_viewImg__text}
               >
                 50+ đề thi thử TOEIC và 7000+ đề luyện tập cho bạn tha hồ luyện
                 thi
@@ -101,9 +99,7 @@ export class QuickLinkApp extends BaseComponent<propsHomePage, staeHomepage> {
               style={{ backgroundImage: `url(${this.state.img3_viewImg})` }}
             >
               <div
-                className={
-                  styles.QuickLink__block1__infor__img3_viewImg__text
-                }
+                className={styles.QuickLink__block1__infor__img3_viewImg__text}
               >
                 Giúp bạn hiểu rõ vì sao đáp án này thì đúng còn đáp án kia thì
                 sai
@@ -118,17 +114,26 @@ export class QuickLinkApp extends BaseComponent<propsHomePage, staeHomepage> {
           </div>
           <div className={styles.QuickLink__block2__content}>
             {this.state.allQuickLink.slice(0, 4).map((item, key) => (
-              <div
-                key={key}
-                className={styles.QuickLink__block2__content__img3_viewImg}
-                style={{ backgroundImage: `url(${this.state.img3_viewImg})` }}
-              >
-                <img
-                  src={item.ImgUrl}
-                  className={
-                    styles.QuickLink__block2__content__img3_viewImg__img
-                  }
-                />
+              <div>
+                {" "}
+                <div
+                  key={key}
+                  className={styles.QuickLink__block2__content__img3_viewImg}
+                  style={{ backgroundImage: `url(${this.state.img3_viewImg})` }}
+                >
+                  <img
+                    src={item.ImgUrl}
+                    className={
+                      styles.QuickLink__block2__content__img3_viewImg__img
+                    }
+                  />
+                </div>
+                <div
+                  className={styles.QuickLink__block2__content__title}
+                  style={{ textAlign: "center" }}
+                >
+                  {item.Title}
+                </div>
               </div>
             ))}
           </div>
@@ -147,8 +152,10 @@ export class QuickLinkApp extends BaseComponent<propsHomePage, staeHomepage> {
                     }
                   />
                 </div>
-                <div className={styles.QuickLink__block2__content__title}>
-                  {" "}
+                <div
+                  className={styles.QuickLink__block2__content__title}
+                  style={{ textAlign: "center" }}
+                >
                   {item.Title}
                 </div>
               </div>
