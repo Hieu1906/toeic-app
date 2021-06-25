@@ -1,5 +1,5 @@
 // eslint-disable-next-line
-import styles from "./QuickLink.module.scss";
+import "./scss/QuickLink.css";
 import { orderBy } from "lodash";
 import { BaseComponent } from "../../00.common/00.components/BaseComponent";
 import { quickLinkService } from "../../00.common/02.service/quickLinkService";
@@ -28,9 +28,31 @@ export class QuickLinkApp extends BaseComponent<propsHomePage, staeHomepage> {
     };
     this.onMount(async () => {
       await Promise.all([this.getListQuickLink()]);
+      let section = document.querySelectorAll<HTMLElement>(".abc");
+      let aniActive = ()=>{
+        for (let i = 0; i < section.length; i++) {
+          const element = section[i];
+          let scrollY = window.scrollY
+          let positions = element.offsetTop
+          if (scrollY>positions-78) {
+            element.classList.add("animation-active")
+        }
+        }
+      }
+      window.addEventListener ("scroll",aniActive)
+
+      
+      // for (let i = 0; i < section.length - 1; i++) {
+      //   const sections = section[i];
+      //   let position;
+      //   window.addEventListener("scroll", () => {
+      //     position = section[i].offsetTop;
+      //     section[i].classList.add('xyz')
+      //   });
+      // }
     });
   }
-
+  
   async getListQuickLink() {
     let allQuickLink = orderBy(
       await quickLinkService.getAll<QuickLink>("QuickLink"),
@@ -63,25 +85,24 @@ export class QuickLinkApp extends BaseComponent<propsHomePage, staeHomepage> {
       img3_viewImg,
     });
   }
+
   render() {
     return (
-      <div className={styles.QuickLink}>
+      <div className={`QuickLink`}>
         <div
-          className={styles.QuickLink__block1}
+          className={`QuickLink__block1 abc`}
           style={{ backgroundImage: `url(${this.state.img2})` }}
         >
-          <div className={styles.QuickLink__block1__infor}>
-            <div className={styles.QuickLink__block1__infor__introText}>
+          <div className={`QuickLink__block1__infor`}>
+            <div className={`QuickLink__block1__infor__introText`}>
               Đề luyện tập TOEIC phong phú
             </div>
             <div
-              className={styles.QuickLink__block1__infor__img3_viewImg}
+              className={`QuickLink__block1__infor__img3_viewImg`}
               style={{ backgroundImage: `url(${this.state.img3_viewImg})` }}
             >
               <div
-                className={
-                  styles.QuickLink__block1__infor__img3_viewImg__text
-                }
+                className={`QuickLink__block1__infor__img3_viewImg__text`}
               >
                 50+ đề thi thử TOEIC và 7000+ đề luyện tập cho bạn tha hồ luyện
                 thi
@@ -90,20 +111,18 @@ export class QuickLinkApp extends BaseComponent<propsHomePage, staeHomepage> {
           </div>
           <img
             src={this.state.img1}
-            className={styles.QuickLink__block1__img1}
+            className={`QuickLink__block1__img1`}
           />
-          <div className={styles.QuickLink__block1__infor}>
-            <div className={styles.QuickLink__block1__infor__introText}>
+          <div className={`QuickLink__block1__infor`}>
+            <div className={`QuickLink__block1__infor__introText`}>
               Đáp án có GIẢI THÍCH cặn kẽ
             </div>
             <div
-              className={styles.QuickLink__block1__infor__img3_viewImg}
+              className={`QuickLink__block1__infor__img3_viewImg`}
               style={{ backgroundImage: `url(${this.state.img3_viewImg})` }}
             >
               <div
-                className={
-                  styles.QuickLink__block1__infor__img3_viewImg__text
-                }
+                className={`QuickLink__block1__infor__img3_viewImg__text`}
               >
                 Giúp bạn hiểu rõ vì sao đáp án này thì đúng còn đáp án kia thì
                 sai
@@ -111,43 +130,43 @@ export class QuickLinkApp extends BaseComponent<propsHomePage, staeHomepage> {
             </div>
           </div>
         </div>
-        <div className={styles.QuickLink__block2}>
-          <div className={styles.QuickLink__block2__title}>
+        <div className={`QuickLink__block2 abc`}>
+          <div className={`QuickLink__block2__title`}>
             Tiếng Anh Mỗi Ngày có tất cả mọi thứ bạn cần để luyện thi TOEIC hiệu
             quả
           </div>
-          <div className={styles.QuickLink__block2__content}>
+          <div className={`QuickLink__block2__content`}>
             {this.state.allQuickLink.slice(0, 4).map((item, key) => (
               <div
                 key={key}
-                className={styles.QuickLink__block2__content__img3_viewImg}
+                className={`QuickLink__block2__content__img3_viewImg`}
                 style={{ backgroundImage: `url(${this.state.img3_viewImg})` }}
               >
                 <img
                   src={item.ImgUrl}
                   className={
-                    styles.QuickLink__block2__content__img3_viewImg__img
+                    `QuickLink__block2__content__img3_viewImg__img`
                   }
                 />
               </div>
             ))}
           </div>
-          <div className={styles.QuickLink__block2__content}>
+          <div className={`QuickLink__block2__content`}>
             {this.state.allQuickLink.slice(4, 8).map((item, key) => (
               <div>
                 <div
                   key={key}
-                  className={styles.QuickLink__block2__content__img3_viewImg}
+                  className={`QuickLink__block2__content__img3_viewImg`}
                   style={{ backgroundImage: `url(${this.state.img3_viewImg})` }}
                 >
                   <img
                     src={item.ImgUrl}
                     className={
-                      styles.QuickLink__block2__content__img3_viewImg__img
+                      `QuickLink__block2__content__img3_viewImg__img`
                     }
                   />
                 </div>
-                <div className={styles.QuickLink__block2__content__title}>
+                <div className={`QuickLink__block2__content__title`}>
                   {" "}
                   {item.Title}
                 </div>
