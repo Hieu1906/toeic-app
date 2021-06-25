@@ -49,10 +49,15 @@ import { ListExamPart1 } from "../Exam/ExamPart1/ListExamPart1";
 import { ExamPart1 } from "../Exam/ExamPart1/ExamPart1";
 import { MyWord } from "../MyWords/MyWords";
 import { ParPart5 } from "../Practice/Part5/Part5";
-import Part6 from '../Practice/Part6/Part6'
+import Part6 from "../Practice/Part6/Part6";
 import Part7 from "../Practice/Part7/Part7";
 
 import { NounFunction } from "../Grammar/NounFunction/NounFunction";
+import { Footer } from "../Footer/Footer";
+import NewsListing from "../NewsToeic/NewsToeic";
+import PopularNews from "./NewsLife/NewsInternal";
+import MessageLifeCom from "../MessageLife/MessageLife";
+
 const { Option } = Select;
 interface propsHome {
   inforUser: {
@@ -417,9 +422,25 @@ export default class Home extends BaseComponent<propsHome, stateHome> {
                 <Switch>
                   <Route exact path={ROUTER.ROOT}>
                     <QuickLinkApp />
+                    <div
+                      style={{
+                        margin: 50,
+                        display: "flex",
+                        justifyContent: "space-between",
+                      }}
+                    >
+                      <div style={{ width: "48%" }}>
+                        <MessageLifeCom />
+                      </div>
+                      <div style={{ width: "48%" }}>
+                        <PopularNews />
+                      </div>
+                    </div>
+                    <NewsListing />
                     <StoryStudentToeic />
                     <UpcomingBirthdays />
                     <NewEmployees />
+                    <Footer />
                   </Route>
                   <Route path={ROUTER.NGU_PHAP}>
                     <GrammarCom></GrammarCom>
