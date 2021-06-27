@@ -288,10 +288,22 @@ export default class ModalToeicPart3 extends BaseComponent<
           onFinish={() => {}}
           onFinishFailed={() => {}}
         >
+          <Row>
+            <Col span={24}>
+              <Form.Item
+                rules={[{ required: true }]}
+                labelCol={{ span: 3 }}
+                label="Đề bài"
+                name={"Description"}
+              >
+                <TextArea rows={7} />
+              </Form.Item>
+            </Col>
+          </Row>
           <Row gutter={16}>
             <Col span={12}>
               <Form.Item
-                labelCol={{ span: 5 }}
+                labelCol={{ span: 6}}
                 label="Cấp độ "
                 name="Level"
                 rules={[{ required: true, message: "Thiếu thông tin Level!" }]}
@@ -311,7 +323,7 @@ export default class ModalToeicPart3 extends BaseComponent<
             </Col>
             <Col span={12}>
               <Form.Item
-                labelCol={{ span: 5 }}
+                labelCol={{ span: 6}}
                 label="Câu hỏi"
                 rules={[{ message: "Thiếu thông tin title!" }]}
               >
@@ -546,6 +558,7 @@ export default class ModalToeicPart3 extends BaseComponent<
                 </Form.Item>
               </Form.Item>
             </Col>
+
             <Col span={12}>
               <div
                 style={{

@@ -17,7 +17,7 @@ export const ItemsPracticeExam = [
       },
     ],
     LinkPractice: ROUTER.lIST_EXAM_PART1,
-    LinkStudy: "",
+    LinkStudy: ROUTER.PAR_PART1,
   },
   {
     Title: "Phần 2",
@@ -34,8 +34,8 @@ export const ItemsPracticeExam = [
         Link: "",
       },
     ],
-    LinkPractice: "",
-    LinkStudy: "",
+    LinkPractice: ROUTER.lIST_EXAM_PART2,
+    LinkStudy: ROUTER.PAR_PART2,
   },
   {
     Title: "Phần 3",
@@ -52,8 +52,8 @@ export const ItemsPracticeExam = [
         Link: "",
       },
     ],
-    LinkPractice: "",
-    LinkStudy: "",
+    LinkPractice: ROUTER.lIST_EXAM_PART3,
+    LinkStudy: ROUTER.PAR_PART3,
   },
 
   {
@@ -71,8 +71,8 @@ export const ItemsPracticeExam = [
         Link: "",
       },
     ],
-    LinkPractice: "",
-    LinkStudy: "",
+    LinkPractice: ROUTER.lIST_EXAM_PART4,
+    LinkStudy: ROUTER.PAR_PART4,
   },
   {
     Title: "Phần 5",
@@ -101,8 +101,8 @@ export const ItemsPracticeExam = [
         Link: "",
       },
     ],
-    LinkPractice: "",
-    LinkStudy: "",
+    LinkPractice: ROUTER.lIST_EXAM_PART5,
+    LinkStudy: ROUTER.PAR_PART5,
   },
   {
     Title: "Phần 6",
@@ -119,8 +119,8 @@ export const ItemsPracticeExam = [
         Link: "",
       },
     ],
-    LinkPractice: "",
-    LinkStudy: "",
+    LinkPractice: ROUTER.lIST_EXAM_PART6,
+    LinkStudy: ROUTER.PAR_PART6,
   },
   {
     Title: "Phần 7",
@@ -137,18 +137,16 @@ export const ItemsPracticeExam = [
         Link: "",
       },
     ],
-    LinkPractice: "",
-    LinkStudy: "",
+    LinkPractice: ROUTER.lIST_EXAM_PART7,
+    LinkStudy: ROUTER.PAR_PART7,
   },
   {
     Title: "Phần 7",
     ImgUrl:
       "https://firebasestorage.googleapis.com/v0/b/toeic-project.appspot.com/o/CommonDoc%2FExam%2FPart1%2Fde_luyen_tap_phan_8.webp?alt=media&token=67225d90-94a1-44e7-83b8-f5cf87a2cd67",
     Des: "ĐOẠN KÉP",
-    Link: [
-
-    ],
-    LinkPractice: "",
-    LinkStudy: "",
+    Link: [],
+    LinkPractice: ROUTER.lIST_EXAM_PART7,
+    LinkStudy: ROUTER.PAR_PART7,
   },
 ];

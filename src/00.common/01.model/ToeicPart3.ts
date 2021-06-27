@@ -2,7 +2,10 @@ export interface ToeicPart3 {
   KeyDoc: string;
   AudioUrl: string;
   Level: number;
+  Description:string;
   Question1: {
+    Answer: string;
+    Question: string;
     SelectA: {
       Title: string;
       value: string;
@@ -21,6 +24,8 @@ export interface ToeicPart3 {
     };
   };
   Question2: {
+    Answer: string;
+    Question: string;
     SelectA: {
       Title: string;
       value: string;
@@ -39,6 +44,8 @@ export interface ToeicPart3 {
     };
   };
   Question3: {
+    Answer: string;
+    Question: string;
     SelectA: {
       Title: string;
       value: string;

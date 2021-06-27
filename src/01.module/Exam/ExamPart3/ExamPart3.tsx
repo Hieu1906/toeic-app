@@ -1,23 +1,24 @@
 
 import { BaseComponent } from "../../../00.common/00.components/BaseComponent";
 import { FormExamCom } from "../../../00.common/00.components/FormExam/FomExam";
-import { ToeicPart1 } from "../../../00.common/01.model/ToeicPart1";
-import { ToeicPart1Exam } from "../../../00.common/01.model/ToeicPart1Exam";
+import { ToeicPart3 } from "../../../00.common/01.model/ToeicPart3";
+import { ToeicPart3Exam } from "../../../00.common/01.model/ToeicPart3Exam";
+import { toeicPart3ExamService } from "../../../00.common/02.service/toeicPart3ExamService";
+import { toeicPart3Service } from "../../../00.common/02.service/toeicPart3Service";
 
-import { toeicPart1ExamService } from "../../../00.common/02.service/toeicPart1ExamService";
-import { toeicPart1Service } from "../../../00.common/02.service/toeicPart1Service";
 
-interface ExamPart1Props {}
-interface ListExamPart2State {
-  allData: ToeicPart1[];
+
+interface ExamPart3Props {}
+interface ListExamPart3State {
+  allData: ToeicPart3[];
   selectedValue: { keyDoc: string; value: string; result: string }[];
 }
 
-export class ExamPart1 extends BaseComponent<
-  ExamPart1Props,
-  ListExamPart2State
+export class ExamPart3 extends BaseComponent<
+  ExamPart3Props,
+  ListExamPart3State
 > {
-  constructor(props: ExamPart1Props) {
+  constructor(props: ExamPart3Props) {
     super(props);
     this.state = {
       allData: [],
@@ -30,16 +31,16 @@ export class ExamPart1 extends BaseComponent<
 
   async getDataItem() {
     let keyDoc = this.getParameterByName("keyDoc") as string;
-    let item = await toeicPart1ExamService.getItemByDocId<ToeicPart1Exam>(
-      "ToeicPart1Exam",
+    let item = await toeicPart3ExamService.getItemByDocId<ToeicPart3Exam>(
+      "ToeicPart3Exam",
       keyDoc
     );
     let arrKeyDocItem = item?.LookUpKeyDoc as string[];
     let allData = (await Promise.all(
       arrKeyDocItem?.map(async (item) => {
-        return toeicPart1Service.getItemByDocId<ToeicPart1>("ToeicPart1", item);
+        return toeicPart3Service.getItemByDocId<ToeicPart3>("ToeicPart3", item);
       })
-    )) as ToeicPart1[];
+    )) as ToeicPart3[];
     this.setState({
       allData,
     });
@@ -59,7 +60,7 @@ export class ExamPart1 extends BaseComponent<
   render() {
     return (
       <div>
-        <FormExamCom dataPart1={this.state.allData} />
+        <FormExamCom dataPart3={this.state.allData} />
       </div>
     );
   }

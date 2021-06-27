@@ -11,6 +11,12 @@ export const LIST_COMPONET_ADMIN = {
   PART_1: "PART_1",
   EXAM_Part1: "EXAM_Part1",
   EXAM_Part2: "EXAM_Part2",
+  EXAM_Part3: "EXAM_Part3",
+  EXAM_Part4: "EXAM_Part4",
+  EXAM_Part5: "EXAM_Part5",
+  EXAM_Part6: "EXAM_Part6",
+  EXAM_Part7: "EXAM_Part7",
+
   PART_2: "PART_2",
   PART_3: "PART_3",
   PART_4: "PART_4",
@@ -119,7 +125,21 @@ export const ROUTER = {
   PAR_PART7: "/part7",
   //PHẦN THI THỬ
   lIST_EXAM_PART1: "/listExamPart1",
+  lIST_EXAM_PART2: "/listExamPart2",
+  lIST_EXAM_PART3: "/listExamPart3",
+  lIST_EXAM_PART4: "/listExamPart4",
+  lIST_EXAM_PART5: "/listExamPart5",
+  lIST_EXAM_PART6: "/listExamPart6",
+  lIST_EXAM_PART7: "/listExamPart7",
+
   EXAM_PART1: "/examPart1",
+  EXAM_PART2: "/examPar2",
+  EXAM_PART3: "/examPart3",
+  EXAM_PART4: "/examPart4",
+  EXAM_PART5: "/examPart5",
+  EXAM_PART6: "/examPart6",
+  EXAM_PART7: "/examPart7",
+
   MY_WORDS: "/myWords",
   //danh sách bài học
   NOUNFUNTION: "/nounFunction",
