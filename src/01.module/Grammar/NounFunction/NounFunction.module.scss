@@ -7,20 +7,19 @@
     border-radius: 10px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    padding: 0px 70px;
     &__header {
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      margin-top: 50px;
+      margin-top: 30px;
       &__title {
         color: #fa5b0f;
         margin-bottom: 10px;
       }
       &__iconWrapper {
-        margin: 30px auto 45px;
+        margin: 25px 0px;
         text-align: center;
         background: #fafafa;
         border: 1px solid #ccc;
@@ -30,6 +29,42 @@
         justify-content: center;
         align-items: center;
       }
+      &__img {
+        margin: auto;
+        margin-top: 15px;
+      }
+    }
+    &__tableContent {
+      background: #f2fcfe;
+      border: 1px solid #d0e1f2;
+      border-radius: 10px;
+      padding: 14px 21px;
+      width: 50%;
+      position: relative;
+
+      &__a {
+        font-weight: 500;
+        font-size: 17px;
+      }
+    }
+    &__h2 {
+      color: #00baff;
+      text-align: left;
+      width: 100%;
+      margin-top: 30px;
+      font-size: 30px;
+    }
+    &__p {
+      width: 100%;
+      color: #333;
+      font-weight: 400;
+      font-size: 18px;
+    }
+    &__ul {
+      font-size: 18px;
+    }
+    &__li {
+      margin-top: 10px;
     }
   }
 }

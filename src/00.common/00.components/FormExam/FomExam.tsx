@@ -300,8 +300,8 @@ export class FormExamCom extends BaseComponent<FormExamProps, FormExamState> {
         {alldata.map((item, index) => (
           <div style={{ display: "flex", flexDirection: "column" }}>
             <h3>
-              questions {(index*3)+1} through {index*3+3} refer
-              to the following conversation.
+              questions {index * 3 + 1} through {index * 3 + 3} refer to the
+              following conversation.
             </h3>
             <ReactAudioPlayer
               src={this.state.isStart ? item.AudioUrl : undefined}
@@ -315,24 +315,54 @@ export class FormExamCom extends BaseComponent<FormExamProps, FormExamState> {
                 margin: "20px 0px",
               }}
             >
-              <h4>
-                {index + 1}. {item.Question1.Question}
-              </h4>
               {!this.state.viewResult ? (
-                <CheckBoxCom
-                  haveAnswerD={true}
-                  disabled={!this.state.isStart}
-                  ref={this.refCheckBoxPart1}
-                  answerTitle={[
-                    item.Question1.SelectA.Title,
-                    item.Question1.SelectB.Title,
-                    item.Question1.SelectC.Title,
-                    item.Question1.SelectD.Title,
-                  ]}
-                  onChange={(value) => {
-                    // this.handeValueInput(item, value);
-                  }}
-                />
+                <>
+                  <h4 style={{margin:"15px 0px"}}>1. {item.Question1.Question}</h4>
+                  <CheckBoxCom
+                    haveAnswerD={true}
+                    disabled={!this.state.isStart}
+                    ref={this.refCheckBoxPart1}
+                    answerTitle={[
+                      item.Question1.SelectA.Title,
+                      item.Question1.SelectB.Title,
+                      item.Question1.SelectC.Title,
+                      item.Question1.SelectD.Title,
+                    ]}
+                    onChange={(value) => {
+                      // this.handeValueInput(item, value);
+                    }}
+                  />
+                  <h4 style={{margin:"15px 0px"}}>2. {item.Question2.Question}</h4>
+                  <CheckBoxCom
+                    haveAnswerD={true}
+                    disabled={!this.state.isStart}
+                    ref={this.refCheckBoxPart1}
+                    answerTitle={[
+                      item.Question2.SelectA.Title,
+                      item.Question2.SelectB.Title,
+                      item.Question2.SelectC.Title,
+                      item.Question2.SelectD.Title,
+                    ]}
+                    onChange={(value) => {
+                      // this.handeValueInput(item, value);
+                    }}
+                  />
+                  <h4 style={{margin:"15px 0px"}}>3. {item.Question1.Question}</h4>
+                  <CheckBoxCom
+                    haveAnswerD={true}
+                    disabled={!this.state.isStart}
+                    ref={this.refCheckBoxPart1}
+                    answerTitle={[
+                      item.Question3.SelectA.Title,
+                      item.Question3.SelectB.Title,
+                      item.Question3.SelectC.Title,
+                      item.Question3.SelectD.Title,
+                    ]}
+                    onChange={(value) => {
+                      // this.handeValueInput(item, value);
+                    }}
+                  />
+                </>
               ) : (
                 // <>{this.renderCheckBoxResult(item.KeyDoc, item.Answer, true)}</>
                 <></>
