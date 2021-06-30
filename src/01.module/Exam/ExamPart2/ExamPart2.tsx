@@ -1,23 +1,24 @@
 
 import { BaseComponent } from "../../../00.common/00.components/BaseComponent";
 import { FormExamCom } from "../../../00.common/00.components/FormExam/FomExam";
-import { ToeicPart1 } from "../../../00.common/01.model/ToeicPart1";
-import { ToeicPart1Exam } from "../../../00.common/01.model/ToeicPart1Exam";
+import { ToeicPart2 } from "../../../00.common/01.model/ToeicPart2";
+import { ToeicPart2Exam } from "../../../00.common/01.model/ToeicPart2Exam";
+import { toeicPart2ExamService } from "../../../00.common/02.service/toeicPart2ExamService";
+import { toeicPart2Service } from "../../../00.common/02.service/toeicPart2Service";
 
-import { toeicPart1ExamService } from "../../../00.common/02.service/toeicPart1ExamService";
-import { toeicPart1Service } from "../../../00.common/02.service/toeicPart1Service";
 
-interface ExamPart1Props {}
+
+interface ExamPart2Props {}
 interface ListExamPart2State {
-  allData: ToeicPart1[];
+  allData: ToeicPart2[];
   selectedValue: { keyDoc: string; value: string; result: string }[];
 }
 
-export class ExamPart1 extends BaseComponent<
-  ExamPart1Props,
+export class ExamPart2 extends BaseComponent<
+  ExamPart2Props,
   ListExamPart2State
 > {
-  constructor(props: ExamPart1Props) {
+  constructor(props: ExamPart2Props) {
     super(props);
     this.state = {
       allData: [],
@@ -30,16 +31,16 @@ export class ExamPart1 extends BaseComponent<
 
   async getDataItem() {
     let keyDoc = this.getParameterByName("keyDoc") as string;
-    let item = await toeicPart1ExamService.getItemByDocId<ToeicPart1Exam>(
-      "ToeicPart1Exam",
+    let item = await toeicPart2ExamService.getItemByDocId<ToeicPart2Exam>(
+      "ToeicPart2Exam",
       keyDoc
     );
     let arrKeyDocItem = item?.LookUpKeyDoc as string[];
     let allData = (await Promise.all(
       arrKeyDocItem?.map(async (item) => {
-        return toeicPart1Service.getItemByDocId<ToeicPart1>("ToeicPart1", item);
+        return toeicPart2Service.getItemByDocId<ToeicPart2>("ToeicPart2", item);
       })
-    )) as ToeicPart1[];
+    )) as ToeicPart2[];
     this.setState({
       allData,
     });
@@ -59,7 +60,7 @@ export class ExamPart1 extends BaseComponent<
   render() {
     return (
       <div>
-        <FormExamCom dataPart1={this.state.allData} />
+        <FormExamCom dataPart2={this.state.allData} />
       </div>
     );
   }

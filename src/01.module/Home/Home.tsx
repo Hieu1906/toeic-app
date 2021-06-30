@@ -57,6 +57,10 @@ import { Footer } from "../Footer/Footer";
 import NewsListing from "../NewsToeic/NewsToeic";
 import PopularNews from "./NewsLife/NewsInternal";
 import MessageLifeCom from "../MessageLife/MessageLife";
+import { ListExamPart2 } from "../Exam/ExamPart2/ListExamPart2";
+import { ExamPart2 } from "../Exam/ExamPart2/ExamPart2";
+import { ListExamPart3 } from "../Exam/ExamPart3/ListExamPart3";
+import { ExamPart3 } from "../Exam/ExamPart3/ExamPart3";
 
 const { Option } = Select;
 interface propsHome {
@@ -545,6 +549,18 @@ export default class Home extends BaseComponent<propsHome, stateHome> {
                   </Route>
                   <Route path={ROUTER.EXAM_PART1}>
                     <ExamPart1 />
+                  </Route>
+                  <Route path={ROUTER.lIST_EXAM_PART2}>
+                    <ListExamPart2 />
+                  </Route>
+                  <Route path={ROUTER.EXAM_PART2}>
+                    <ExamPart2 />
+                  </Route>
+                  <Route path={ROUTER.lIST_EXAM_PART3}>
+                    <ListExamPart3 />
+                  </Route>
+                  <Route path={ROUTER.EXAM_PART3}>
+                    <ExamPart3 />
                   </Route>
                   <Route path={ROUTER.MY_WORDS}>
                     <MyWord />

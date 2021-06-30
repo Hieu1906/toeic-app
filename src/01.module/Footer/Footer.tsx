@@ -74,8 +74,7 @@ export class Footer extends BaseComponent<{}, {}> {
                           window.open(
                             item.Url + "?menuid=" + item.Id.toString(),
                             "_self",
-                            "",
-                            true
+                            ""
                           );
                         } else {
                           message.info("Hiện tại chưa có link", 3);
@@ -100,8 +99,7 @@ export class Footer extends BaseComponent<{}, {}> {
                           window.open(
                             item.Url + "?menuid=" + item.Id.toString(),
                             "_self",
-                            "",
-                            true
+                            ""
                           );
                         } else {
                           message.info("Hiện tại chưa có link", 3);
@@ -126,8 +124,7 @@ export class Footer extends BaseComponent<{}, {}> {
                           window.open(
                             item.Url + "?menuid=" + item.Id.toString(),
                             "_self",
-                            "",
-                            true
+                            ""
                           );
                         } else {
                           message.info("Hiện tại chưa có link", 3);

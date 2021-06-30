@@ -8,25 +8,26 @@ import {
   faEdit,
 } from "@fortawesome/free-solid-svg-icons";
 import { BaseComponent } from "../../../00.common/00.components/BaseComponent";
-import styles from "./ListExamPart1.module.scss";
+import styles from "./ListExamPart3.module.scss";
 import React from "react";
 import { ROUTER } from "../../../00.common/const";
 import { Link } from "react-router-dom";
-import { ToeicPart1 } from "../../../00.common/01.model/ToeicPart1";
-import { toeicPart1ExamService } from "../../../00.common/02.service/toeicPart1ExamService";
+
 import { ToeicPart1Exam } from "../../../00.common/01.model/ToeicPart1Exam";
 import moment from "moment";
-import Item from "antd/lib/list/Item";
-interface ListExamPart1Props {}
-interface ListExamPart2State {
-  allData: ToeicPart1Exam[];
+
+import { toeicPart3ExamService } from "../../../00.common/02.service/toeicPart3ExamService";
+import { ToeicPart3Exam } from "../../../00.common/01.model/ToeicPart3Exam";
+interface ListExamPart3Props {}
+interface ListExamPart3State {
+  allData: ToeicPart3Exam[];
 }
 
-export class ListExamPart1 extends BaseComponent<
-  ListExamPart1Props,
-  ListExamPart2State
+export class ListExamPart3 extends BaseComponent<
+  ListExamPart3Props,
+  ListExamPart3State
 > {
-  constructor(props: ListExamPart1Props) {
+  constructor(props: ListExamPart3Props) {
     super(props);
     this.state = {
       allData: [],
@@ -36,16 +37,16 @@ export class ListExamPart1 extends BaseComponent<
     });
   }
   async getAllData() {
-    let allData = await toeicPart1ExamService.getAll<ToeicPart1Exam>(
-      "ToeicPart1Exam",
+    let allData = await toeicPart3ExamService.getAll<ToeicPart3Exam>(
+      "ToeicPart3Exam",
       ""
     );
     this.setState({ allData });
   }
 
-  renderItem(item: ToeicPart1Exam) {
+  renderItem(item: ToeicPart3Exam) {
     return (
-      <Link to={`${ROUTER.EXAM_PART1}?keyDoc=${item.KeyDoc}`} key={item.KeyDoc}>
+      <Link to={`${ROUTER.EXAM_PART3}?keyDoc=${item.KeyDoc}`} key={item.KeyDoc}>
         <div className={styles.Contanier__leftcontent__item}>
           <div
             className={styles.Contanier__leftcontent__item__round}
@@ -59,7 +60,7 @@ export class ListExamPart1 extends BaseComponent<
           </div>
           <div className={styles.Contanier__leftcontent__item__infor}>
             <div className={styles.Contanier__leftcontent__item__infor__title}>
-              Đề luyện Toeic Part 1 - Ets 2020 - {item.Title}- Có đáp án chi
+              Đề luyện Toeic Part 3 - Ets 2020 - {item.Title}- Có đáp án chi
               tiết
             </div>
             <div style={{ display: "flex", justifyContent: "space-between" }}>
@@ -133,7 +134,7 @@ export class ListExamPart1 extends BaseComponent<
                     icon={faEdit}
                     style={{ marginRight: 5, color: "white" }}
                   />{" "}
-               {item.CountItem} lượt thi
+                  {item.CountItem} lượt thi
                 </div>
                 <div
                   style={{ backgroundColor: "#00CC00", color: "white" }}
@@ -145,7 +146,7 @@ export class ListExamPart1 extends BaseComponent<
                     icon={faEye}
                     style={{ marginRight: 5, color: "white" }}
                   />{" "}
-                 {item.View} lượt xem
+                  {item.View} lượt xem
                 </div>
               </div>
             </div>
@@ -164,7 +165,7 @@ export class ListExamPart1 extends BaseComponent<
     return (
       <div className={styles.Contanier}>
         <div className={styles.Contanier__leftcontent}>
-          <h3>Series: Bộ đề thi Toeic Part 1 - Có đáp án chi tiết</h3>
+          <h3>Series: Bộ đề thi Toeic Part 2 - Có đáp án chi tiết</h3>
           {this.state.allData.length > 0 &&
             this.state.allData.map((item) => this.renderItem(item))}
         </div>
