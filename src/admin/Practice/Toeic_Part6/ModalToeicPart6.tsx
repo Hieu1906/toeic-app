@@ -9,7 +9,6 @@ import {
   Input,
   Select,
   Button,
-
 } from "antd";
 
 import React from "react";
@@ -59,7 +58,7 @@ export default class ModalToeicPart6 extends BaseComponent<
     });
 
     await toeicPart6Service.delete("ToeicPart6", item.KeyDoc);
-    storage.refFromURL(this.state.item.AudioUrl).delete();
+   
 
     this.setState(this.initialState as any);
     this.props.onSave();
@@ -80,6 +79,7 @@ export default class ModalToeicPart6 extends BaseComponent<
         Answer1: item.Question1.Answer,
         Answer2: item.Question2.Answer,
         Answer3: item.Question3.Answer,
+        Answer4: item.Question4.Answer,
 
         Select1A: item.Question1.SelectA.Title,
         Select1B: item.Question1.SelectB.Title,
@@ -95,6 +95,11 @@ export default class ModalToeicPart6 extends BaseComponent<
         Select3B: item.Question3.SelectB.Title,
         Select3C: item.Question3.SelectC.Title,
         Select3D: item.Question3.SelectD.Title,
+
+        Select4A: item.Question4.SelectA.Title,
+        Select4B: item.Question4.SelectB.Title,
+        Select4C: item.Question4.SelectC.Title,
+        Select4D: item.Question4.SelectD.Title,
       });
     }
     await this.setState({
@@ -173,6 +178,26 @@ export default class ModalToeicPart6 extends BaseComponent<
           },
           SelectD: {
             Title: value.Select3D,
+            Value: "0001",
+          },
+        },
+        Question4: {
+          Answer: value.Answer4,
+          indexQuestion: 4,
+          SelectA: {
+            Title: value.Select4A,
+            Value: "1000",
+          },
+          SelectB: {
+            Title: value.Select4B,
+            Value: "0100",
+          },
+          SelectC: {
+            Title: value.Select4C,
+            Value: "0010",
+          },
+          SelectD: {
+            Title: value.Select4D,
             Value: "0001",
           },
         },
@@ -488,6 +513,68 @@ export default class ModalToeicPart6 extends BaseComponent<
                 </Form.Item>
               </Form.Item>
             </Col>
+
+            <Col span={12}>
+              <Form.Item labelCol={{ span: 24 }} label="Câu 4">
+                <Form.Item
+                  rules={[{ required: true }]}
+                  labelCol={{ span: 6 }}
+                  label="Đáp án A"
+                  name={"Select4A"}
+                >
+                  <TextArea style={{ marginLeft: 10 }} />
+                </Form.Item>
+                <Form.Item
+                  rules={[{ required: true }]}
+                  labelCol={{ span: 6 }}
+                  label="Đáp án B"
+                  name={"Select4B"}
+                >
+                  <TextArea style={{ marginLeft: 10 }} />
+                </Form.Item>
+                <Form.Item
+                  rules={[{ required: true }]}
+                  labelCol={{ span: 6 }}
+                  label="Đáp án C"
+                  name={"Select4C"}
+                >
+                  <TextArea style={{ marginLeft: 10 }} />
+                </Form.Item>
+                <Form.Item
+                  rules={[{ required: true }]}
+                  labelCol={{ span: 6 }}
+                  label="Đáp án D"
+                  name={"Select4D"}
+                >
+                  <TextArea style={{ marginLeft: 10 }} />
+                </Form.Item>
+                <Form.Item
+                  labelCol={{ span: 6 }}
+                  label="Câu trả lời"
+                  name="Answer4"
+                  rules={[{ required: true }]}
+                >
+                  <Select
+                    placeholder={"Chọn đáp án đúng"}
+                    style={{ width: "100%", marginLeft: 10 }}
+                  >
+                    <Option value={ANSWER_PART1.A.value}>
+                      <a>Đáp án A</a>
+                    </Option>
+                    <Option value={ANSWER_PART1.B.value}>
+                      <a>Đáp án B</a>
+                    </Option>
+                    <Option value={ANSWER_PART1.C.value}>
+                      <a>Đáp án C</a>
+                    </Option>
+                    <Option value={ANSWER_PART1.D.value}>
+                      <a>Đáp án D</a>
+                    </Option>
+                  </Select>
+                </Form.Item>
+              </Form.Item>
+            </Col>
+
             <Col span={12}>
               <div
                 style={{

@@ -312,7 +312,7 @@ export default class ListToeicPart6 extends BaseComponent<
         key: "Title",
         width: "25%",
 
-        render: (Title,record) => (
+        render: (Title, record) => (
           <a
             onClick={() => {
               this.refModalToeicPart6.current!.openModal(record);
@@ -326,7 +326,7 @@ export default class ListToeicPart6 extends BaseComponent<
         title: "Chỗ trống 1",
         dataIndex: "Question1",
         key: "Question1",
-        width: "20%",
+        width: "15%",
 
         render: (Question1: any, record, index) =>
           this.renderPopover(Question1, index),
@@ -335,7 +335,7 @@ export default class ListToeicPart6 extends BaseComponent<
         title: "Chỗ trống 2",
         dataIndex: "Question2",
         key: "Question2",
-        width: "20%",
+        width: "15%",
 
         render: (Question1: any, index) => this.renderPopover(Question1, index),
       },
@@ -344,10 +344,20 @@ export default class ListToeicPart6 extends BaseComponent<
         title: "Chỗ trống 3",
         dataIndex: "Question3",
         key: "Question3",
-        width: "20%",
+        width: "15%",
 
         render: (Question1: any, record, index) =>
           this.renderPopover(Question1, index),
+      },
+      {
+        // ...this.getColumnSearchProps("Question"),
+        title: "Chỗ trống 4",
+        dataIndex: "Question4",
+        key: "Question3",
+        width: "15%",
+
+        render: (Question4: any, record, index) =>
+          this.renderPopover(Question4, index),
       },
     ];
     return (

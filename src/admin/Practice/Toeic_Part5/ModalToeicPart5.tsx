@@ -75,7 +75,7 @@ export default class ModalToeicPart5 extends BaseComponent<
     });
 
     await toeicPart5Service.delete("ToeicPart5", item.KeyDoc);
-    storage.refFromURL(this.state.item.AudioUrl).delete();
+
     await this.setState(this.initialState as any);
     this.props.onSave();
   }
@@ -211,7 +211,9 @@ export default class ModalToeicPart5 extends BaseComponent<
                   labelCol={{ span: 6 }}
                   label="Cấp độ "
                   name="Level"
-                  rules={[{ required: true, message: "Thiếu thông tin Level!" }]}
+                  rules={[
+                    { required: true, message: "Thiếu thông tin Level!" },
+                  ]}
                 >
                   <Select style={{ width: 120 }}>
                     <Option value={1}>
@@ -232,7 +234,9 @@ export default class ModalToeicPart5 extends BaseComponent<
                   labelCol={{ span: 6 }}
                   label="Đáp án"
                   name="Answer"
-                  rules={[{ required: true, message: "Thiếu thông tin Answer!" }]}
+                  rules={[
+                    { required: true, message: "Thiếu thông tin Answer!" },
+                  ]}
                 >
                   <Select style={{ width: 120 }}>
                     <Option value={ANSWER_PART3_4_5.A.value}>

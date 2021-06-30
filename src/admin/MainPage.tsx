@@ -69,12 +69,16 @@ export default class MainPage extends BaseComponent<
     } else if (keyContent == LIST_COMPONET_ADMIN.EXAM_Part2) {
       element = <ListToeicPart2 type={"ListExam"} />;
     } else if (keyContent == LIST_COMPONET_ADMIN.PART_3) {
-      element = <ListToeicPart3 type={"Part2"} />;
+      element = <ListToeicPart3 type={"Part3"} />;
     } else if (keyContent == LIST_COMPONET_ADMIN.EXAM_Part3) {
       element = <ListToeicPart3 type={"ListExam"} />;
     } else if (keyContent == LIST_COMPONET_ADMIN.PART_4) {
-      element = <ListToeicPart4 />;
-    } else if (keyContent == LIST_COMPONET_ADMIN.PART_5) {
+      element = <ListToeicPart4 type={"Part4"}/>;
+    } else if (keyContent == LIST_COMPONET_ADMIN.EXAM_Part4) {
+      element = <ListToeicPart4  type={"ListExam"} />;
+    }
+    
+    else if (keyContent == LIST_COMPONET_ADMIN.PART_5) {
       element = <ListToeicPart5 />;
     } else if (keyContent == LIST_COMPONET_ADMIN.PART_6) {
       element = <ListToeicPart6 />;
@@ -153,6 +157,9 @@ export default class MainPage extends BaseComponent<
                 </Menu.Item>
                 <Menu.Item key={LIST_COMPONET_ADMIN.PART_4}>
                   Toeic Part 4
+                </Menu.Item>
+                <Menu.Item key={LIST_COMPONET_ADMIN.EXAM_Part4}>
+                  Danh Sách đề thi part 4
                 </Menu.Item>
                 <Menu.Item key={LIST_COMPONET_ADMIN.PART_5}>
                   Toeic Part 5
