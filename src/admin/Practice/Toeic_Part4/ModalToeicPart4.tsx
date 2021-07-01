@@ -287,7 +287,20 @@ export default class ModalToeicPart4 extends BaseComponent<
           onFinish={() => {}}
           onFinishFailed={() => {}}
         >
+              <Row>
+              <Col span={24}>
+                <Form.Item
+                  rules={[{ required: true }]}
+                  labelCol={{ span: 3 }}
+                  label="Đề bài"
+                  name={"Description"}
+                >
+                  <TextArea rows={7} />
+                </Form.Item>
+              </Col>
+            </Row>
           <Row gutter={16}>
+        
             <Col span={12}>
               <Form.Item
                 labelCol={{ span: 5 }}

@@ -26,7 +26,7 @@ import firebase from "firebase";
 import moment from "moment";
 import { userInforService } from "../../../00.common/02.service/userInforService";
 interface ToeicPart3Props {
-  type: "ListExam" | "Part2";
+  type: "ListExam" | "Part3";
 }
 
 interface ToeicPart3State {
@@ -491,7 +491,7 @@ export default class ListToeicPart3 extends BaseComponent<
                 Lưu bài thi
               </Button>
             )}
-          {this.props.type == "Part2" && (
+          {this.props.type == "Part3" && (
             <Select
               defaultValue={0}
               style={{ width: 120 }}
