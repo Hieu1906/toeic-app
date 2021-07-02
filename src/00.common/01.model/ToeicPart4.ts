@@ -2,7 +2,7 @@ export interface ToeicPart4 {
   KeyDoc: string;
   AudioUrl: string;
   Level: number;
-  Questin1: {
+  Question1: {
     Answer: string;
     Question: string;
     SelectA: {
@@ -22,7 +22,7 @@ export interface ToeicPart4 {
       value: string;
     };
   };
-  Questin2: {
+  Question2: {
     Answer: string;
     Question: string;
     SelectA: {
@@ -42,7 +42,7 @@ export interface ToeicPart4 {
       value: string;
     };
   };
-  Questin3: {
+  Question3: {
     Answer: string;
     Question: string;
     SelectA: {
@@ -62,7 +62,7 @@ export interface ToeicPart4 {
       value: string;
     };
   };
-  Questin4: {
+  Question4: {
     Answer: string;
     Question: string;
     SelectA: {

@@ -12,11 +12,17 @@ import ReactAudioPlayer from "react-audio-player";
 import { CheckBoxCom } from "./CheckBoxCom";
 import { ToeicPart2 } from "../../01.model/ToeicPart2";
 import { ToeicPart3 } from "../../01.model/ToeicPart3";
+import { ToeicPart4 } from "../../01.model/ToeicPart4";
+import { ToeicPart6 } from "../../01.model/ToeicPart6";
+import { ToeicPart5 } from "../../01.model/ToeicPart5";
 
 interface FormExamProps {
   dataPart1?: ToeicPart1[];
   dataPart2?: ToeicPart2[];
   dataPart3?: ToeicPart3[];
+  dataPart4?: ToeicPart4[];
+  dataPart5?: ToeicPart5[];
+  dataPart6?: ToeicPart6[];
 }
 interface FormExamState {
   isPlaying: boolean;
@@ -388,7 +394,7 @@ export class FormExamCom extends BaseComponent<FormExamProps, FormExamState> {
                 marginTop: 30,
                 marginBottom: 30,
                 fontWeight: 700,
-                color: "blue",
+                color: "#1890FF",
               }}
             >
               Câu hỏi {index + 1}
@@ -435,24 +441,165 @@ export class FormExamCom extends BaseComponent<FormExamProps, FormExamState> {
           </div>
         ))}
       </div>
-    );
+    );        
   }
+
   renderFormItemsPart3(alldata: ToeicPart3[]) {
     return (
       <div style={{ display: "flex", flexDirection: "column", padding: 50 }}>
         <h1>Mô tả:</h1>
         <div>
-          Part 3 - Đoạn hội thoại vốn đã là một phần khó nhằn với các thí sinh
-          trong bài thi TOEIC bởi đoạn audio khá dài, 2 người khác nhau cùng nói
-          chuyện. Thế nhưng, theo format đề thi mới, Part 3 nay trở nên còn “khó
-          nhằn” hơn gấp bội. Bài viết này sẽ giúp bạn “bỏ túi” những tuyệt chiêu
-          hữu ích để an toàn vượt qua Part 3 bài thi TOEIC.
+          Trong phần này, thí sinh sẽ được nghe 13 đoạn hội thoại ngắn không in
+          trong đề thi. Mỗi đoạn có 03 câu hỏi, mỗi câu hỏi sẽ có 4 đáp án lựa
+          chọn và nhiệm vụ của thí sinh là chọn đáp án đúng nhất.
         </div>
         <h1>Đề thi:</h1>
         {alldata.map((item, index) => (
           <div style={{ display: "flex", flexDirection: "column" }}>
-            <h3>
+                <h3 style={{ margin: "20px 0px"}} >
               questions {index * 3 + 1} through {index * 3 + 3} refer to the
+              following conversation.
+            </h3>
+            <ReactAudioPlayer
+              src={this.state.isStart ? item.AudioUrl : undefined}
+              autoPlay={false}
+              controls
+            />
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                margin: "20px 0px",
+              }}
+            >
+              {!this.state.viewResult ? (
+                <>
+                  <h4 style={{ margin: "15px 0px" }}>
+                    1. {item.Question1.Question}
+                  </h4>
+                  <CheckBoxCom
+                    haveAnswerD={true}
+                    disabled={!this.state.isStart}
+                    ref={this.refCheckBoxPart1}
+                    answerTitle={[
+                      item.Question1.SelectA.Title,
+                      item.Question1.SelectB.Title,
+                      item.Question1.SelectC.Title,
+                      item.Question1.SelectD.Title,
+                    ]}
+                    onChange={(value) => {
+                      this.handeValueInputOp2(
+                        {
+                          KeyDoc: item.KeyDoc,
+                          Result: item.Question1.Answer,
+                          Type: "Question1",
+                        },
+                        value,
+                        "Question1"
+                      );
+                    }}
+                  />
+                  <h4 style={{ margin: "15px 0px" }}>
+                    2. {item.Question2.Question}
+                  </h4>
+                  <CheckBoxCom
+                    haveAnswerD={true}
+                    disabled={!this.state.isStart}
+                    ref={this.refCheckBoxPart1}
+                    answerTitle={[
+                      item.Question2.SelectA.Title,
+                      item.Question2.SelectB.Title,
+                      item.Question2.SelectC.Title,
+                      item.Question2.SelectD.Title,
+                    ]}
+                    onChange={(value) => {
+                      this.handeValueInputOp2(
+                        {
+                          KeyDoc: item.KeyDoc,
+                          Result: item.Question2.Answer,
+                          Type: "Question2",
+                        },
+                        value,
+                        "Question2"
+                      );
+                    }}
+                  />
+                  <h4 style={{ margin: "15px 0px" }}>
+                    3. {item.Question1.Question}
+                  </h4>
+                  <CheckBoxCom
+                    haveAnswerD={true}
+                    disabled={!this.state.isStart}
+                    ref={this.refCheckBoxPart1}
+                    answerTitle={[
+                      item.Question3.SelectA.Title,
+                      item.Question3.SelectB.Title,
+                      item.Question3.SelectC.Title,
+                      item.Question3.SelectD.Title,
+                    ]}
+                    onChange={(value) => {
+                      this.handeValueInputOp2(
+                        {
+                          KeyDoc: item.KeyDoc,
+                          Result: item.Question3.Answer,
+                          Type: "Question3",
+                        },
+                        value,
+                        "Question3"
+                      );
+                    }}
+                  />
+                </>
+              ) : (
+                <>
+                  <h4 style={{ margin: "15px 0px" }}>
+                    1. {item.Question1.Question}
+                  </h4>
+                  {this.renderCheckBoxResultOp2(
+                    item.KeyDoc,
+                    item.Question1.Answer,
+                    true
+                  )}
+                  <h4 style={{ margin: "15px 0px" }}>
+                    2. {item.Question2.Question}
+                  </h4>
+                  {this.renderCheckBoxResultOp2(
+                    item.KeyDoc,
+                    item.Question2.Answer,
+                    true
+                  )}
+                  <h4 style={{ margin: "15px 0px" }}>
+                    3. {item.Question1.Question}
+                  </h4>
+                  {this.renderCheckBoxResultOp2(
+                    item.KeyDoc,
+                    item.Question3.Answer,
+                    true
+                  )}
+                </>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+    );
+  }
+
+  renderFormItemsPart4(alldata: ToeicPart4[]) {
+    return (
+      <div style={{ display: "flex", flexDirection: "column", padding: 50 }}>
+        <h1>Mô tả:</h1>
+        <div>
+          Part 4 là phần cuối cùng của trong TOEIC Listening. Đây được coi là
+          phần nghe khó nhất đặc biệt là với format đề thi mới. Vậy bạn đã có
+          cách luyện nghe TOEIC part 4 hiệu quả chưa? Hãy xem phương pháp học
+          TOEIC Part 4: Short Talks dưới đây để ẵm trọn điểm phần nghe này nhé.
+        </div>
+        <h1>Đề thi:</h1>
+        {alldata.map((item, index) => (
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            <h3 style={{ margin: "20px 0px"}} >
+              Questions {index * 3 + 1} through {index * 3 + 3} refer to the
               following conversation.
             </h3>
             <ReactAudioPlayer
@@ -596,14 +743,14 @@ export class FormExamCom extends BaseComponent<FormExamProps, FormExamState> {
         {alldata.map((item, index) => (
           <div
             key={item.KeyDoc}
-            style={{ borderTop: "gray solid 1px", marginBottom: 20 }}
+            style={{ borderTop: "gray solid 1px", marginBottom: 30 }}
           >
             <h3
               style={{
                 marginTop: 30,
                 marginBottom: 30,
-                fontWeight: 700,
-                color: "blue",
+                fontWeight: 500,
+                color: "#1890FF",
               }}
             >
               Câu hỏi {index + 1}
@@ -802,6 +949,11 @@ export class FormExamCom extends BaseComponent<FormExamProps, FormExamState> {
             {this.props.dataPart3 &&
               this.props.dataPart3.length > 0 &&
               this.renderFormItemsPart3(this.props.dataPart3)}
+          </div>
+          <div className={styles.container__content} style={{ marginTop: 10 }}>
+            {this.props.dataPart4 &&
+              this.props.dataPart4.length > 0 &&
+              this.renderFormItemsPart4(this.props.dataPart4)}
           </div>
         </Spin>
       </div>
