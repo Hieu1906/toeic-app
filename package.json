@@ -4,6 +4,12 @@
   "private": true,
   "dependencies": {
     "@charkour/react-reactions": "~0.5.0",
+    "@ckeditor/ckeditor5-react": "^3.0.2",
+    "@ckeditor/ckeditor5-editor-classic": "^19.0.1",
+    "@ckeditor/ckeditor5-build-classic": "^19.0.1",
+    "@ckeditor/ckeditor5-essentials": "^19.0.1",
+    "@ckeditor/ckeditor5-paragraph": "^19.1.0",
+    "@ckeditor/ckeditor5-basic-styles": "^19.0.1",
     "@fortawesome/fontawesome-free": "~5.14.0",
     "@fortawesome/fontawesome-svg-core": "~1.2.29",
     "@fortawesome/free-brands-svg-icons": "~5.13.1",

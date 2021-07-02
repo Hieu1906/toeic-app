@@ -61,6 +61,8 @@ import { ListExamPart2 } from "../Exam/ExamPart2/ListExamPart2";
 import { ExamPart2 } from "../Exam/ExamPart2/ExamPart2";
 import { ListExamPart3 } from "../Exam/ExamPart3/ListExamPart3";
 import { ExamPart3 } from "../Exam/ExamPart3/ExamPart3";
+import { ListExamPart4 } from "../Exam/ExamPart4/ListExamPart4";
+import { ExamPart4 } from "../Exam/ExamPart4/ExamPart4";
 
 const { Option } = Select;
 interface propsHome {
@@ -561,6 +563,12 @@ export default class Home extends BaseComponent<propsHome, stateHome> {
                   </Route>
                   <Route path={ROUTER.EXAM_PART3}>
                     <ExamPart3 />
+                  </Route>
+                  <Route path={ROUTER.lIST_EXAM_PART4}>
+                    <ListExamPart4 />
+                  </Route>
+                  <Route path={ROUTER.EXAM_PART4}>
+                    <ExamPart4 />
                   </Route>
                   <Route path={ROUTER.MY_WORDS}>
                     <MyWord />
