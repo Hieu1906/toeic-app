@@ -143,4 +143,5 @@ export const ROUTER = {
   MY_WORDS: "/myWords",
   //danh sách bài học
   NOUNFUNTION: "/nounFunction",
+  NOUNPart2:"/pacticeNoun1"
 };

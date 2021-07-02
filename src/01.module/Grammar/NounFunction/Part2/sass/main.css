@@ -1,0 +1,100 @@
+.practicepart1 {
+  font-family: "Roboto", sans-serif;
+  margin-top: 60px; }
+  .practicepart1 p,
+  .practicepart1 strong,
+  .practicepart1 li {
+    font-size: 18px; }
+  .practicepart1 strong {
+    margin-right: 8px;
+    display: inline-block; }
+  .practicepart1 li {
+    margin-bottom: 18px; }
+  .practicepart1 ul {
+    margin-left: 20px; }
+  .practicepart1 h2 {
+    color: #19a4f9;
+    font-size: 30px; }
+  .practicepart1 iframe {
+    margin: auto; }
+  .practicepart1 em {
+    margin: 20px 0;
+    display: inline-block; }
+  .practicepart1 img {
+    display: inline-block;
+    cursor: pointer;
+    width: 100%; }
+  .practicepart1 a {
+    display: inline-block;
+    max-width: 300px;
+    background-image: linear-gradient(to bottom right, #33abe5, #235ddb);
+    text-decoration-line: none;
+    text-align: center;
+    border-radius: 24px;
+    padding: 10px 20px;
+    font-size: 22px;
+    color: #fff; }
+  .practicepart1 button {
+    color: #fff;
+    background-color: #5bc0de;
+    border: none;
+    border-color: #46b8da;
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    border-radius: 4px;
+    margin: 20px 0 40px 0; }
+    .practicepart1 button:hover {
+      background-color: #31b0d5; }
+  .practicepart1 h1 {
+    color: #fa5b0f;
+    text-align: center;
+    font-size: 36px; }
+  .practicepart1 h3 {
+    color: #0478d1;
+    font-size: 24px; }
+  .practicepart1-title {
+    text-align: center;
+    font-size: 36px;
+    color: #dc143c;
+    margin-bottom: 10px; }
+  .practicepart1-question {
+    border-left: 7px solid #00baff;
+    background-color: #eeeef2;
+    padding: 14px 21px;
+    width: 100%;
+    margin: 20px 0; }
+  .practicepart1 h4 {
+    color: #8b9dba;
+    font-size: 18px; }
+  .practicepart1-answer {
+    height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: all 0.3s ease-in-out; }
+    .practicepart1-answer.active {
+      opacity: 1;
+      height: 100%; }
+  .practicepart1 table {
+    width: 100%;
+    font-size: 18px;
+    margin: 50px 0; }
+    .practicepart1 table tr:nth-child(1) {
+      background: #00baff;
+      color: white; }
+      .practicepart1 table tr:nth-child(1) th {
+        text-align: center;
+        font-weight: 600; }
+    .practicepart1 table tr th {
+      border: 3px solid #eeeef2;
+      padding: 14px 21px;
+      font-weight: 400; }
+
+/*# sourceMappingURL=main.css.map */

@@ -61,6 +61,7 @@ import { ListExamPart2 } from "../Exam/ExamPart2/ListExamPart2";
 import { ExamPart2 } from "../Exam/ExamPart2/ExamPart2";
 import { ListExamPart3 } from "../Exam/ExamPart3/ListExamPart3";
 import { ExamPart3 } from "../Exam/ExamPart3/ExamPart3";
+import Practice1 from "../Grammar/NounFunction/Part2/NounPracticePart1";
 
 const { Option } = Select;
 interface propsHome {
@@ -565,9 +566,12 @@ export default class Home extends BaseComponent<propsHome, stateHome> {
                   <Route path={ROUTER.MY_WORDS}>
                     <MyWord />
                   </Route>
-                  //danh sách bài học
+                  {/* //danh sách bài học */}
                   <Route path={ROUTER.NOUNFUNTION}>
                     <NounFunction />
+                  </Route>
+                  <Route path={ROUTER.NOUNPart2}>
+                    <Practice1/>
                   </Route>
                 </Switch>
               </div>
