@@ -64,6 +64,12 @@ import { ExamPart3 } from "../Exam/ExamPart3/ExamPart3";
 import Practice1 from "../Grammar/NounFunction/Part2/NounPracticePart1";
 import { ListExamPart4 } from "../Exam/ExamPart4/ListExamPart4";
 import { ExamPart4 } from "../Exam/ExamPart4/ExamPart4";
+import { ListExamPart5 } from "../Exam/ExamPart5/ListExamPart5";
+import { ExamPart5 } from "../Exam/ExamPart5/ExamPart5";
+import { ListExamPart6 } from "../Exam/ExamPart6/ListExamPart6";
+import { ExamPart6 } from "../Exam/ExamPart6/ExamPart6";
+import { ListExamPart7 } from "../Exam/ExamPart7/ListExamPart7";
+import { ExamPart7 } from "../Exam/ExamPart7/ExamPart7";
 
 const { Option } = Select;
 interface propsHome {
@@ -571,6 +577,24 @@ export default class Home extends BaseComponent<propsHome, stateHome> {
                   <Route path={ROUTER.EXAM_PART4}>
                     <ExamPart4 />
                   </Route>
+                  <Route path={ROUTER.lIST_EXAM_PART5}>
+                    <ListExamPart5 />
+                  </Route>
+                  <Route path={ROUTER.EXAM_PART5}>
+                    <ExamPart5 />
+                  </Route>
+                  <Route path={ROUTER.lIST_EXAM_PART6}>
+                    <ListExamPart6 />
+                  </Route>
+                  <Route path={ROUTER.EXAM_PART6}>
+                    <ExamPart6 />
+                  </Route>
+                  <Route path={ROUTER.lIST_EXAM_PART7}>
+                    <ListExamPart7 />
+                  </Route>
+                  <Route path={ROUTER.EXAM_PART7}>
+                    <ExamPart7 />
+                  </Route>
                   <Route path={ROUTER.MY_WORDS}>
                     <MyWord />
                   </Route>
@@ -579,7 +603,7 @@ export default class Home extends BaseComponent<propsHome, stateHome> {
                     <NounFunction />
                   </Route>
                   <Route path={ROUTER.NOUNPart2}>
-                    <Practice1/>
+                    <Practice1 />
                   </Route>
                 </Switch>
               </div>

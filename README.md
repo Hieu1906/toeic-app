@@ -3,3 +3,6 @@
 yarn build
 firebase login
 firebase deploy
+
+
+//yarn add file:./ckeditor5

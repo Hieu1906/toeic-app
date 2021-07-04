@@ -15,6 +15,8 @@ import { ToeicPart3 } from "../../01.model/ToeicPart3";
 import { ToeicPart4 } from "../../01.model/ToeicPart4";
 import { ToeicPart6 } from "../../01.model/ToeicPart6";
 import { ToeicPart5 } from "../../01.model/ToeicPart5";
+import { values } from "lodash";
+import { ToeicPart7 } from "../../01.model/ToeicPart7";
 
 interface FormExamProps {
   dataPart1?: ToeicPart1[];
@@ -23,6 +25,7 @@ interface FormExamProps {
   dataPart4?: ToeicPart4[];
   dataPart5?: ToeicPart5[];
   dataPart6?: ToeicPart6[];
+  dataPart7?: ToeicPart7[];
 }
 interface FormExamState {
   isPlaying: boolean;
@@ -97,7 +100,8 @@ export class FormExamCom extends BaseComponent<FormExamProps, FormExamState> {
   renderCheckBoxResultOp1(
     keyDoc: string,
     result: string,
-    haveAnswerD: boolean
+    haveAnswerD: boolean,
+    answerTitle?: string[]
   ) {
     let itemSelected = this.state.selectedValueOp1.find((item) => {
       return item.keyDoc == keyDoc;
@@ -108,20 +112,34 @@ export class FormExamCom extends BaseComponent<FormExamProps, FormExamState> {
         {!itemSelected ? (
           <Row>
             <Col>
-              <span style={{ color: "red" }}>Bạn chưa trả lời câu hỏi này</span>
+              <span style={{ color: "red", marginLeft: 5 }}>
+                Bạn chưa trả lời câu hỏi này
+              </span>
             </Col>
             <Col span={24}>
               <Checkbox checked={result == "1000"}>A</Checkbox>
+              {answerTitle && answerTitle.length > 0 && (
+                <span style={{ color: "#1890FF" }}>{answerTitle[0]}</span>
+              )}
             </Col>
             <Col span={24}>
               <Checkbox checked={result == "0100"}>B</Checkbox>
+              {answerTitle && answerTitle.length > 0 && (
+                <span style={{ color: "#1890FF" }}>{answerTitle[1]}</span>
+              )}
             </Col>
             <Col span={24}>
               <Checkbox checked={result == "0010"}>C</Checkbox>
+              {answerTitle && answerTitle.length > 0 && (
+                <span style={{ color: "#1890FF" }}>{answerTitle[2]}</span>
+              )}
             </Col>
             {haveAnswerD && (
               <Col span={24}>
                 <Checkbox checked={result == "0001"}>D</Checkbox>
+                {answerTitle && answerTitle.length > 0 && (
+                  <span style={{ color: "#1890FF" }}>{answerTitle[3]}</span>
+                )}
               </Col>
             )}
           </Row>
@@ -136,7 +154,13 @@ export class FormExamCom extends BaseComponent<FormExamProps, FormExamState> {
                         color: itemSelected.result == "1000" ? "green" : "",
                       }}
                     >
-                      A {itemSelected.result == "1000" ? "Đúng" : ""}
+                      A{" "}
+                      {answerTitle && answerTitle.length > 0 && (
+                        <span style={{ color: "#1890FF" }}>
+                          {answerTitle[0]}
+                        </span>
+                      )}{" "}
+                      {itemSelected.result == "1000" ? "Đúng" : ""}
                     </span>
                   </Checkbox>
                 </Col>
@@ -147,7 +171,13 @@ export class FormExamCom extends BaseComponent<FormExamProps, FormExamState> {
                         color: itemSelected.result == "0100" ? "green" : "",
                       }}
                     >
-                      B {itemSelected.result == "0100" ? "Đúng" : ""}
+                      B{" "}
+                      {answerTitle && answerTitle.length > 0 && (
+                        <span style={{ color: "#1890FF" }}>
+                          {answerTitle[1]}
+                        </span>
+                      )}{" "}
+                      {itemSelected.result == "0100" ? "Đúng" : ""}
                     </span>
                   </Checkbox>
                 </Col>
@@ -158,7 +188,13 @@ export class FormExamCom extends BaseComponent<FormExamProps, FormExamState> {
                         color: itemSelected.result == "0010" ? "green" : "",
                       }}
                     >
-                      C {itemSelected.result == "0010" ? "Đúng" : ""}
+                      C{" "}
+                      {answerTitle && answerTitle.length > 0 && (
+                        <span style={{ color: "#1890FF" }}>
+                          {answerTitle[2]}
+                        </span>
+                      )}{" "}
+                      {itemSelected.result == "0010" ? "Đúng" : ""}
                     </span>
                   </Checkbox>
                 </Col>
@@ -170,7 +206,13 @@ export class FormExamCom extends BaseComponent<FormExamProps, FormExamState> {
                           color: itemSelected.result == "0001" ? "green" : "",
                         }}
                       >
-                        D {itemSelected.result == "0001" ? "Đúng" : ""}
+                        D{" "}
+                        {answerTitle && answerTitle.length > 0 && (
+                          <span style={{ color: "#1890FF" }}>
+                            {answerTitle[3]}
+                          </span>
+                        )}{" "}
+                        {itemSelected.result == "0001" ? "Đúng" : ""}
                       </span>
                     </Checkbox>
                   </Col>
@@ -181,32 +223,41 @@ export class FormExamCom extends BaseComponent<FormExamProps, FormExamState> {
                 <Col span={24}>
                   <Checkbox checked={itemSelected.result == "1000"}>
                     <span> A</span>{" "}
-                    <span style={{ color: "green" }}>
+                    {answerTitle && answerTitle.length > 0 && (
+                      <span style={{ color: "#1890FF" }}>{answerTitle[0]}</span>
+                    )}
+                    <span style={{ color: "green", marginLeft: 5 }}>
                       {itemSelected.result == "1000" ? "Đúng" : ""}
                     </span>
-                    <span style={{ color: "red" }}>
+                    <span style={{ color: "red", marginLeft: 5 }}>
                       {itemSelected.value == "1000" ? "Sai" : ""}
                     </span>
                   </Checkbox>
                 </Col>
                 <Col span={24}>
                   <Checkbox checked={itemSelected.result == "0100"}>
-                    <span> B</span>
-                    <span style={{ color: "green" }}>
+                    <span> B</span>{" "}
+                    {answerTitle && answerTitle.length > 0 && (
+                      <span style={{ color: "#1890FF" }}>{answerTitle[1]}</span>
+                    )}
+                    <span style={{ color: "green", marginLeft: 5 }}>
                       {itemSelected.result == "0100" ? "Đúng" : ""}
                     </span>
-                    <span style={{ color: "red" }}>
+                    <span style={{ color: "red", marginLeft: 5 }}>
                       {itemSelected.value == "0100" ? "Sai" : ""}
                     </span>
                   </Checkbox>
                 </Col>
                 <Col span={24}>
                   <Checkbox checked={itemSelected.result == "0010"}>
-                    <span> C</span>
-                    <span style={{ color: "green" }}>
+                    <span> C</span>{" "}
+                    {answerTitle && answerTitle.length > 0 && (
+                      <span style={{ color: "#1890FF" }}>{answerTitle[2]}</span>
+                    )}
+                    <span style={{ color: "green", marginLeft: 5 }}>
                       {itemSelected.result == "0010" ? "Đúng" : ""}
                     </span>
-                    <span style={{ color: "red" }}>
+                    <span style={{ color: "red", marginLeft: 5 }}>
                       {" "}
                       {itemSelected.value == "0010" ? "Sai" : ""}
                     </span>
@@ -215,11 +266,16 @@ export class FormExamCom extends BaseComponent<FormExamProps, FormExamState> {
                 {haveAnswerD && (
                   <Col span={24}>
                     <Checkbox checked={itemSelected.result == "0001"}>
-                      <span> D</span>
-                      <span style={{ color: "green" }}>
+                      <span> D</span>{" "}
+                      {answerTitle && answerTitle.length > 0 && (
+                        <span style={{ color: "#1890FF" }}>
+                          {answerTitle[3]}
+                        </span>
+                      )}
+                      <span style={{ color: "green", marginLeft: 5 }}>
                         {itemSelected.result == "0001" ? "Đúng" : ""}
                       </span>
-                      <span style={{ color: "red" }}>
+                      <span style={{ color: "red", marginLeft: 5 }}>
                         {itemSelected.value == "0001" ? "Sai" : ""}
                       </span>
                     </Checkbox>
@@ -236,7 +292,8 @@ export class FormExamCom extends BaseComponent<FormExamProps, FormExamState> {
   renderCheckBoxResultOp2(
     keyDoc: string,
     result: string,
-    haveAnswerD: boolean
+    haveAnswerD: boolean,
+    answerTitle: string[]
   ) {
     let itemSelected = this.state.selectedValueOp2.find((item) => {
       return item.KeyDoc == keyDoc;
@@ -247,20 +304,26 @@ export class FormExamCom extends BaseComponent<FormExamProps, FormExamState> {
         {!itemSelected ? (
           <Row>
             <Col>
-              <span style={{ color: "red" }}>Bạn chưa trả lời câu hỏi này</span>
+              <span style={{ color: "red", marginLeft: 5 }}>
+                Bạn chưa trả lời câu hỏi này
+              </span>
             </Col>
             <Col span={24}>
               <Checkbox checked={result == "1000"}>A</Checkbox>
+              <span style={{ marginLeft: 5 }}> {answerTitle[0]} </span>
             </Col>
             <Col span={24}>
               <Checkbox checked={result == "0100"}>B</Checkbox>
+              <span style={{ marginLeft: 5 }}> {answerTitle[1]} </span>
             </Col>
             <Col span={24}>
               <Checkbox checked={result == "0010"}>C</Checkbox>
+              <span style={{ marginLeft: 5 }}> {answerTitle[2]} </span>
             </Col>
             {haveAnswerD && (
               <Col span={24}>
                 <Checkbox checked={result == "0001"}>D</Checkbox>
+                <span style={{ marginLeft: 5 }}> {answerTitle[3]} </span>
               </Col>
             )}
           </Row>
@@ -275,7 +338,9 @@ export class FormExamCom extends BaseComponent<FormExamProps, FormExamState> {
                         color: itemSelected.Result == "1000" ? "green" : "",
                       }}
                     >
-                      A {itemSelected.Result == "1000" ? "Đúng" : ""}
+                      A{" "}
+                      <span style={{ marginLeft: 5 }}> {answerTitle[0]} </span>{" "}
+                      {itemSelected.Result == "1000" ? "Đúng" : ""}
                     </span>
                   </Checkbox>
                 </Col>
@@ -286,7 +351,9 @@ export class FormExamCom extends BaseComponent<FormExamProps, FormExamState> {
                         color: itemSelected.Result == "0100" ? "green" : "",
                       }}
                     >
-                      B {itemSelected.Result == "0100" ? "Đúng" : ""}
+                      B{" "}
+                      <span style={{ marginLeft: 5 }}> {answerTitle[1]} </span>{" "}
+                      {itemSelected.Result == "0100" ? "Đúng" : ""}
                     </span>
                   </Checkbox>
                 </Col>
@@ -297,7 +364,9 @@ export class FormExamCom extends BaseComponent<FormExamProps, FormExamState> {
                         color: itemSelected.Result == "0010" ? "green" : "",
                       }}
                     >
-                      C {itemSelected.Result == "0010" ? "Đúng" : ""}
+                      C{" "}
+                      <span style={{ marginLeft: 5 }}> {answerTitle[2]} </span>{" "}
+                      {itemSelected.Result == "0010" ? "Đúng" : ""}
                     </span>
                   </Checkbox>
                 </Col>
@@ -309,7 +378,9 @@ export class FormExamCom extends BaseComponent<FormExamProps, FormExamState> {
                           color: itemSelected.Result == "0001" ? "green" : "",
                         }}
                       >
-                        D {itemSelected.Result == "0001" ? "Đúng" : ""}
+                        D{" "}
+                        <span style={{ marginLeft: 5 }}>{answerTitle[3]} </span>
+                        {itemSelected.Result == "0001" ? "Đúng" : ""}
                       </span>
                     </Checkbox>
                   </Col>
@@ -320,32 +391,35 @@ export class FormExamCom extends BaseComponent<FormExamProps, FormExamState> {
                 <Col span={24}>
                   <Checkbox checked={itemSelected.Result == "1000"}>
                     <span> A</span>{" "}
-                    <span style={{ color: "green" }}>
+                    <span style={{ marginLeft: 5 }}>{answerTitle[0]} </span>
+                    <span style={{ color: "green", marginLeft: 5 }}>
                       {itemSelected.Result == "1000" ? "Đúng" : ""}
                     </span>
-                    <span style={{ color: "red" }}>
+                    <span style={{ color: "red", marginLeft: 5 }}>
                       {itemSelected.Value == "1000" ? "Sai" : ""}
                     </span>
                   </Checkbox>
                 </Col>
                 <Col span={24}>
                   <Checkbox checked={itemSelected.Result == "0100"}>
-                    <span> B</span>
-                    <span style={{ color: "green" }}>
+                    <span> B</span>{" "}
+                    <span style={{ marginLeft: 5 }}>{answerTitle[1]} </span>
+                    <span style={{ color: "green", marginLeft: 5 }}>
                       {itemSelected.Result == "0100" ? "Đúng" : ""}
                     </span>
-                    <span style={{ color: "red" }}>
+                    <span style={{ color: "red", marginLeft: 5 }}>
                       {itemSelected.Value == "0100" ? "Sai" : ""}
                     </span>
                   </Checkbox>
                 </Col>
                 <Col span={24}>
                   <Checkbox checked={itemSelected.Result == "0010"}>
-                    <span> C</span>
-                    <span style={{ color: "green" }}>
+                    <span> C</span>{" "}
+                    <span style={{ marginLeft: 5 }}>{answerTitle[2]} </span>
+                    <span style={{ color: "green", marginLeft: 5 }}>
                       {itemSelected.Result == "0010" ? "Đúng" : ""}
                     </span>
-                    <span style={{ color: "red" }}>
+                    <span style={{ color: "red", marginLeft: 5 }}>
                       {" "}
                       {itemSelected.Value == "0010" ? "Sai" : ""}
                     </span>
@@ -354,11 +428,12 @@ export class FormExamCom extends BaseComponent<FormExamProps, FormExamState> {
                 {haveAnswerD && (
                   <Col span={24}>
                     <Checkbox checked={itemSelected.Result == "0001"}>
-                      <span> D</span>
-                      <span style={{ color: "green" }}>
+                      <span> D</span>{" "}
+                      <span style={{ marginLeft: 5 }}>{answerTitle[3]} </span>
+                      <span style={{ color: "green", marginLeft: 5 }}>
                         {itemSelected.Result == "0001" ? "Đúng" : ""}
                       </span>
-                      <span style={{ color: "red" }}>
+                      <span style={{ color: "red", marginLeft: 5 }}>
                         {itemSelected.Value == "0001" ? "Sai" : ""}
                       </span>
                     </Checkbox>
@@ -441,7 +516,7 @@ export class FormExamCom extends BaseComponent<FormExamProps, FormExamState> {
           </div>
         ))}
       </div>
-    );        
+    );
   }
 
   renderFormItemsPart3(alldata: ToeicPart3[]) {
@@ -456,7 +531,7 @@ export class FormExamCom extends BaseComponent<FormExamProps, FormExamState> {
         <h1>Đề thi:</h1>
         {alldata.map((item, index) => (
           <div style={{ display: "flex", flexDirection: "column" }}>
-                <h3 style={{ margin: "20px 0px"}} >
+            <h3 style={{ margin: "20px 0px" }}>
               questions {index * 3 + 1} through {index * 3 + 3} refer to the
               following conversation.
             </h3>
@@ -558,7 +633,13 @@ export class FormExamCom extends BaseComponent<FormExamProps, FormExamState> {
                   {this.renderCheckBoxResultOp2(
                     item.KeyDoc,
                     item.Question1.Answer,
-                    true
+                    true,
+                    [
+                      item.Question1.SelectA.Title,
+                      item.Question1.SelectB.Title,
+                      item.Question1.SelectC.Title,
+                      item.Question1.SelectD.Title,
+                    ]
                   )}
                   <h4 style={{ margin: "15px 0px" }}>
                     2. {item.Question2.Question}
@@ -566,7 +647,13 @@ export class FormExamCom extends BaseComponent<FormExamProps, FormExamState> {
                   {this.renderCheckBoxResultOp2(
                     item.KeyDoc,
                     item.Question2.Answer,
-                    true
+                    true,
+                    [
+                      item.Question2.SelectA.Title,
+                      item.Question2.SelectB.Title,
+                      item.Question2.SelectC.Title,
+                      item.Question2.SelectD.Title,
+                    ]
                   )}
                   <h4 style={{ margin: "15px 0px" }}>
                     3. {item.Question1.Question}
@@ -574,7 +661,13 @@ export class FormExamCom extends BaseComponent<FormExamProps, FormExamState> {
                   {this.renderCheckBoxResultOp2(
                     item.KeyDoc,
                     item.Question3.Answer,
-                    true
+                    true,
+                    [
+                      item.Question3.SelectA.Title,
+                      item.Question3.SelectB.Title,
+                      item.Question3.SelectC.Title,
+                      item.Question3.SelectD.Title,
+                    ]
                   )}
                 </>
               )}
@@ -598,7 +691,7 @@ export class FormExamCom extends BaseComponent<FormExamProps, FormExamState> {
         <h1>Đề thi:</h1>
         {alldata.map((item, index) => (
           <div style={{ display: "flex", flexDirection: "column" }}>
-            <h3 style={{ margin: "20px 0px"}} >
+            <h3 style={{ margin: "20px 0px" }}>
               Questions {index * 3 + 1} through {index * 3 + 3} refer to the
               following conversation.
             </h3>
@@ -700,7 +793,13 @@ export class FormExamCom extends BaseComponent<FormExamProps, FormExamState> {
                   {this.renderCheckBoxResultOp2(
                     item.KeyDoc,
                     item.Question1.Answer,
-                    true
+                    true,
+                    [
+                      item.Question1.SelectA.Title,
+                      item.Question1.SelectB.Title,
+                      item.Question1.SelectC.Title,
+                      item.Question1.SelectD.Title,
+                    ]
                   )}
                   <h4 style={{ margin: "15px 0px" }}>
                     2. {item.Question2.Question}
@@ -708,7 +807,13 @@ export class FormExamCom extends BaseComponent<FormExamProps, FormExamState> {
                   {this.renderCheckBoxResultOp2(
                     item.KeyDoc,
                     item.Question2.Answer,
-                    true
+                    true,
+                    [
+                      item.Question2.SelectA.Title,
+                      item.Question2.SelectB.Title,
+                      item.Question2.SelectC.Title,
+                      item.Question2.SelectD.Title,
+                    ]
                   )}
                   <h4 style={{ margin: "15px 0px" }}>
                     3. {item.Question1.Question}
@@ -716,7 +821,373 @@ export class FormExamCom extends BaseComponent<FormExamProps, FormExamState> {
                   {this.renderCheckBoxResultOp2(
                     item.KeyDoc,
                     item.Question3.Answer,
-                    true
+                    true,
+                    [
+                      item.Question3.SelectA.Title,
+                      item.Question3.SelectB.Title,
+                      item.Question3.SelectC.Title,
+                      item.Question3.SelectD.Title,
+                    ]
+                  )}
+                </>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+    );
+  }
+  renderFormItemsPart6(alldata: ToeicPart6[]) {
+    return (
+      <div style={{ display: "flex", flexDirection: "column", padding: 50 }}>
+        <h1>Mô tả:</h1>
+        <div>
+          Đặc điểm của Part 6 là bạn phải điền từ vào đoạn văn. Mỗi đoạn gồm 3
+          câu hỏi nhỏ với 4 đáp án để lựa chọn khác nhau, bạn cần tìm ra đáp án
+          thích hợp nhất để điền vào chỗ trống còn thiếu và đánh dấu vào phiếu
+          trả lời (A) (B) (C) hay (D). Về cơ bản thì các câu hỏi và cách thức
+          hỏi trong part 6 khá tương tự part 5, nếu bạn đã làm quen với part 5
+          rồi, thì part 6 sẽ không khiến bạn bị bỡ ngỡ nữa đâu.
+        </div>
+        <h1>Đề thi:</h1>
+        {alldata.map((item: ToeicPart6, index) => (
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                margin: "20px 0px",
+              }}
+            >
+              <h2>Paragraph {index + 1}</h2>
+              <h3>{item.Title}</h3>
+              {!this.state.viewResult ? (
+                <>
+                  <h3>Câu 1</h3>
+                  <CheckBoxCom
+                    haveAnswerD={true}
+                    disabled={!this.state.isStart}
+                    ref={this.refCheckBoxPart1}
+                    answerTitle={[
+                      item.Question1.SelectA.Title,
+                      item.Question1.SelectB.Title,
+                      item.Question1.SelectC.Title,
+                      item.Question1.SelectD.Title,
+                    ]}
+                    onChange={(value) => {
+                      this.handeValueInputOp2(
+                        {
+                          KeyDoc: item.KeyDoc,
+                          Result: item.Question1.Answer,
+                          Type: "Question1",
+                        },
+                        value,
+                        "Question1"
+                      );
+                    }}
+                  />
+                  <h3>Câu 2</h3>
+                  <CheckBoxCom
+                    haveAnswerD={true}
+                    disabled={!this.state.isStart}
+                    ref={this.refCheckBoxPart1}
+                    answerTitle={[
+                      item.Question2.SelectA.Title,
+                      item.Question2.SelectB.Title,
+                      item.Question2.SelectC.Title,
+                      item.Question2.SelectD.Title,
+                    ]}
+                    onChange={(value) => {
+                      this.handeValueInputOp2(
+                        {
+                          KeyDoc: item.KeyDoc,
+                          Result: item.Question2.Answer,
+                          Type: "Question2",
+                        },
+                        value,
+                        "Question2"
+                      );
+                    }}
+                  />
+                  <h3>Câu 3</h3>
+                  <CheckBoxCom
+                    haveAnswerD={true}
+                    disabled={!this.state.isStart}
+                    ref={this.refCheckBoxPart1}
+                    answerTitle={[
+                      item.Question3.SelectA.Title,
+                      item.Question3.SelectB.Title,
+                      item.Question3.SelectC.Title,
+                      item.Question3.SelectD.Title,
+                    ]}
+                    onChange={(value) => {
+                      this.handeValueInputOp2(
+                        {
+                          KeyDoc: item.KeyDoc,
+                          Result: item.Question3.Answer,
+                          Type: "Question3",
+                        },
+                        value,
+                        "Question3"
+                      );
+                    }}
+                  />
+                  <h3>Câu 4</h3>
+                  <CheckBoxCom
+                    haveAnswerD={true}
+                    disabled={!this.state.isStart}
+                    ref={this.refCheckBoxPart1}
+                    answerTitle={[
+                      item.Question4.SelectA.Title,
+                      item.Question4.SelectB.Title,
+                      item.Question4.SelectC.Title,
+                      item.Question4.SelectD.Title,
+                    ]}
+                    onChange={(value) => {
+                      this.handeValueInputOp2(
+                        {
+                          KeyDoc: item.KeyDoc,
+                          Result: item.Question3.Answer,
+                          Type: "Question4",
+                        },
+                        value,
+                        "Question4"
+                      );
+                    }}
+                  />
+                </>
+              ) : (
+                <>
+                  {this.renderCheckBoxResultOp2(
+                    item.KeyDoc,
+                    item.Question1.Answer,
+                    true,
+
+                    [
+                      item.Question1.SelectA.Title,
+                      item.Question1.SelectB.Title,
+                      item.Question1.SelectC.Title,
+                      item.Question1.SelectD.Title,
+                    ]
+                  )}
+
+                  {this.renderCheckBoxResultOp2(
+                    item.KeyDoc,
+                    item.Question2.Answer,
+                    true,
+
+                    [
+                      item.Question2.SelectA.Title,
+                      item.Question2.SelectB.Title,
+                      item.Question2.SelectC.Title,
+                      item.Question2.SelectD.Title,
+                    ]
+                  )}
+
+                  {this.renderCheckBoxResultOp2(
+                    item.KeyDoc,
+                    item.Question3.Answer,
+                    true,
+
+                    [
+                      item.Question3.SelectA.Title,
+                      item.Question3.SelectB.Title,
+                      item.Question3.SelectC.Title,
+                      item.Question3.SelectD.Title,
+                    ]
+                  )}
+                  {this.renderCheckBoxResultOp2(
+                    item.KeyDoc,
+                    item.Question4.Answer,
+                    true,
+
+                    [
+                      item.Question4.SelectA.Title,
+                      item.Question4.SelectB.Title,
+                      item.Question4.SelectC.Title,
+                      item.Question4.SelectD.Title,
+                    ]
+                  )}
+                </>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+    );
+  }
+
+  renderFormItemsPart7(alldata: ToeicPart7[]) {
+    return (
+      <div style={{ display: "flex", flexDirection: "column", padding: 50 }}>
+        <h1>Mô tả:</h1>
+        <div>
+          Nằm trong TOEIC READING, TOEIC PART 7 (Reading Comprehension) kiểm tra
+          khả năng cũng như tốc độ Đọc – Hiểu của người học thông qua hình thức
+          đọc đoạn văn – trả lời các câu hỏi bằng đáp án A,B,C,D. Có hai loại
+          đoạn văn người học có thể bắt gặp trong phần thi này: - Single
+          passage: 7-10 đoạn văn đơn, bao gồm 28 câu hỏi. Mỗi bài có khoảng 2-4
+          câu hỏi. - Doulbe passage: Đoạn văn kép, bao gồm 20 câu hỏi, thường
+          chia làm 4-5 đoạn văn.
+        </div>
+        <h1>Đề thi:</h1>
+        {alldata.map((item: ToeicPart7, index) => (
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                margin: "20px 0px",
+              }}
+            >
+              <h2>Paragraph {index + 1}</h2>
+              <h3>{item.Title}</h3>
+              {!this.state.viewResult ? (
+                <>
+                  <h3>Câu 1</h3>
+                  <CheckBoxCom
+                    haveAnswerD={true}
+                    disabled={!this.state.isStart}
+                    ref={this.refCheckBoxPart1}
+                    answerTitle={[
+                      item.Question1.SelectA.Title,
+                      item.Question1.SelectB.Title,
+                      item.Question1.SelectC.Title,
+                      item.Question1.SelectD.Title,
+                    ]}
+                    onChange={(value) => {
+                      this.handeValueInputOp2(
+                        {
+                          KeyDoc: item.KeyDoc,
+                          Result: item.Question1.Answer,
+                          Type: "Question1",
+                        },
+                        value,
+                        "Question1"
+                      );
+                    }}
+                  />
+                  <h3>Câu 2</h3>
+                  <CheckBoxCom
+                    haveAnswerD={true}
+                    disabled={!this.state.isStart}
+                    ref={this.refCheckBoxPart1}
+                    answerTitle={[
+                      item.Question2.SelectA.Title,
+                      item.Question2.SelectB.Title,
+                      item.Question2.SelectC.Title,
+                      item.Question2.SelectD.Title,
+                    ]}
+                    onChange={(value) => {
+                      this.handeValueInputOp2(
+                        {
+                          KeyDoc: item.KeyDoc,
+                          Result: item.Question2.Answer,
+                          Type: "Question2",
+                        },
+                        value,
+                        "Question2"
+                      );
+                    }}
+                  />
+                  <h3>Câu 3</h3>
+                  <CheckBoxCom
+                    haveAnswerD={true}
+                    disabled={!this.state.isStart}
+                    ref={this.refCheckBoxPart1}
+                    answerTitle={[
+                      item.Question3.SelectA.Title,
+                      item.Question3.SelectB.Title,
+                      item.Question3.SelectC.Title,
+                      item.Question3.SelectD.Title,
+                    ]}
+                    onChange={(value) => {
+                      this.handeValueInputOp2(
+                        {
+                          KeyDoc: item.KeyDoc,
+                          Result: item.Question3.Answer,
+                          Type: "Question3",
+                        },
+                        value,
+                        "Question3"
+                      );
+                    }}
+                  />
+                  <h3>Câu 4</h3>
+                  <CheckBoxCom
+                    haveAnswerD={true}
+                    disabled={!this.state.isStart}
+                    ref={this.refCheckBoxPart1}
+                    answerTitle={[
+                      item.Question4.SelectA.Title,
+                      item.Question4.SelectB.Title,
+                      item.Question4.SelectC.Title,
+                      item.Question4.SelectD.Title,
+                    ]}
+                    onChange={(value) => {
+                      this.handeValueInputOp2(
+                        {
+                          KeyDoc: item.KeyDoc,
+                          Result: item.Question3.Answer,
+                          Type: "Question4",
+                        },
+                        value,
+                        "Question4"
+                      );
+                    }}
+                  />
+                </>
+              ) : (
+                <>
+                  {this.renderCheckBoxResultOp2(
+                    item.KeyDoc,
+                    item.Question1.Answer,
+                    true,
+
+                    [
+                      item.Question1.SelectA.Title,
+                      item.Question1.SelectB.Title,
+                      item.Question1.SelectC.Title,
+                      item.Question1.SelectD.Title,
+                    ]
+                  )}
+
+                  {this.renderCheckBoxResultOp2(
+                    item.KeyDoc,
+                    item.Question2.Answer,
+                    true,
+
+                    [
+                      item.Question2.SelectA.Title,
+                      item.Question2.SelectB.Title,
+                      item.Question2.SelectC.Title,
+                      item.Question2.SelectD.Title,
+                    ]
+                  )}
+
+                  {this.renderCheckBoxResultOp2(
+                    item.KeyDoc,
+                    item.Question3.Answer,
+                    true,
+
+                    [
+                      item.Question3.SelectA.Title,
+                      item.Question3.SelectB.Title,
+                      item.Question3.SelectC.Title,
+                      item.Question3.SelectD.Title,
+                    ]
+                  )}
+                  {this.renderCheckBoxResultOp2(
+                    item.KeyDoc,
+                    item.Question4.Answer,
+                    true,
+
+                    [
+                      item.Question4.SelectA.Title,
+                      item.Question4.SelectB.Title,
+                      item.Question4.SelectC.Title,
+                      item.Question4.SelectD.Title,
+                    ]
                   )}
                 </>
               )}
@@ -790,8 +1261,85 @@ export class FormExamCom extends BaseComponent<FormExamProps, FormExamState> {
       </div>
     );
   }
+  renderFormItemsPart5(alldata: ToeicPart5[]) {
+    return (
+      <div style={{ display: "flex", flexDirection: "column", padding: 50 }}>
+        <h1>Mô tả:</h1>
+        <div>
+          TOEIC Reading Part 5 bao gồm 40 câu trắc nghiệm nhằm kiểm tra khả năng
+          đọc hiểu và vận dụng kiến thức ngữ pháp của thí sinh để hoàn thành
+          câu. Đối với nhiều bạn, Part 5 được xem như là phần thi “cứu cánh” gỡ
+          điểm cho các phần khác vì phần thi này không “khoai” như Part 7 hay
+          dài như Part 6. Tuy nhiên, như bạn có thể thấy trong rất nhiều bài thi
+          thử toeic cũng như các tài liệu luyện thi toeic thì để đạt được điểm
+          cao trong Part 5 không phải là chuyện đơn giản. Ở phần thi này đòi hỏi
+          các bạn ôn thi toeic không chỉ chắc về ngữ pháp mà còn phải có từ vựng
+          phong phú cũng như khả năng đọc hiểu tốt thì mới có thể đạt được điểm
+          số cao.
+        </div>
+        <h1>Đề thi:</h1>
+        {alldata.map((item, index) => (
+          <div
+            key={item.KeyDoc}
+            style={{ borderTop: "gray solid 1px", marginBottom: 20 }}
+          >
+            <h3
+              style={{
+                marginTop: 30,
+                marginBottom: 30,
+                fontWeight: 700,
+                color: "#1890FF",
+              }}
+            >
+              Câu hỏi {index + 1}
+            </h3>
 
-  handeValueInputOp1(itemInput: ToeicPart1 | ToeicPart2, value: string) {
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                marginBottom: 20,
+                color: "#203241",
+                fontSize: 18,
+              }}
+            >
+              {item.Question}
+            </div>
+            {!this.state.viewResult ? (
+              <CheckBoxCom
+                haveAnswerD={true}
+                disabled={!this.state.isStart}
+                ref={this.refCheckBoxPart1}
+                onChange={(value) => {
+                  this.handeValueInputOp1(item, value);
+                }}
+                answerTitle={[
+                  item.SelectA.Title,
+                  item.SelectB.Title,
+                  item.SelectC.Title,
+                  item.SelectD.Title,
+                ]}
+              />
+            ) : (
+              <>
+                {this.renderCheckBoxResultOp1(item.KeyDoc, item.Answer, true, [
+                  item.SelectA.Title,
+                  item.SelectB.Title,
+                  item.SelectC.Title,
+                  item.SelectD.Title,
+                ])}
+              </>
+            )}
+          </div>
+        ))}
+      </div>
+    );
+  }
+
+  handeValueInputOp1(
+    itemInput: ToeicPart1 | ToeicPart2 | ToeicPart5,
+    value: string
+  ) {
     let listValue: {
       keyDoc: string;
       value: string;
@@ -954,6 +1502,21 @@ export class FormExamCom extends BaseComponent<FormExamProps, FormExamState> {
             {this.props.dataPart4 &&
               this.props.dataPart4.length > 0 &&
               this.renderFormItemsPart4(this.props.dataPart4)}
+          </div>
+          <div className={styles.container__content} style={{ marginTop: 10 }}>
+            {this.props.dataPart5 &&
+              this.props.dataPart5.length > 0 &&
+              this.renderFormItemsPart5(this.props.dataPart5)}
+          </div>
+          <div className={styles.container__content} style={{ marginTop: 10 }}>
+            {this.props.dataPart6 &&
+              this.props.dataPart6.length > 0 &&
+              this.renderFormItemsPart6(this.props.dataPart6)}
+          </div>
+          <div className={styles.container__content} style={{ marginTop: 10 }}>
+            {this.props.dataPart7 &&
+              this.props.dataPart7.length > 0 &&
+              this.renderFormItemsPart7(this.props.dataPart7)}
           </div>
         </Spin>
       </div>

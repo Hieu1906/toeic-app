@@ -25,7 +25,7 @@ import moment from "moment";
 import { toeicPart6ExamService } from "../../../00.common/02.service/toeicPart6ExamService";
 import { ToeicPart6Exam } from "../../../00.common/01.model/ToeicPart6Exam";
 
-interface ToeicPart6Props {type: "ListExam" | "Part4";}
+interface ToeicPart6Props {type: "ListExam" | "Part6";}
 
 interface ToeicPart6State {
   searchText: string;
@@ -406,7 +406,7 @@ export default class ListToeicPart6 extends BaseComponent<
         // ...this.getColumnSearchProps("Question"),
         title: "Chỗ trống 4",
         dataIndex: "Question4",
-        key: "Question3",
+        key: "Question4",
         width: "15%",
 
         render: (Question4: any, record, index) =>
@@ -511,7 +511,7 @@ export default class ListToeicPart6 extends BaseComponent<
                 Lưu bài thi
               </Button>
             )}
-          {this.props.type == "Part4" && (
+          {this.props.type == "Part6" && (
             <Select
               defaultValue={0}
               style={{ width: 120 }}

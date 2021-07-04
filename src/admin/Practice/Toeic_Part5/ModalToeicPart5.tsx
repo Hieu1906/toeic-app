@@ -20,7 +20,8 @@ import { ANSWER_PART3_4_5 } from "../../../00.common/const";
 import { storage } from "../../../firebase.config.js";
 import { toeicPart5Service } from "../../../00.common/02.service/toeicPart5Service";
 import TextArea from "antd/lib/input/TextArea";
-import { Ckedtor } from "../../../00.common/00.components/ckeditor/Ckeditor";
+
+
 
 interface ModalToeicPart5Props {
   onSave: () => void;
@@ -207,7 +208,7 @@ export default class ModalToeicPart5 extends BaseComponent<
             onFinishFailed={() => {}}
           >
             <Row>
-              <Ckedtor/>
+           
             </Row>
             <Row gutter={16}>
               <Col span={12}>

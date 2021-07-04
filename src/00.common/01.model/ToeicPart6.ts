@@ -62,4 +62,25 @@ export interface ToeicPart6 {
       value: string;
     };
   };
+  Question4: {
+    Answer: string;
+    indexQuestion: string;
+    SelectA: {
+      Title: string;
+      value: string;
+    };
+    SelectB: {
+      Title: string;
+      value: string;
+    };
+    SelectC: {
+      Title: string;
+      value: string;
+    };
+    SelectD: {
+      Title: string;
+      value: string;
+    };
+  };
+
 }
