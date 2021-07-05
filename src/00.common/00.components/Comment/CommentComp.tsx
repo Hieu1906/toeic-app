@@ -61,6 +61,7 @@ interface CommentsStates {
   allMember: MemberInfor[];
   userSelected: MemberInfor[];
   advanceComment: boolean;
+  advanceCommentUnique: boolean;
 }
 export class CommentComp extends BaseComponent<
   ICommentUpdateProps,
@@ -82,6 +83,7 @@ export class CommentComp extends BaseComponent<
       allMember: [],
       userSelected: [],
       advanceComment: false,
+      advanceCommentUnique: false,
     };
 
     this.onMount(async () => {
@@ -286,7 +288,7 @@ export class CommentComp extends BaseComponent<
   public renderComment(comments: CommentItem[]): React.ReactNode {
     return comments.map((comment, index) => (
       <div
-        style={{ maxHeight: 500 }}
+      
         className={styles.comments__container__wrapComment__contentComment}
         key={comment.KeyDoc as any}
       >
@@ -341,61 +343,72 @@ export class CommentComp extends BaseComponent<
               style={{ flexDirection: "column" }}
               className={styles.comments__container__inputComment__inputText}
             >
-              <div style={{ display: "flex" }}>
-                {!this.state.advanceComment?(
-
-               
-                <Mentions
-                  style={{
-                    flex: 1,
-                    minHeight: "50px",
-                  }}
-                  placeholder="Aa"
-                  value={this.state.inputEdit as string}
-                  autoSize={{ minRows: 1, maxRows: 5 }}
-                  onChange={(e) => {
-                    this.setState({ inputEdit: e });
-                  }}
-                  onSearch={(value) => {
-                    if (value && value.length > 3) {
-                      this.onSearchMention(value);
-                    } else {
-                      this.setState({
-                        userSelected: [],
-                      });
-                    }
-                  }}
-                >
-                  {this.state.userSelected.length > 0 ? (
-                    <>
-                      {this.state.userSelected.map((item) => (
-                        <Mentions.Option
-                          value={item.LoginName}
-                          key={item.Uid}
-                          className="antd-demo-dynamic-option"
-                        >
-                          <img
-                            style={{
-                              height: 35,
-                              width: 35,
-                              borderRadius: "50%",
-                              marginRight: 10,
-                            }}
-                            src={item.PhotoUrl as string}
-                          />
-                          <span>{item.LoginName}</span>
-                        </Mentions.Option>
-                      ))}
-                    </>
-                  ) : (
-                    <Mentions.Option>
-                      <Spin spinning={true} />
-                    </Mentions.Option>
-                  )}
-                </Mentions>
-               ):(
-                 <CKEditor5/>
-               )}  <LinkOutlined
+              <div
+                style={{ display: "flex", width: "100%", alignItems: "center" }}
+              >
+                {!this.state.advanceComment &&
+                this.state.keyEdit == comment.KeyDoc ? (
+                  <Mentions
+                    style={{
+                      flex: 1,
+                      minHeight: "50px",
+                    }}
+                    placeholder="Aa"
+                    value={this.state.inputEdit as string}
+                    autoSize={{ minRows: 1, maxRows: 5 }}
+                    onChange={(e) => {
+                      this.setState({ inputEdit: e });
+                    }}
+                    onSearch={(value) => {
+                      if (value && value.length > 3) {
+                        this.onSearchMention(value);
+                      } else {
+                        this.setState({
+                          userSelected: [],
+                        });
+                      }
+                    }}
+                  >
+                    {this.state.userSelected.length > 0 ? (
+                      <>
+                        {this.state.userSelected.map((item) => (
+                          <Mentions.Option
+                            value={item.LoginName}
+                            key={item.Uid}
+                            className="antd-demo-dynamic-option"
+                          >
+                            <img
+                              style={{
+                                height: 35,
+                                width: 35,
+                                borderRadius: "50%",
+                                marginRight: 10,
+                              }}
+                              src={item.PhotoUrl as string}
+                            />
+                            <span>{item.LoginName}</span>
+                          </Mentions.Option>
+                        ))}
+                      </>
+                    ) : (
+                      <Mentions.Option>
+                        <Spin spinning={true} />
+                      </Mentions.Option>
+                    )}
+                  </Mentions>
+                ) : (
+                  <div className={styles.ckeditor} style={{ width: "100%" }}>
+                    <CKEditor5
+                      value={this.state.inputEdit}
+                      onChange={(value) => {
+                        this.setState({
+                          inputEdit: value,
+                        });
+                      }}
+                    />
+                  </div>
+                )}
+                <LinkOutlined
                   onClick={() => {
                     this.setState({
                       advanceComment: !this.state.advanceComment,
@@ -441,7 +454,7 @@ export class CommentComp extends BaseComponent<
                   styles.comments__container__wrapComment__contentComment__contentCommentBackground__content
                 }
               >
-                {comment.Content}
+                <CKEditor5 value={comment.Content} disabled={true} />
               </div>
 
               {this.state.isHover && this.state.keyHover == index && (
@@ -509,57 +522,68 @@ export class CommentComp extends BaseComponent<
               <span
                 className={styles.comments__container__inputComment__inputText}
               >
-              {!this.state.advanceComment?(
+                {!this.state.advanceComment &&
+                this.state.keyReply === comment.KeyDoc ? (
                   <Mentions
-                  style={{
-                    flex: 1,
-                    minHeight: "50px",
-                  }}
-                  value={this.state.inputReply as string}
-                  autoSize={{ minRows: 1, maxRows: 5 }}
-                  onChange={(e) => {
-                    this.setState({ inputReply: e });
-                  }}
-                  onSearch={(value) => {
-                    if (value && value.length > 3) {
-                      this.onSearchMention(value);
-                    } else {
-                      this.setState({
-                        userSelected: [],
-                      });
-                    }
-                  }}
-                >
-                  {this.state.userSelected.length > 0 ? (
-                    <>
-                      {this.state.userSelected.map((item) => (
-                        <Mentions.Option
-                          value={item.LoginName}
-                          key={item.Uid}
-                          className="antd-demo-dynamic-option"
-                        >
-                          <img
-                            style={{
-                              height: 35,
-                              width: 35,
-                              borderRadius: "50%",
-                              marginRight: 10,
-                            }}
-                            src={item.PhotoUrl as string}
-                          />
-                          <span>{item.LoginName}</span>
-                        </Mentions.Option>
-                      ))}
-                    </>
-                  ) : (
-                    <Mentions.Option>
-                      <Spin spinning={true} />
-                    </Mentions.Option>
-                  )}
-                </Mentions>
-              ):(
-                <CKEditor5/>
-              )}
+                    style={{
+                      flex: 1,
+                      minHeight: "50px",
+                    }}
+                    value={this.state.inputReply as string}
+                    autoSize={{ minRows: 1, maxRows: 5 }}
+                    onChange={(e) => {
+                      this.setState({ inputReply: e });
+                    }}
+                    onSearch={(value) => {
+                      if (value && value.length > 3) {
+                        this.onSearchMention(value);
+                      } else {
+                        this.setState({
+                          userSelected: [],
+                        });
+                      }
+                    }}
+                  >
+                    {this.state.userSelected.length > 0 ? (
+                      <>
+                        {this.state.userSelected.map((item) => (
+                          <Mentions.Option
+                            value={item.LoginName}
+                            key={item.Uid}
+                            className="antd-demo-dynamic-option"
+                          >
+                            <img
+                              style={{
+                                height: 35,
+                                width: 35,
+                                borderRadius: "50%",
+                                marginRight: 10,
+                              }}
+                              src={item.PhotoUrl as string}
+                            />
+                            <span>{item.LoginName}</span>
+                          </Mentions.Option>
+                        ))}
+                      </>
+                    ) : (
+                      <Mentions.Option>
+                        <Spin spinning={true} />
+                      </Mentions.Option>
+                    )}
+                  </Mentions>
+                ) : (
+                  <div className={styles.ckeditor} style={{ width: "100%" }}>
+                    {" "}
+                    <CKEditor5
+                      value={this.state.inputReply}
+                      onChange={(value) => {
+                        this.setState({
+                          inputReply: value,
+                        });
+                      }}
+                    />
+                  </div>
+                )}
                 <LinkOutlined
                   onClick={() => {
                     this.setState({
@@ -681,63 +705,72 @@ export class CommentComp extends BaseComponent<
               ref={this.divWrapInputRef}
               className={styles.comments__container__inputComment__inputText}
             >
-             {!this.state.advanceComment?(
+              {!this.state.advanceCommentUnique ? (
                 <Mentions
-                key="Binh_Luan"
-                style={{
-                  flex: 1,
-                  minHeight: "50px",
-                }}
-                placeholder="Thêm @ để nhắc đến ai "
-                value={this.state.input}
-                autoSize={{ minRows: 1, maxRows: 5 }}
-                onChange={(e) => {
-                  this.setState({ input: e });
-                }}
-                onSearch={(value) => {
-                  if (value && value.length >= 3) {
-                    this.onSearchMention(value);
-                  } else {
-                    this.setState({
-                      userSelected: [],
-                    });
-                  }
-                }}
-              >
-                {this.state.userSelected.length > 0 ? (
-                  <>
-                    {this.state.userSelected.map((item) => (
-                      <Mentions.Option
-                        value={item.LoginName}
-                        key={item.Uid}
-                        className="antd-demo-dynamic-option"
-                      >
-                        <img
-                          style={{
-                            height: 35,
-                            width: 35,
-                            borderRadius: "50%",
-                            marginRight: 10,
-                          }}
-                          src={item.PhotoUrl as string}
-                        />
-                        <span>{item.LoginName}</span>
-                      </Mentions.Option>
-                    ))}
-                  </>
-                ) : (
-                  <Mentions.Option>
-                    <Spin spinning={true} />
-                  </Mentions.Option>
-                )}
-              </Mentions>
-             ):(
-               <CKEditor5/>
-             )}
+                  key="Binh_Luan"
+                  style={{
+                    flex: 1,
+                    minHeight: "50px",
+                  }}
+                  placeholder="Thêm @ để nhắc đến ai "
+                  value={this.state.input}
+                  autoSize={{ minRows: 1, maxRows: 5 }}
+                  onChange={(e) => {
+                    this.setState({ input: e });
+                  }}
+                  onSearch={(value) => {
+                    if (value && value.length >= 3) {
+                      this.onSearchMention(value);
+                    } else {
+                      this.setState({
+                        userSelected: [],
+                      });
+                    }
+                  }}
+                >
+                  {this.state.userSelected.length > 0 ? (
+                    <>
+                      {this.state.userSelected.map((item) => (
+                        <Mentions.Option
+                          value={item.LoginName}
+                          key={item.Uid}
+                          className="antd-demo-dynamic-option"
+                        >
+                          <img
+                            style={{
+                              height: 35,
+                              width: 35,
+                              borderRadius: "50%",
+                              marginRight: 10,
+                            }}
+                            src={item.PhotoUrl as string}
+                          />
+                          <span>{item.LoginName}</span>
+                        </Mentions.Option>
+                      ))}
+                    </>
+                  ) : (
+                    <Mentions.Option>
+                      <Spin spinning={true} />
+                    </Mentions.Option>
+                  )}
+                </Mentions>
+              ) : (
+                <div className={styles.ckeditor} style={{ width: "100%" }}>
+                  <CKEditor5
+                    value={this.state.input}
+                    onChange={(value) => {
+                      this.setState({
+                        input: value,
+                      });
+                    }}
+                  />
+                </div>
+              )}
               <LinkOutlined
                 onClick={() => {
                   this.setState({
-                    advanceComment: !this.state.advanceComment,
+                    advanceCommentUnique: !this.state.advanceCommentUnique,
                   });
                 }}
                 style={{ color: "#1890FF", margin: "0px 7px", fontSize: 25 }}

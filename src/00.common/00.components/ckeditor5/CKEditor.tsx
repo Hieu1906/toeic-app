@@ -1,8 +1,9 @@
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import { debounce } from "lodash";
 import React from "react";
-import styles from "./ckeditor.module.scss";
+
 import ClassicEditor from "ckeditor-custom/build/ckeditor";
+
 const colors = [
   { color: "#330000" },
   { color: "#331900" },
@@ -127,6 +128,7 @@ interface CKEditorProps {
   value?: string;
   onChange?: (value: string) => void;
   disabled?: boolean;
+
 }
 
 type Editor = { getData: () => string };
@@ -140,8 +142,9 @@ export class CKEditor5 extends React.PureComponent<CKEditorProps> {
 
   render() {
     return (
-      <div style={{ width: "100%" }} className={styles.ckeditor}>
+      <div style={{ width: "100%" }} >
         <CKEditor
+        
           config={{
             toolbar: [
               "alignment:left",
@@ -214,10 +217,14 @@ export class CKEditor5 extends React.PureComponent<CKEditorProps> {
           editor={ClassicEditor}
           onInit={(editor: Editor) => {
             this.editor = editor;
+            console.log(this.editor);
           }}
           data={this.props.value || ""}
           disabled={this.props.disabled}
-          onChange={this.onChange}
+          onChange={(event, editor) => {
+            const data = editor.getData();
+            this.props.onChange && this.props.onChange(data);
+          }}
         />
       </div>
     );

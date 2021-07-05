@@ -8,5 +8,5 @@ export interface CommentItem {
   ParentId?: string;
   Content: string;
   JobTitle: string;
-  Created?:firebase.firestore.Timestamp
+  Created?: firebase.firestore.Timestamp;
 }

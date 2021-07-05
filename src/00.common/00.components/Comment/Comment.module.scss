@@ -3,8 +3,7 @@
 //   font-family: "Montserrat", sans-serif;
 // }
 .comments {
- 
-  width:75%;
+  width: 75%;
   display: flex;
   justify-content: center;
   margin-top: 100px;
@@ -61,7 +60,7 @@
       }
     }
     &__wrapComment {
-      max-height: 500px;
+      height: auto;
       overflow-y: scroll;
       overflow-x: hidden;
       &::-webkit-scrollbar {
@@ -110,6 +109,15 @@
           background: #f5f6f8;
           border-radius: 0px 20px 0px 20px;
           &__content {
+            :global {
+              .ck-sticky-panel__content {
+                display: none !important;
+              }
+              .ck-editor__editable {
+                background-color: #f5f6f8 !important;
+                border: none !important;
+              }
+            }
             font-family: "Montserrat", sans-serif;
             font-style: normal;
             font-weight: normal;
@@ -119,6 +127,7 @@
             color: #262626;
             line-height: 22px;
             margin: 13px 0px 13px 28px;
+            width: 92%;
           }
           &__reply {
             font-family: "Montserrat", sans-serif;
@@ -150,5 +159,19 @@
 :global {
   .ant-popover-title {
     display: none !important;
+  }
+}
+.ckeditor {
+  :global {
+    .ck-editor__editable {
+      width: 100%;
+    }
+  }
+}
+.ckeditorOnlyView {
+  :global {
+    .ck-sticky-panel__content {
+      display: none !important;
+    }
   }
 }
