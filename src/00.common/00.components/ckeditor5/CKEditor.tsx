@@ -1,7 +1,7 @@
-import { CKEditor } from '@ckeditor/ckeditor5-react';
+import { CKEditor } from "@ckeditor/ckeditor5-react";
 import { debounce } from "lodash";
 import React from "react";
-import styles from  "./ckeditor.module.scss";
+import styles from "./ckeditor.module.scss";
 import ClassicEditor from "ckeditor-custom/build/ckeditor";
 const colors = [
   { color: "#330000" },
@@ -140,86 +140,86 @@ export class CKEditor5 extends React.PureComponent<CKEditorProps> {
 
   render() {
     return (
-     <div className={styles.ckeditor}>
+      <div style={{ width: "100%" }} className={styles.ckeditor}>
         <CKEditor
-        config={{
-          toolbar: [
-            "alignment:left",
-            "alignment:center",
-            "alignment:right",
-            "alignment:justify",
-            "|",
-            "bold",
-            "italic",
-            "underline",
-            "fontcolor",
-            "fontsize",
-            "indent",
-            "outdent",
-            "|",
-            "link",
-            "imageUpload",
-            "blockQuote",
-            "bulletedList",
-            "numberedList",
-            "inserttable",
-            "|",
-            "mediaEmbed",
-            "undo",
-            "redo",
-          ],
-          image: {
-            resizeOptions: [],
+          config={{
             toolbar: [
-              "imageTextAlternative",
+              "alignment:left",
+              "alignment:center",
+              "alignment:right",
+              "alignment:justify",
               "|",
-              "imageStyle:alignLeft",
-              "imageStyle:full",
-              "imageStyle:alignRight",
+              "bold",
+              "italic",
+              "underline",
+              "fontcolor",
+              "fontsize",
+              "indent",
+              "outdent",
               "|",
+              "link",
+              "imageUpload",
+              "blockQuote",
+              "bulletedList",
+              "numberedList",
+              "inserttable",
+              "|",
+              "mediaEmbed",
+              "undo",
+              "redo",
             ],
-            styles: ["full", "alignLeft", "alignRight"],
-          },
-          mediaEmbed: {
-            previewsInData: true,
-          },
-          table: {
-            contentToolbar: [
-              "tableColumn",
-              "tableRow",
-              "mergeTableCells",
-              "tableProperties",
-              "tableCellProperties",
-            ],
-            tableCellProperties: {
-              borderColors: colors,
-              backgroundColors: colors,
+            image: {
+              resizeOptions: [],
+              toolbar: [
+                "imageTextAlternative",
+                "|",
+                "imageStyle:alignLeft",
+                "imageStyle:full",
+                "imageStyle:alignRight",
+                "|",
+              ],
+              styles: ["full", "alignLeft", "alignRight"],
+            },
+            mediaEmbed: {
+              previewsInData: true,
+            },
+            table: {
+              contentToolbar: [
+                "tableColumn",
+                "tableRow",
+                "mergeTableCells",
+                "tableProperties",
+                "tableCellProperties",
+              ],
+              tableCellProperties: {
+                borderColors: colors,
+                backgroundColors: colors,
+                columns: 13,
+              },
+              tableProperties: {
+                borderColors: colors,
+                backgroundColors: colors,
+                columns: 13,
+              },
+            },
+            fontColor: {
+              colors,
               columns: 13,
             },
-            tableProperties: {
-              borderColors: colors,
-              backgroundColors: colors,
+            fontBackgroundColor: {
+              colors,
               columns: 13,
             },
-          },
-          fontColor: {
-            colors,
-            columns: 13,
-          },
-          fontBackgroundColor: {
-            colors,
-            columns: 13,
-          },
-        }}
-        editor={ClassicEditor}
-        onInit={(editor: Editor) => {
-          this.editor = editor;
-        }}
-        data={this.props.value || ""}
-        disabled={this.props.disabled}
-        onChange={this.onChange}
-      />
-     </div>
+          }}
+          editor={ClassicEditor}
+          onInit={(editor: Editor) => {
+            this.editor = editor;
+          }}
+          data={this.props.value || ""}
+          disabled={this.props.disabled}
+          onChange={this.onChange}
+        />
+      </div>
     );
   }
 }

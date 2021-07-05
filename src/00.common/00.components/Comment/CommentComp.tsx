@@ -10,7 +10,7 @@ import {
   Mentions,
 } from "antd";
 
-import { EllipsisOutlined } from "@ant-design/icons";
+import { EllipsisOutlined, LinkOutlined } from "@ant-design/icons";
 
 import { FacebookCounter, FacebookSelector } from "@charkour/react-reactions";
 import * as _ from "lodash";
@@ -28,6 +28,7 @@ import { facebookIcon } from "../../const";
 import { reactionService } from "../../02.service/ReactionService";
 import { Reaction } from "../../01.model/Reaction";
 import { sendMail } from "../../02.service/sendMailService";
+import { CKEditor5 } from "../ckeditor5/CKEditor";
 
 const { confirm } = Modal;
 
@@ -59,6 +60,7 @@ interface CommentsStates {
   allReaction: Reaction[];
   allMember: MemberInfor[];
   userSelected: MemberInfor[];
+  advanceComment: boolean;
 }
 export class CommentComp extends BaseComponent<
   ICommentUpdateProps,
@@ -79,6 +81,7 @@ export class CommentComp extends BaseComponent<
       usersAdmin: [],
       allMember: [],
       userSelected: [],
+      advanceComment: false,
     };
 
     this.onMount(async () => {
@@ -339,6 +342,9 @@ export class CommentComp extends BaseComponent<
               className={styles.comments__container__inputComment__inputText}
             >
               <div style={{ display: "flex" }}>
+                {!this.state.advanceComment?(
+
+               
                 <Mentions
                   style={{
                     flex: 1,
@@ -387,6 +393,16 @@ export class CommentComp extends BaseComponent<
                     </Mentions.Option>
                   )}
                 </Mentions>
+               ):(
+                 <CKEditor5/>
+               )}  <LinkOutlined
+                  onClick={() => {
+                    this.setState({
+                      advanceComment: !this.state.advanceComment,
+                    });
+                  }}
+                  style={{ color: "#1890FF", margin: "0px 7px", fontSize: 25 }}
+                />
                 <Button
                   onClick={async () => {
                     if (_.trim(this.state.inputEdit).length > 0) {
@@ -493,7 +509,8 @@ export class CommentComp extends BaseComponent<
               <span
                 className={styles.comments__container__inputComment__inputText}
               >
-                <Mentions
+              {!this.state.advanceComment?(
+                  <Mentions
                   style={{
                     flex: 1,
                     minHeight: "50px",
@@ -540,6 +557,17 @@ export class CommentComp extends BaseComponent<
                     </Mentions.Option>
                   )}
                 </Mentions>
+              ):(
+                <CKEditor5/>
+              )}
+                <LinkOutlined
+                  onClick={() => {
+                    this.setState({
+                      advanceComment: !this.state.advanceComment,
+                    });
+                  }}
+                  style={{ color: "#1890FF", margin: "0px 7px", fontSize: 25 }}
+                />
                 <Button
                   onClick={() => {
                     if (_.trim(this.state.inputReply).length > 0) {
@@ -653,7 +681,8 @@ export class CommentComp extends BaseComponent<
               ref={this.divWrapInputRef}
               className={styles.comments__container__inputComment__inputText}
             >
-              <Mentions
+             {!this.state.advanceComment?(
+                <Mentions
                 key="Binh_Luan"
                 style={{
                   flex: 1,
@@ -702,7 +731,17 @@ export class CommentComp extends BaseComponent<
                   </Mentions.Option>
                 )}
               </Mentions>
-
+             ):(
+               <CKEditor5/>
+             )}
+              <LinkOutlined
+                onClick={() => {
+                  this.setState({
+                    advanceComment: !this.state.advanceComment,
+                  });
+                }}
+                style={{ color: "#1890FF", margin: "0px 7px", fontSize: 25 }}
+              />
               <Button
                 onClick={() => {
                   if (_.trim(this.state.input).length > 0) {
