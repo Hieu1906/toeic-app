@@ -1,6 +1,8 @@
 import ReactAudioPlayer from "react-audio-player";
 import { BaseComponent } from "../../../00.common/00.components/BaseComponent";
 import styles from "./Part3.module.scss";
+import { CommentComp } from "../../../00.common/00.components/Comment/CommentComp";
+import { Footer } from "../../Footer/Footer";
 interface part3State {}
 
 interface part3Props {}
@@ -809,7 +811,12 @@ export class ParPart3 extends BaseComponent<part3Props, part3State> {
               </div>
             </div>
           </div>
+          <CommentComp
+            colectionName={"CommentPart3"}
+            colectionReaction={"CommentReactionPart3"}
+          />
         </div>
+        <Footer />
       </div>
     );
   }

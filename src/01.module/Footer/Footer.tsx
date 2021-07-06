@@ -2,208 +2,243 @@ import { Col, message, Row, Skeleton } from "antd";
 import _ from "lodash";
 import { MailOutlined, PhoneOutlined } from "@ant-design/icons";
 import { BaseComponent } from "../../00.common/00.components/BaseComponent";
-import styles from "./Footer.module.scss";
+import "./Footer.css";
 export class Footer extends BaseComponent<{}, {}> {
-  public renderItem() {
-    let allMenu: {
-      Id: number;
-      Url: string;
-      Title: string;
-    }[] = [
-      {
-        Id: 1,
-        Url: "#",
-        Title: "Trang chủ",
-      },
-      {
-        Id: 2,
-        Url: "#",
-        Title: "Tin tức",
-      },
-
-      {
-        Id: 3,
-        Url: "#",
-        Title: "Luyện đề",
-      },
-      {
-        Id: 4,
-        Url: "#",
-        Title: "Luyện thi",
-      },
-      {
-        Id: 5,
-        Url: "#",
-        Title: "Ngữ pháp",
-      },
-
-      {
-        Id: 6,
-        Url: "#",
-        Title: "Từ vựng",
-      },
-      {
-        Id: 7,
-        Url: "#",
-        Title: "Luyện tập",
-      },
-      {
-        Id: 8,
-        Url: "#",
-        Title: "Hướng dẫn",
-      },
-      {
-        Id: 9,
-        Url: "#",
-        Title: "Quản trị",
-      },
-    ];
-    return (
-      <>
-        {allMenu.length > 0 ? (
-          <Row style={{ width: `100%` }}>
-            <Col span={8}>
-              {allMenu.map((item, index) => {
-                if (index < 4) {
-                  return (
-                    <Row
-                      style={{ cursor: "pointer" }}
-                      className={styles.text}
-                      onClick={() => {
-                        if (!_.isEmpty(item.Url) || item.Url === "#") {
-                          window.open(
-                            item.Url + "?menuid=" + item.Id.toString(),
-                            "_self",
-                            ""
-                          );
-                        } else {
-                          message.info("Hiện tại chưa có link", 3);
-                        }
-                      }}
-                    >
-                      {item.Title}
-                    </Row>
-                  );
-                }
-              })}
-            </Col>
-            <Col span={8}>
-              {allMenu.map((item, index) => {
-                if (index >= 4 && index < 8) {
-                  return (
-                    <Row
-                      style={{ cursor: "pointer" }}
-                      className={styles.text}
-                      onClick={() => {
-                        if (!_.isEmpty(item.Url) || item.Url === "#") {
-                          window.open(
-                            item.Url + "?menuid=" + item.Id.toString(),
-                            "_self",
-                            ""
-                          );
-                        } else {
-                          message.info("Hiện tại chưa có link", 3);
-                        }
-                      }}
-                    >
-                      {item.Title}
-                    </Row>
-                  );
-                }
-              })}
-            </Col>
-            <Col span={8}>
-              {allMenu.map((item, index) => {
-                if (index >= 8) {
-                  return (
-                    <Row
-                      style={{ cursor: "pointer" }}
-                      className={styles.text}
-                      onClick={() => {
-                        if (!_.isEmpty(item.Url) || item.Url === "#") {
-                          window.open(
-                            item.Url + "?menuid=" + item.Id.toString(),
-                            "_self",
-                            ""
-                          );
-                        } else {
-                          message.info("Hiện tại chưa có link", 3);
-                        }
-                      }}
-                    >
-                      {item.Title}
-                    </Row>
-                  );
-                }
-              })}
-            </Col>
-          </Row>
-        ) : (
-          <></>
-        )}
-      </>
-    );
-  }
-
   render() {
     return (
-      <Skeleton loading={false} paragraph={{ rows: 5 }}>
-        <div className={styles.footer}>
-          <Row className={styles.paddingFooter}>
-            <Col span={2}></Col>
-            <Col span={10} className={styles.siteMapBlock}>
-              <div>
-                <p className={styles.textSiteMap}>Site Map</p>
-                <div
-                  className={styles.divider}
-                  style={{
-                    backgroundColor: "#25B0F3",
-                  }}
-                ></div>
+      <div style={{ marginTop: 75 }}>
+        <link
+          href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+          rel="stylesheet"
+          id="bootstrap-css"
+        />
+        {/*---- Include the above in your HEAD tag --------*/}
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"
+        />
+        <footer id="dk-footer" className="dk-footer">
+          <div className="container">
+            <div className="row">
+              <div className="col-md-12 col-lg-4">
+                <div className="dk-footer-box-info">
+                  <a href="index.html" className="footer-logo">
+                    <img
+                      src="images/footer_logo.png"
+                      alt="footer_logo"
+                      className="img-fluid"
+                    />
+                  </a>
+                  <p
+                    className="footer-info-text"
+                    style={{ color: "white!important" }}
+                  >
+                    Reference site about Lorem Ipsum, giving information on its
+                    origins, as well as a random Lipsum generator.
+                  </p>
+                  <div className="footer-social-link">
+                    <h3>Follow us</h3>
+                    <ul>
+                      <li>
+                        <a href="#">
+                          <i className="fa fa-facebook" />
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#">
+                          <i className="fa fa-twitter" />
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#">
+                          <i className="fa fa-google-plus" />
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#">
+                          <i className="fa fa-linkedin" />
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#">
+                          <i className="fa fa-instagram" />
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                  {/* End Social link */}
+                </div>
+                {/* End Footer info */}
+                {/* <div className="footer-awarad">
+                  <img src="images/icon/best.png" />
+                  <p>Best Design Company 2019</p>
+                </div> */}
               </div>
-              <div className={styles.column_}>{this.renderItem()}</div>
-            </Col>
-            <Col span={6} className={styles.contactBlock}>
-              <div>
-                <p className={styles.textSiteMap}>Liên hệ</p>
-                <div
-                  className={styles.divider}
-                  style={{
-                    backgroundColor: "#25B0F3",
-                  }}
-                ></div>
+              {/* End Col */}
+              <div className="col-md-12 col-lg-8">
+                <div className="row">
+                  <div className="col-md-6">
+                    <div className="contact-us">
+                      <div className="contact-icon">
+                        <i className="fa fa-map-o" aria-hidden="true" />
+                      </div>
+                      {/* End contact Icon */}
+                      <div className="contact-info">
+                        <h3>Số 1 Đại Cồ Việt</h3>
+                        <p>Hai Bà Trưng -Hà Nội</p>
+                      </div>
+                      {/* End Contact Info */}
+                    </div>
+                    {/* End Contact Us */}
+                  </div>
+                  {/* End Col */}
+                  <div className="col-md-6">
+                    <div className="contact-us contact-us-last">
+                      <div className="contact-icon">
+                        <i
+                          className="fa fa-volume-control-phone"
+                          aria-hidden="true"
+                        />
+                      </div>
+                      {/* End contact Icon */}
+                      <div className="contact-info">
+                        <h3>+84 03493948883</h3>
+                        <p>Gọi cho chúng tôi</p>
+                      </div>
+                      {/* End Contact Info */}
+                    </div>
+                    {/* End Contact Us */}
+                  </div>
+                  {/* End Col */}
+                </div>
+                {/* End Contact Row */}
+                <div className="row">
+                  <div className="col-md-12 col-lg-6">
+                    <div className="footer-widget footer-left-widget">
+                      <div className="section-heading">
+                        <h3>Useful Links</h3>
+                        <span className="animate-border border-black" />
+                      </div>
+                      <ul>
+                        <li>
+                          <a href="#">Về chúng tôi</a>
+                        </li>
+                        <li>
+                          <a href="#">Dịch vụ</a>
+                        </li>
+                        <li>
+                          <a href="#">Khóa học</a>
+                        </li>
+                        <li>
+                          <a href="#">Giảng viên viên</a>
+                        </li>
+                      </ul>
+                      <ul>
+                        <li>
+                          <a href="#">Liên hệ </a>
+                        </li>
+                        <li>
+                          <a href="#">Blog</a>
+                        </li>
+                        <li>
+                          <a href="#">Thành tựu</a>
+                        </li>
+                        <li>
+                          <a href="#">Câu Hỏi</a>
+                        </li>
+                      </ul>
+                    </div>
+                    {/* End Footer Widget */}
+                  </div>
+                  {/* End col */}
+                  <div className="col-md-12 col-lg-6">
+                    <div className="footer-widget">
+                      <div className="section-heading">
+                        <h3>Subscribe</h3>
+                        <span className="animate-border border-black" />
+                      </div>
+                      <p>
+                        {/* Don’t miss to subscribe to our new feeds, kindly fill the form below. */}
+                        Reference site about Lorem Ipsum, giving information on
+                        its origins, as well.
+                      </p>
+                      <form action="#">
+                        <div className="form-row">
+                          <div className="col dk-footer-form">
+                            <input
+                              type="email"
+                              className="form-control"
+                              placeholder="Email Address"
+                            />
+                            <button type="submit">
+                              <i className="fa fa-send" />
+                            </button>
+                          </div>
+                        </div>
+                      </form>
+                      {/* End form */}
+                    </div>
+                    {/* End footer widget */}
+                  </div>
+                  {/* End Col */}
+                </div>
+                {/* End Row */}
               </div>
-
-              <div className={styles.column_}>
-                <Col>
-                  <Row className={styles.text}>Bộ phận hỗ trợ</Row>
-                  <Row className={styles.text}>Ban Truyền thông</Row>
-                  <Row style={{ width: `100%` }}>
-                    <Col span={1}>
-                      <MailOutlined
-                        style={{ marginRight: 10, color: "#25B0F3" }}
-                      />
-                    </Col>
-                    <Col span={20}>
-                      <span>hieu.nt165210@sis.hust.edu.vn</span>
-                    </Col>
-                  </Row>
-                  <Row style={{ width: `100%` }}>
-                    <Col span={1}>
-                      <PhoneOutlined
-                        style={{ marginRight: 10, color: "#25B0F3" }}
-                      />
-                    </Col>
-                    <Col span={20}>
-                      <span className={styles.text2}>0358007171</span>
-                    </Col>
-                  </Row>
-                </Col>
+              {/* End Col */}
+            </div>
+            {/* End Widget Row */}
+          </div>
+          {/* End Contact Container */}
+          <div className="copyright">
+            <div className="container">
+              <div className="row">
+                <div className="col-md-6">
+                  <span>
+                    Toeic sinh viên HUST, Website ôn thi Toeic miễn phí
+                  </span>
+                </div>
+                {/* End Col */}
+                <div className="col-md-6">
+                  <div className="copyright-menu">
+                    <ul>
+                      <li>
+                        <a href="#">Trang chủ</a>
+                      </li>
+                      <li>
+                        <a href="#">Chính sách</a>
+                      </li>
+                      <li>
+                        <a href="#">Điều khoản</a>
+                      </li>
+                      <li>
+                        <a href="#">Liên hệ</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                {/* End col */}
               </div>
-            </Col>
-          </Row>
-        </div>
-      </Skeleton>
+              {/* End Row */}
+            </div>
+            {/* End Copyright Container */}
+          </div>
+          {/* End Copyright */}
+          {/* Back to top */}
+          <div id="back-to-top" className="back-to-top">
+            <button
+              onClick={() => {
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }}
+              className="btn btn-dark"
+              title="Back to Top"
+              style={{ display: "block" }}
+            >
+              <i className="fa fa-angle-up" />
+            </button>
+          </div>
+          {/* End Back to top */}
+        </footer>
+      </div>
     );
   }
 }

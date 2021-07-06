@@ -5,4 +5,4 @@ firebase login
 firebase deploy
 
 
-//yarn add file:./ckeditor5
+//yarn add file:./ckeditor

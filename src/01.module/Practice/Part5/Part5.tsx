@@ -1,5 +1,7 @@
 import { BaseComponent } from "../../../00.common/00.components/BaseComponent";
 import styles from "./Part5.module.scss";
+import { CommentComp } from "../../../00.common/00.components/Comment/CommentComp";
+import { Footer } from "../../Footer/Footer";
 interface Part5State {}
 
 interface Part5Props {}
@@ -503,7 +505,12 @@ export class ParPart5 extends BaseComponent<Part5Props, Part5State> {
               </a>
             </p>
           </div>
+          <CommentComp
+          colectionName={"CommentPart5"}
+          colectionReaction={"CommentReactionPart5"}
+        />
         </div>
+        <Footer />
       </div>
     );
   }

@@ -1,6 +1,8 @@
 import React from "react";
 import "./sass/_grid.css";
 import "./sass/main.css";
+import { CommentComp } from "../../../00.common/00.components/Comment/CommentComp";
+import { Footer } from "../../Footer/Footer";
 
 export default class Part7 extends React.Component {
   constructor(props) {
@@ -857,7 +859,12 @@ export default class Part7 extends React.Component {
             Bạn có thể sử dụng các mẹo ở trên vào các bài tập dưới đây để ứng
             dụng thử nhé:
           </p>
+          <CommentComp
+          colectionName={"CommentPart7"}
+          colectionReaction={"CommentReactionPart7"}
+        />
         </div>
+        <Footer />
       </div>
     );
   }

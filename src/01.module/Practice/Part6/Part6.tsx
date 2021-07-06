@@ -2,6 +2,8 @@ import React, { useRef } from "react";
 import { createRef } from "react";
 import "./sass/Part6.css";
 import "./sass/_grid.css";
+import { CommentComp } from "../../../00.common/00.components/Comment/CommentComp";
+import { Footer } from "../../Footer/Footer";
 interface Part6State {
   input?: any;
   temp?: boolean;
@@ -423,7 +425,12 @@ export default class Part6 extends React.Component<{}, Part6State> {
               e.preventDefault()
             }}>Làm bài tập Part 6</a>
           </p>
+          <CommentComp
+          colectionName={"CommentPart6"}
+          colectionReaction={"CommentReactionPart6"}
+        />
         </div>
+        <Footer />
       </div>
     );
   }
