@@ -1,9 +1,11 @@
 import { Button, Empty, Modal, Skeleton } from "antd";
 import * as _ from "lodash";
 import * as React from "react";
+import { Link } from "react-router-dom";
 import { BaseComponent } from "../../00.common/00.components/BaseComponent";
 import { MessageLife } from "../../00.common/01.model/MessageLife";
 import { mesageLifeService } from "../../00.common/02.service/messageLifeService";
+import { ROUTER } from "../../00.common/const";
 import styles from "./MessageLife.module.scss";
 
 interface MessageLifeProps {}
@@ -110,16 +112,17 @@ export default class MessageLifeCom extends BaseComponent<
                   </div>
                 </div>
               </>
-
-              <div
-                style={{
-                  backgroundColor: "rgb(47, 84, 235)",
-                }}
-                onClick={() => {}}
-                className={styles.MessageLife__container__button}
-              >
-                Xem thêm
-              </div>
+           
+                <div
+                  style={{
+                    backgroundColor: "rgb(47, 84, 235)",
+                  }}
+                  onClick={() => {}}
+                  className={styles.MessageLife__container__button}
+                >
+                  Xem thêm
+                </div>
+             
             </div>
           </div>
         ) : (

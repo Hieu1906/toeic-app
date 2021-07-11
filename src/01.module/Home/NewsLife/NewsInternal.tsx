@@ -1,7 +1,9 @@
 import * as React from "react";
+import { Link } from "react-router-dom";
 import { BaseComponent } from "../../../00.common/00.components/BaseComponent";
 import { NewsToeic } from "../../../00.common/01.model/NewsToeic";
 import { newsToeicService } from "../../../00.common/02.service/NewsToeicService";
+import { ROUTER } from "../../../00.common/const";
 
 import styles from "./NewsInternal.module.scss";
 interface PopularNewsState {
@@ -46,10 +48,12 @@ export default class PopularNews extends BaseComponent<
     return (
       <div className={styles.popularNewsUpdate}>
         {this.state.news1 ? (
+            
           <div
             onClick={() => {}}
             className={styles.popularNewsUpdate__headNews}
           >
+             <Link to={`${ROUTER.NEWSDETAIL}?keyDoc=${this.state.news1.KeyDoc}`}>
             <div className={styles.popularNewsUpdate__headNews__overlay} />
             <img
               className={styles.popularNewsUpdate__headNews__image}
@@ -77,7 +81,9 @@ export default class PopularNews extends BaseComponent<
                 25 lượt xem
               </div>
             </div>
+            </Link>
           </div>
+      
         ) : (
           // <span style={{ width: `auto` }}>
           //   <Empty description={"Không có dữ liệu"} />
@@ -86,10 +92,12 @@ export default class PopularNews extends BaseComponent<
         )}
         <div className={styles.popularNewsUpdate__news2Col}>
           {this.state.news2 ? (
+        
             <div
               onClick={() => {}}
               className={styles.popularNewsUpdate__news2Col__item}
             >
+                  <Link to={`${ROUTER}?keyDoc=${this.state.news2.KeyDoc}`}>
               {this.state.news2.ShowIconNews && bigNewsIcon}
               <div
                 className={styles.popularNewsUpdate__news2Col__item__overlay}
@@ -125,7 +133,9 @@ export default class PopularNews extends BaseComponent<
                   25 lượt xem
                 </div>
               </div>
+              </Link>
             </div>
+    
           ) : (
             // <span style={{ width: `auto` }}>
             //   <Empty description={"Không có dữ liệu"} />
@@ -133,10 +143,12 @@ export default class PopularNews extends BaseComponent<
             <></>
           )}
           {this.state.news3 ? (
+                
             <div
               onClick={() => {}}
               className={styles.popularNewsUpdate__news2Col__item}
             >
+               <Link to={`${ROUTER}?keyDoc=${this.state.news3.KeyDoc}`}>
               {this.state.news3.ShowIconNews && bigNewsIcon}
               <div
                 className={styles.popularNewsUpdate__news2Col__item__overlay}
@@ -174,7 +186,9 @@ export default class PopularNews extends BaseComponent<
                   25 lượt xem
                 </div>
               </div>
+              </Link>
             </div>
+        
           ) : (
             // <span style={{ width: `auto` }}>
             //   <Empty description={"Không có dữ liệu"} />

@@ -813,7 +813,7 @@ export class ParPart3 extends BaseComponent<part3Props, part3State> {
           </div>
           <CommentComp
             colectionName={"CommentPart3"}
-            colectionReaction={"CommentReactionPart3"}
+            colectionReaction={"Part3_RC"}
           />
         </div>
         <Footer />

@@ -507,7 +507,7 @@ export class ParPart5 extends BaseComponent<Part5Props, Part5State> {
           </div>
           <CommentComp
           colectionName={"CommentPart5"}
-          colectionReaction={"CommentReactionPart5"}
+          colectionReaction={"Part5_RC"}
         />
         </div>
         <Footer />

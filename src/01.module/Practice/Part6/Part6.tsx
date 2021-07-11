@@ -427,7 +427,7 @@ export default class Part6 extends React.Component<{}, Part6State> {
           </p>
           <CommentComp
           colectionName={"CommentPart6"}
-          colectionReaction={"CommentReactionPart6"}
+          colectionReaction={"Part6_RC"}
         />
         </div>
         <Footer />

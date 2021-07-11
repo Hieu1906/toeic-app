@@ -70,6 +70,8 @@ import { ListExamPart6 } from "../Exam/ExamPart6/ListExamPart6";
 import { ExamPart6 } from "../Exam/ExamPart6/ExamPart6";
 import { ListExamPart7 } from "../Exam/ExamPart7/ListExamPart7";
 import { ExamPart7 } from "../Exam/ExamPart7/ExamPart7";
+import { MessageLifeDetail } from "../MessageLife/MessageLifeDetail";
+import { NewDetails } from "../NewsToeic/NewsDetail";
 
 const { Option } = Select;
 interface propsHome {
@@ -478,6 +480,13 @@ export default class Home extends BaseComponent<propsHome, stateHome> {
                       />
                     </div>
                   </Route>
+                  <Route path={ROUTER.MEASSAGEDETAIL}>
+                    <MessageLifeDetail />
+                  </Route>
+                  <Route path={ROUTER.NEWSDETAIL}>
+                    <NewDetails />
+                  </Route>
+                  
                   <Route path={ROUTER.TOEIC_600_TU}>
                     <Words600Com />
                   </Route>

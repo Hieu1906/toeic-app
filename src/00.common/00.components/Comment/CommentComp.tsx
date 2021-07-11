@@ -35,7 +35,7 @@ const { confirm } = Modal;
 interface ICommentUpdateProps {
   colectionName: string;
   colectionReaction: string;
-  width?: number;
+  width?: number | string;
 }
 interface CommentsStates {
   allComments: CommentItem[];
@@ -288,7 +288,6 @@ export class CommentComp extends BaseComponent<
   public renderComment(comments: CommentItem[]): React.ReactNode {
     return comments.map((comment, index) => (
       <div
-      
         className={styles.comments__container__wrapComment__contentComment}
         key={comment.KeyDoc as any}
       >
@@ -896,7 +895,10 @@ export class CommentComp extends BaseComponent<
   }
   public render() {
     return (
-      <div className={styles.comments}>
+      <div
+        className={styles.comments}
+        style={{ width: this.props.width ? this.props.width : "100%" }}
+      >
         <div className={styles.comments__action}>
           <div className={styles.comments__action__item}>
             <Popover

@@ -1,5 +1,6 @@
 import moment from "moment";
 import * as React from "react";
+import { Link, Route } from "react-router-dom";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
@@ -7,6 +8,7 @@ import { BaseComponent } from "../../00.common/00.components/BaseComponent";
 
 import { NewsToeic } from "../../00.common/01.model/NewsToeic";
 import { newsToeicService } from "../../00.common/02.service/NewsToeicService";
+import { ROUTER } from "../../00.common/const";
 
 import styles from "./NewsToeic.module.scss";
 interface NewsListingStates {
@@ -54,10 +56,12 @@ export default class NewsListing extends BaseComponent<
   public renderItem(item: NewsToeic) {
     return (
       <div onClick={() => {}} className={styles.newsListingUpdate__item}>
-        <img
-          className={styles.newsListingUpdate__item__image}
-          src={`${item.BannerUrl}?width=277&height=186`}
-        />
+        <Link to={`${ROUTER.NEWSDETAIL}?keyDoc=${item.KeyDoc}`}>
+          <img
+            className={styles.newsListingUpdate__item__image}
+            src={`${item.BannerUrl}?width=277&height=186`}
+          />
+        </Link>
         <div className={styles.newsListingUpdate__item__infor}>
           {item.ShowIconNews && iconSmallNews}
           <div
