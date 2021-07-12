@@ -5,6 +5,7 @@ export interface StoryStudent {
   Avatar: string;
   BannerHomeUrl: string;
   Description1: string;
+  Content:string;
   ImageStoryUrl: string;
   JobTitle: string;
   Month: number;

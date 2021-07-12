@@ -97,7 +97,7 @@ export default class PopularNews extends BaseComponent<
               onClick={() => {}}
               className={styles.popularNewsUpdate__news2Col__item}
             >
-                  <Link to={`${ROUTER}?keyDoc=${this.state.news2.KeyDoc}`}>
+                  <Link to={`${ROUTER.NEWSDETAIL}?keyDoc=${this.state.news2.KeyDoc}`}>
               {this.state.news2.ShowIconNews && bigNewsIcon}
               <div
                 className={styles.popularNewsUpdate__news2Col__item__overlay}
@@ -148,7 +148,7 @@ export default class PopularNews extends BaseComponent<
               onClick={() => {}}
               className={styles.popularNewsUpdate__news2Col__item}
             >
-               <Link to={`${ROUTER}?keyDoc=${this.state.news3.KeyDoc}`}>
+               <Link to={`${ROUTER.NEWSDETAIL}?keyDoc=${this.state.news3.KeyDoc}`}>
               {this.state.news3.ShowIconNews && bigNewsIcon}
               <div
                 className={styles.popularNewsUpdate__news2Col__item__overlay}

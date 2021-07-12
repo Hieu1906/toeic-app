@@ -146,4 +146,5 @@ export const ROUTER = {
   NOUNPart2: "/pacticeNoun1",
   MEASSAGEDETAIL: "/Mesage-detail",
   NEWSDETAIL: "/News-detail",
+  STORYSTUNDENTDETAIL:"/story-studmet-detail"
 };

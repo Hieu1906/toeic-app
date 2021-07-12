@@ -3,6 +3,7 @@ import _ from "lodash";
 import { MailOutlined, PhoneOutlined } from "@ant-design/icons";
 import { BaseComponent } from "../../00.common/00.components/BaseComponent";
 import "./Footer.css";
+import news4 from './news4.jpg';
 export class Footer extends BaseComponent<{}, {}> {
   render() {
     return (
@@ -24,7 +25,7 @@ export class Footer extends BaseComponent<{}, {}> {
                 <div className="dk-footer-box-info">
                   <a href="index.html" className="footer-logo">
                     <img
-                      src="images/footer_logo.png"
+                      src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5h-YQALjACKGkjwuZ2LGqJi4UQytvukp68tX9fx2vhGkFInsHs5R3AQ8kivY4T0ElpRQ&usqp=CAU"}
                       alt="footer_logo"
                       className="img-fluid"
                     />

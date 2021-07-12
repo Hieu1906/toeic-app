@@ -4,17 +4,17 @@ import * as React from "react";
 import styles from "./StoryStudent.module.scss";
 import Slider from "react-slick";
 
-
-
 import { orderBy } from "lodash";
 import { BaseComponent } from "../../00.common/00.components/BaseComponent";
 import { storyStudentService } from "../../00.common/02.service/storyStudentService";
 import { StoryStudent } from "../../00.common/01.model/StoryStudent";
+import { Link } from "react-router-dom";
+import { ROUTER } from "../../00.common/const";
 interface StoryStudentProps {}
 interface StoryStudentStates {
   allData: StoryStudent[];
 }
-export  class StoryStudentToeic extends BaseComponent<
+export class StoryStudentToeic extends BaseComponent<
   StoryStudentProps,
   StoryStudentStates
 > {
@@ -77,77 +77,79 @@ export  class StoryStudentToeic extends BaseComponent<
 
     return this.state.allData.map((item) => (
       <div className={styles.StoryStudent}>
-        <div className={styles.StoryStudent__contentLeft}>
-          <img
-            className={styles.StoryStudent__contentLeft__backgroundImage}
-            src={`${item.BannerHomeUrl}`}
-          />
-          <div className={styles.StoryStudent__contentLeft__overlay}></div>
-          <Tooltip
-            title={
-              <div>
-                {iconEye} {item.ViewsCount ? item.ViewsCount : 0} lượt xem
-              </div>
-            }
-            trigger="hover"
-          >
-            <div
-              style={{ cursor: "pointer" }}
-              onClick={() => {
-                this.openDetail(item);
-              }}
-              className={styles.StoryStudent__contentLeft__content}
+    
+          <div className={styles.StoryStudent__contentLeft}>
+            <img
+              className={styles.StoryStudent__contentLeft__backgroundImage}
+              src={`${item.BannerHomeUrl}`}
+            />
+
+            <div className={styles.StoryStudent__contentLeft__overlay}></div>
+            <Tooltip
+              title={
+                <div>
+                  {iconEye} {item.ViewsCount ? item.ViewsCount : 0} lượt xem
+                </div>
+              }
+              trigger="hover"
             >
-              {icon}
-              {iconArrow}
-              {165 < item.Title.length ? (
-                <Tooltip title={item.Title}>
+              <div
+                style={{ cursor: "pointer" }}
+                onClick={() => {
+                  this.openDetail(item);
+                }}
+                className={styles.StoryStudent__contentLeft__content}
+              >
+                {icon}
+                {iconArrow}
+                {165 < item.Title.length ? (
+                  <Tooltip title={item.Title}>
+                    <div
+                      className={
+                        styles.StoryStudent__contentLeft__content__description
+                      }
+                    >
+                      {" "}
+                      {item.Title.slice(0, 164).concat("...")}{" "}
+                    </div>
+                  </Tooltip>
+                ) : (
                   <div
                     className={
                       styles.StoryStudent__contentLeft__content__description
                     }
                   >
-                    {" "}
-                    {item.Title.slice(0, 164).concat("...")}{" "}
+                    {item.Title}
                   </div>
-                </Tooltip>
-              ) : (
+                )}
                 <div
                   className={
-                    styles.StoryStudent__contentLeft__content__description
+                    styles.StoryStudent__contentLeft__content__contaninerMonth
                   }
                 >
-                  {item.Title}
-                </div>
-              )}
-              <div
-                className={
-                  styles.StoryStudent__contentLeft__content__contaninerMonth
-                }
-              >
-                {star}
-                <div
-                  className={
-                    styles.StoryStudent__contentLeft__content__contaninerMonth__dateAndMonth
-                  }
-                >
-                  Tháng {item.Month}-{item.Year}
+                  {star}
+                  <div
+                    className={
+                      styles.StoryStudent__contentLeft__content__contaninerMonth__dateAndMonth
+                    }
+                  >
+                    Tháng {item.Month}-{item.Year}
+                  </div>
                 </div>
               </div>
-            </div>
-          </Tooltip>
-        </div>
+            </Tooltip>
+          </div>
+     
         <div className={styles.StoryStudent__contentRight}>
           <div className={styles.StoryStudent__contentRight__ViewContent}>
             <div
               className={styles.StoryStudent__contentRight__ViewContent__title}
             >
-           Chuyện học hành
+              Chuyện học hành
             </div>
+            <Link to={`${ROUTER.STORYSTUNDENTDETAIL}?keyDoc=${item.KeyDoc}`}>
             <div
-              onClick={() => {
-                this.openDetail(item);
-              }}
+          
               className={
                 styles.StoryStudent__contentRight__ViewContent__inforUser
               }
@@ -179,6 +181,7 @@ export  class StoryStudentToeic extends BaseComponent<
                 </div>
               </div>
             </div>
+            </Link>
             <div
               className={
                 styles.StoryStudent__contentRight__ViewContent__decription
@@ -204,7 +207,7 @@ export  class StoryStudentToeic extends BaseComponent<
     return (
       <Skeleton loading={false} paragraph={{ rows: 7 }} avatar>
         {this.state.allData.length > 0 ? (
-          <div style={{ width: "100%", marginTop:-80 }}>
+          <div style={{ width: "100%", marginTop: -80 }}>
             <Slider {...settings}>{this.renderItem()}</Slider>
           </div>
         ) : (

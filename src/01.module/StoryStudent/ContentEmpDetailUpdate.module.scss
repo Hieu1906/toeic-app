@@ -1,0 +1,172 @@
+.contentEmpDetailUpdate {
+
+  width: 100%;
+  &__Content {
+    margin: 5px 200px;
+    
+    :global {
+      .ck-sticky-panel__content {
+        display: none !important;
+      }
+      .ck-editor__main {
+        color: #333;
+        border: none !important;
+      }
+      .ck-editor__editable {
+        box-shadow: white !important;
+        border: none !important;
+      }
+    }
+  }
+  &__comment{
+    margin: 0px 200px;
+  }
+
+  &__issue {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: row;
+    &__startText {
+      color: #096dd9;
+      font-family: "SFProDisplay";
+      font-style: normal;
+      font-weight: bold;
+      font-size: 48px;
+      line-height: 48px;
+      margin-right: 5px;
+    }
+    &__endText {
+      font-family: "SFProDisplay";
+      font-style: normal;
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 24px;
+      color: #595959;
+    }
+    margin-bottom: 24px;
+  }
+  .row {
+    width: 100%;
+  }
+  .context {
+    font-family: "SFProDisplay";
+    font-style: normal;
+    font-weight: bold;
+    font-size: 32px;
+    line-height: 46px;
+  }
+  .margin0 {
+    margin-top: 31px;
+    margin-bottom: 0px;
+  }
+  .wrraperLike {
+    margin-top: 7px;
+    width: 58px;
+    height: 24px;
+  }
+  .textLike {
+    position: absolute;
+    height: 24px;
+    left: 28px;
+    font-family: "SFProDisplay";
+    font-weight: 600;
+  }
+  .textNotLike {
+    position: absolute;
+    height: 24px;
+    left: 28px;
+    font-style: normal;
+    font-weight: 600;
+    color: #8c8c8c;
+  }
+  .wrraperComment {
+    display: flex;
+    flex-direction: row;
+    padding: 0px;
+    position: static;
+    width: 77px;
+    height: 24px;
+    left: 122px;
+    top: 0px;
+    flex: none;
+    order: 1;
+    align-self: center;
+    margin: 64px 0px;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .contentEmpDetailUpdate {
+    &__issue {
+      margin-top: 24px;
+      display: flex;
+      flex-direction: row;
+      &__startText {
+        color: #096dd9;
+        font-family: "SFProDisplay";
+        font-style: normal;
+        font-weight: bold;
+        font-size: 48px;
+        line-height: 48px;
+        margin-right: 5px;
+      }
+      &__endText {
+        font-family: "SFProDisplay";
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 24px;
+        color: #595959;
+      }
+      margin-bottom: 24px;
+    }
+    .row {
+      width: 100%;
+    }
+    .context {
+      font-family: "SFProDisplay";
+      font-style: normal;
+      font-weight: bold;
+      font-size: 32px;
+      line-height: 46px;
+    }
+    .margin0 {
+      margin-top: 31px;
+      margin-bottom: 0px;
+    }
+    .wrraperLike {
+      margin-top: 7px;
+      width: 58px;
+      height: 24px;
+    }
+    .textLike {
+      position: absolute;
+      height: 24px;
+      left: 28px;
+      font-family: "SFProDisplay";
+      font-weight: 600;
+    }
+    .textNotLike {
+      position: absolute;
+      height: 24px;
+      left: 28px;
+      font-style: normal;
+      font-weight: 600;
+      color: #8c8c8c;
+    }
+    .wrraperComment {
+      display: flex;
+      flex-direction: row;
+      padding: 0px;
+      position: static;
+      width: 77px;
+      height: 24px;
+      left: 122px;
+      top: 0px;
+      flex: none;
+      order: 1;
+      align-self: center;
+      margin: 64px 0px;
+    }
+  }
+}
