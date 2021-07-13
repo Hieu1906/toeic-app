@@ -33,14 +33,21 @@ export default class PopularNews extends BaseComponent<
 
   async getData() {
     let allNews = await newsToeicService.getAll<NewsToeic>("NewsToeic");
-    for (let i = 0; i < 4; i++) {
-      allNews.push(allNews[0]);
-    }
+    let news1 = allNews.filter((item) => {
+      return item.Placement == 1 &&item.Type=="NewsInternal";
+    });
+    let news2 = allNews.filter((item) => {
+      return item.Placement == 2 &&item.Type=="NewsInternal";
+    });
+    let news3 = allNews.filter((item) => {
+      return item.Placement == 3 &&item.Type=="NewsInternal";
+    });
+
     this.setState({
       allNews,
-      news1: allNews[0],
-      news2: allNews[0],
-      news3: allNews[0],
+      news1: news1[0],
+      news2: news2[0],
+      news3: news3[0],
     });
   }
 
@@ -48,42 +55,47 @@ export default class PopularNews extends BaseComponent<
     return (
       <div className={styles.popularNewsUpdate}>
         {this.state.news1 ? (
-            
           <div
             onClick={() => {}}
             className={styles.popularNewsUpdate__headNews}
           >
-             <Link to={`${ROUTER.NEWSDETAIL}?keyDoc=${this.state.news1.KeyDoc}`}>
-            <div className={styles.popularNewsUpdate__headNews__overlay} />
-            <img
-              className={styles.popularNewsUpdate__headNews__image}
-              src={`${this.state.news1!.BannerUrl}?width=586&height=277`}
-            />
-            {this.state.news1.ShowIconNews && bigNewsIcon}
-            <div className={styles.popularNewsUpdate__headNews__infor}>
-              <div
-                style={{
-                  background: this.state.news1.Category
-                    ? this.state.news1.Category.Color
-                    : "fa541c",
-                }}
-                className={styles.popularNewsUpdate__headNews__infor__category}
-              >
-                {this.state.news1.Category
-                  ? this.state.news1.Category.Title
-                  : ""}
+            <Link to={`${ROUTER.NEWSDETAIL}?keyDoc=${this.state.news1.KeyDoc}`}>
+              <div className={styles.popularNewsUpdate__headNews__overlay} />
+              <img
+                className={styles.popularNewsUpdate__headNews__image}
+                src={`${this.state.news1!.BannerUrl}?width=586&height=277`}
+              />
+              {this.state.news1.ShowIconNews && bigNewsIcon}
+              <div className={styles.popularNewsUpdate__headNews__infor}>
+                <div
+                  style={{
+                    background: this.state.news1.Category
+                      ? this.state.news1.Category.Color
+                      : "fa541c",
+                  }}
+                  className={
+                    styles.popularNewsUpdate__headNews__infor__category
+                  }
+                >
+                  {this.state.news1.Category
+                    ? this.state.news1.Category.Title
+                    : ""}
+                </div>
+                <div
+                  style={{ marginRight: 15 }}
+                  className={styles.popularNewsUpdate__headNews__infor__title}
+                >
+                  {this.state.news1.Title}
+                </div>
+                <div
+                  className={styles.popularNewsUpdate__headNews__infor__View}
+                >
+                  {iconEye}
+                  25 lượt xem
+                </div>
               </div>
-              <div className={styles.popularNewsUpdate__headNews__infor__title}>
-                {this.state.news1.Title}
-              </div>
-              <div className={styles.popularNewsUpdate__headNews__infor__View}>
-                {iconEye}
-                25 lượt xem
-              </div>
-            </div>
             </Link>
           </div>
-      
         ) : (
           // <span style={{ width: `auto` }}>
           //   <Empty description={"Không có dữ liệu"} />
@@ -92,50 +104,50 @@ export default class PopularNews extends BaseComponent<
         )}
         <div className={styles.popularNewsUpdate__news2Col}>
           {this.state.news2 ? (
-        
             <div
               onClick={() => {}}
               className={styles.popularNewsUpdate__news2Col__item}
             >
-                  <Link to={`${ROUTER.NEWSDETAIL}?keyDoc=${this.state.news2.KeyDoc}`}>
-              {this.state.news2.ShowIconNews && bigNewsIcon}
-              <div
-                className={styles.popularNewsUpdate__news2Col__item__overlay}
-              />
-              <img
-                className={styles.popularNewsUpdate__news2Col__item__image}
-                src={`${this.state.news2.BannerUrl}?width=277&height=277`}
-              />
-              <div className={styles.popularNewsUpdate__headNews__infor}>
+              <Link
+                to={`${ROUTER.NEWSDETAIL}?keyDoc=${this.state.news2.KeyDoc}`}
+              >
+                {this.state.news2.ShowIconNews && bigNewsIcon}
                 <div
-                  style={{
-                    background: this.state.news2!.Category
-                      ? this.state.news2!.Category.Color
-                      : "fa541c",
-                  }}
-                  className={
-                    styles.popularNewsUpdate__headNews__infor__category
-                  }
-                >
-                  {this.state.news2.Category
-                    ? this.state.news2!.Category.Title
-                    : ""}
+                  className={styles.popularNewsUpdate__news2Col__item__overlay}
+                />
+                <img
+                  className={styles.popularNewsUpdate__news2Col__item__image}
+                  src={`${this.state.news2.BannerUrl}?width=277&height=277`}
+                />
+                <div className={styles.popularNewsUpdate__headNews__infor}>
+                  <div
+                    style={{
+                      background: this.state.news2!.Category
+                        ? this.state.news2!.Category.Color
+                        : "fa541c",
+                    }}
+                    className={
+                      styles.popularNewsUpdate__headNews__infor__category
+                    }
+                  >
+                    {this.state.news2.Category
+                      ? this.state.news2!.Category.Title
+                      : ""}
+                  </div>
+                  <div
+                    className={styles.popularNewsUpdate__headNews__infor__title}
+                  >
+                    {this.state.news2!.Title}
+                  </div>
+                  <div
+                    className={styles.popularNewsUpdate__headNews__infor__View}
+                  >
+                    {iconEye}
+                    25 lượt xem
+                  </div>
                 </div>
-                <div
-                  className={styles.popularNewsUpdate__headNews__infor__title}
-                >
-                  {this.state.news2!.Title}
-                </div>
-                <div
-                  className={styles.popularNewsUpdate__headNews__infor__View}
-                >
-                  {iconEye}
-                  25 lượt xem
-                </div>
-              </div>
               </Link>
             </div>
-    
           ) : (
             // <span style={{ width: `auto` }}>
             //   <Empty description={"Không có dữ liệu"} />
@@ -143,52 +155,52 @@ export default class PopularNews extends BaseComponent<
             <></>
           )}
           {this.state.news3 ? (
-                
             <div
               onClick={() => {}}
               className={styles.popularNewsUpdate__news2Col__item}
             >
-               <Link to={`${ROUTER.NEWSDETAIL}?keyDoc=${this.state.news3.KeyDoc}`}>
-              {this.state.news3.ShowIconNews && bigNewsIcon}
-              <div
-                className={styles.popularNewsUpdate__news2Col__item__overlay}
-              />
+              <Link
+                to={`${ROUTER.NEWSDETAIL}?keyDoc=${this.state.news3.KeyDoc}`}
+              >
+                {this.state.news3.ShowIconNews && bigNewsIcon}
+                <div
+                  className={styles.popularNewsUpdate__news2Col__item__overlay}
+                />
 
-              <img
-                className={styles.popularNewsUpdate__news2Col__item__image}
-                src={`${this.state.news3.BannerUrl}?width=277&height=277`}
-              />
+                <img
+                  className={styles.popularNewsUpdate__news2Col__item__image}
+                  src={`${this.state.news3.BannerUrl}?width=277&height=277`}
+                />
 
-              <div className={styles.popularNewsUpdate__headNews__infor}>
-                <div
-                  style={{
-                    background: this.state.news3!.Category
-                      ? this.state.news3!.Category.Color
-                      : "fa541c",
-                  }}
-                  className={
-                    styles.popularNewsUpdate__headNews__infor__category
-                  }
-                >
-                  {this.state.news3.Category
-                    ? this.state.news3!.Category.Title
-                    : ""}
+                <div className={styles.popularNewsUpdate__headNews__infor}>
+                  <div
+                    style={{
+                      background: this.state.news3!.Category
+                        ? this.state.news3!.Category.Color
+                        : "fa541c",
+                    }}
+                    className={
+                      styles.popularNewsUpdate__headNews__infor__category
+                    }
+                  >
+                    {this.state.news3.Category
+                      ? this.state.news3!.Category.Title
+                      : ""}
+                  </div>
+                  <div
+                    className={styles.popularNewsUpdate__headNews__infor__title}
+                  >
+                    {this.state.news3.Title}
+                  </div>
+                  <div
+                    className={styles.popularNewsUpdate__headNews__infor__View}
+                  >
+                    {iconEye}
+                    25 lượt xem
+                  </div>
                 </div>
-                <div
-                  className={styles.popularNewsUpdate__headNews__infor__title}
-                >
-                  {this.state.news3.Title}
-                </div>
-                <div
-                  className={styles.popularNewsUpdate__headNews__infor__View}
-                >
-                  {iconEye}
-                  25 lượt xem
-                </div>
-              </div>
               </Link>
             </div>
-        
           ) : (
             // <span style={{ width: `auto` }}>
             //   <Empty description={"Không có dữ liệu"} />

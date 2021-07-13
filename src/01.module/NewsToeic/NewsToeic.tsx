@@ -41,16 +41,30 @@ export default class NewsListing extends BaseComponent<
 
   async getData() {
     let allNews = await newsToeicService.getAll<NewsToeic>("NewsToeic");
-    for (let i = 0; i < 4; i++) {
-      allNews.push(allNews[0]);
-    }
+    allNews = allNews.filter((item) => {
+      return item.Type == "NewsToeic";
+    });
+    let news1 = allNews.filter((item) => {
+      return item.Placement == 1;
+    });
+    let news2 = allNews.filter((item) => {
+      return item.Placement == 2;
+    });
+
+    let news3 = allNews.filter((item) => {
+      return item.Placement == 3;
+    });
+
+    let news4 = allNews.filter((item) => {
+      return item.Placement == 4;
+    });
+
     this.setState({
       allNews,
-
-      news1: allNews,
-      news2: allNews,
-      news3: allNews,
-      news4: allNews,
+      news1: news1,
+      news2: news2,
+      news3: news3,
+      news4: news4,
     });
   }
   public renderItem(item: NewsToeic) {
@@ -80,7 +94,8 @@ export default class NewsListing extends BaseComponent<
             }
           >
             {oclock}
-            {moment(item.Created!.seconds * 1000).fromNow()}{" "}
+            {item.Created &&
+              moment(item.Created!.seconds * 1000).fromNow()}{" "}
           </div>
           <div
             className={

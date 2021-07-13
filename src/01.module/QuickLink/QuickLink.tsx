@@ -132,7 +132,7 @@ export class QuickLinkApp extends BaseComponent<propsHomePage, staeHomepage> {
         </div>
         <div className={`QuickLink__block2 abc`}>
           <div className={`QuickLink__block2__title`}>
-            Tiếng Anh Mỗi Ngày có tất cả mọi thứ bạn cần để luyện thi TOEIC hiệu
+            Toeic sinh viên HUST có tất cả mọi thứ bạn cần để luyện thi TOEIC hiệu
             quả
           </div>
           <div className={`QuickLink__block2__content`}>

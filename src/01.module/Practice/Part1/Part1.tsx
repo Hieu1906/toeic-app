@@ -800,7 +800,7 @@ export class ParPart1 extends BaseComponent<part1Props, part1State> {
             1. <strong>Có những vật gì </strong>đáng chú ý trong hình?
           </h3>
           <p className={styles.Part1Container__Content__introduce__text_p}>
-            Tiếng Anh Mỗi Ngày xin cung cấp cho bạn 40 từ vựng về vật dụng
+          Toeic sinh viên HUST xin cung cấp cho bạn 40 từ vựng về vật dụng
             thường xuyên xuất hiện nhất trong Part 1 của đề thi TOEIC.
           </p>
           <ul className={styles.Part1Container__Content__ul}>
