@@ -11,6 +11,7 @@ import { toeicPart6Service } from "../../../00.common/02.service/toeicPart6Servi
 interface ExamPart6Props {}
 interface ListExamPart6State {
   allData: ToeicPart6[];
+  time: number;
   selectedValue: { keyDoc: string; value: string; result: string }[];
 }
 
@@ -21,6 +22,7 @@ export class ExamPart6 extends BaseComponent<
   constructor(props: ExamPart6Props) {
     super(props);
     this.state = {
+      time: 360,
       allData: [],
       selectedValue: [],
     };
@@ -43,6 +45,7 @@ export class ExamPart6 extends BaseComponent<
     )) as ToeicPart6[];
     this.setState({
       allData,
+      time: item!.Time as any,
     });
   }
 
@@ -60,7 +63,7 @@ export class ExamPart6 extends BaseComponent<
   render() {
     return (
       <div>
-        <FormExamCom dataPart6={this.state.allData} />
+        <FormExamCom  time={this.state.time} dataPart6={this.state.allData} />
       </div>
     );
   }

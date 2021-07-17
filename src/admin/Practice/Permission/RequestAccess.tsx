@@ -290,10 +290,11 @@ export default class RequestAccessCom extends BaseComponent<
             <Button
               style={{ marginRight: 20 }}
               type={"primary"}
-              onClick={() => {
+              onClick={async () => {
                 this.setState({
                   Status: STATUS.REJECT.TitleE,
                 });
+                await this.loadAllData();
               }}
               danger
             >
@@ -301,10 +302,11 @@ export default class RequestAccessCom extends BaseComponent<
             </Button>
 
             <Button
-              onClick={() => {
+              onClick={async () => {
                 this.setState({
                   Status: STATUS.APPROVE.TitleE,
                 });
+                await this.loadAllData();
               }}
               type={"primary"}
             >

@@ -86,7 +86,7 @@ export default class MessageLifeCom extends BaseComponent<
                         styles.MessageLife__container__inforCEO__infor__nameCEO
                       }
                     >
-                      Thông điệp lãnh đạo
+                      Thông điệp cuộc sống
                     </div>
                     <div
                       className={
@@ -112,7 +112,9 @@ export default class MessageLifeCom extends BaseComponent<
                   </div>
                 </div>
               </>
-           
+              <Link
+                to={`${ROUTER.MEASSAGEDETAIL}?keyDoc=${this.state.data[0].KeyDoc}`}
+              >
                 <div
                   style={{
                     backgroundColor: "rgb(47, 84, 235)",
@@ -122,7 +124,7 @@ export default class MessageLifeCom extends BaseComponent<
                 >
                   Xem thêm
                 </div>
-             
+              </Link>
             </div>
           </div>
         ) : (

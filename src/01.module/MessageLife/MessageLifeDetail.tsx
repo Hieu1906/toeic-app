@@ -130,9 +130,7 @@ export class MessageLifeDetail extends BaseComponent<
                         </Col>
                       </Row>
                     </div>
-                    <div className={styles.content1}>
-                      {this.state.data.FullDescription}
-                    </div>
+                    
                     <Row gutter={16} className={styles.margin32}>
                       <Col span={24}>
                         <CKEditor5 value={this.state.data.FullDescription} />

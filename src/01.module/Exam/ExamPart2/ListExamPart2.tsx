@@ -18,6 +18,7 @@ import moment from "moment";
 
 import { toeicPart2ExamService } from "../../../00.common/02.service/toeicPart2ExamService";
 import { ToeicPart2Exam } from "../../../00.common/01.model/ToeicPart2Exam";
+import { Footer } from "../../Footer/Footer";
 interface ListExamPart2Props {}
 interface ListExamPart2State {
   allData: ToeicPart2Exam[];
@@ -163,26 +164,29 @@ export class ListExamPart2 extends BaseComponent<
   }
   render() {
     return (
-      <div className={styles.Contanier}>
-        <div className={styles.Contanier__leftcontent}>
-          <h3>Series: Bộ đề thi Toeic Part 2 - Có đáp án chi tiết</h3>
-          {this.state.allData.length > 0 &&
-            this.state.allData.map((item) => this.renderItem(item))}
+      <div>
+        <div className={styles.Contanier}>
+          <div className={styles.Contanier__leftcontent}>
+            <h3>Series: Bộ đề thi Toeic Part 2 - Có đáp án chi tiết</h3>
+            {this.state.allData.length > 0 &&
+              this.state.allData.map((item) => this.renderItem(item))}
+          </div>
+          <div className={styles.Contanier__rightContent}>
+            <img
+              style={{ width: "100%" }}
+              src={
+                "https://firebasestorage.googleapis.com/v0/b/toeic-project.appspot.com/o/CommonDoc%2FExam%2FPart1%2F3.png?alt=media&token=b4e7a35d-e8fa-460b-a2d3-587b39ab6dd4"
+              }
+            ></img>
+            <img
+              style={{ width: "100%", marginTop: 20 }}
+              src={
+                "https://firebasestorage.googleapis.com/v0/b/toeic-project.appspot.com/o/CommonDoc%2FExam%2FPart1%2FTOEIC%20Test%20Examples%20for%20Preparation%202.jpg?alt=media&token=77aec091-eca1-4df8-998f-613016450228"
+              }
+            />
+          </div>
         </div>
-        <div className={styles.Contanier__rightContent}>
-          <img
-            style={{ width: "100%" }}
-            src={
-              "https://firebasestorage.googleapis.com/v0/b/toeic-project.appspot.com/o/CommonDoc%2FExam%2FPart1%2F3.png?alt=media&token=b4e7a35d-e8fa-460b-a2d3-587b39ab6dd4"
-            }
-          ></img>
-          <img
-            style={{ width: "100%", marginTop: 20 }}
-            src={
-              "https://firebasestorage.googleapis.com/v0/b/toeic-project.appspot.com/o/CommonDoc%2FExam%2FPart1%2FTOEIC%20Test%20Examples%20for%20Preparation%202.jpg?alt=media&token=77aec091-eca1-4df8-998f-613016450228"
-            }
-          />
-        </div>
+        <Footer />
       </div>
     );
   }

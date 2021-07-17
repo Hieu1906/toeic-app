@@ -325,9 +325,10 @@ export class NounFunction extends BaseComponent<{}, {}> {
               </p>
             </div>
             <CommentComp
+            
               colectionName={"Grammar_NounFunction"}
               colectionReaction={"Grammar_NounFunction_RC"}
-              width={500}
+           
             />
           </div>
         </div>

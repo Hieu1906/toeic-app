@@ -131,7 +131,7 @@ export class Footer extends BaseComponent<{}, {}> {
                           <a href="#">Khóa học</a>
                         </li>
                         <li>
-                          <a href="#">Giảng viên viên</a>
+                          <a href="#">Giảng viên </a>
                         </li>
                       </ul>
                       <ul>
@@ -160,10 +160,9 @@ export class Footer extends BaseComponent<{}, {}> {
                       </div>
                       <p>
                         {/* Don’t miss to subscribe to our new feeds, kindly fill the form below. */}
-                        Reference site about Lorem Ipsum, giving information on
-                        its origins, as well.
+                        Để lại Email hoặc số điện thoại để liện hệ với chúng tôi
                       </p>
-                      <form action="#">
+                      <form >
                         <div className="form-row">
                           <div className="col dk-footer-form">
                             <input
@@ -171,7 +170,11 @@ export class Footer extends BaseComponent<{}, {}> {
                               className="form-control"
                               placeholder="Email Address"
                             />
-                            <button type="submit">
+                            <button
+                            onClick={()=>{
+                              message.success("Chúng tôi đã nhận được thông tin và sẽ liên hệ với bạn sớm")
+                            }}
+                            type="submit">
                               <i className="fa fa-send" />
                             </button>
                           </div>

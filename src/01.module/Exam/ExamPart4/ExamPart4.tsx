@@ -1,4 +1,3 @@
-
 import { BaseComponent } from "../../../00.common/00.components/BaseComponent";
 import { FormExamCom } from "../../../00.common/00.components/FormExam/FomExam";
 import { ToeicPart4 } from "../../../00.common/01.model/ToeicPart4";
@@ -6,12 +5,11 @@ import { ToeicPart4Exam } from "../../../00.common/01.model/ToeicPart4Exam";
 import { toeicPart4ExamService } from "../../../00.common/02.service/toeicPart4ExamService";
 import { toeicPart4Service } from "../../../00.common/02.service/toeicPart4Service";
 
-
-
 interface ExamPart4Props {}
 interface ListExamPart4State {
   allData: ToeicPart4[];
   selectedValue: { keyDoc: string; value: string; result: string }[];
+  time: number;
 }
 
 export class ExamPart4 extends BaseComponent<
@@ -23,6 +21,7 @@ export class ExamPart4 extends BaseComponent<
     this.state = {
       allData: [],
       selectedValue: [],
+      time: 360,
     };
     this.onMount(async () => {
       await this.getDataItem();
@@ -43,6 +42,7 @@ export class ExamPart4 extends BaseComponent<
     )) as ToeicPart4[];
     this.setState({
       allData,
+      time: item!.Time as any,
     });
   }
 
@@ -60,7 +60,7 @@ export class ExamPart4 extends BaseComponent<
   render() {
     return (
       <div>
-        <FormExamCom dataPart4={this.state.allData} />
+        <FormExamCom time={this.state.time} dataPart4={this.state.allData} />
       </div>
     );
   }

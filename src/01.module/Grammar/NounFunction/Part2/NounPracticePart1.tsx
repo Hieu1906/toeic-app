@@ -1,4 +1,6 @@
 import React from "react";
+import { CommentComp } from "../../../../00.common/00.components/Comment/CommentComp";
+import { Footer } from "../../../Footer/Footer";
 import "./sass/main.css";
 import "./sass/_grid.css";
 export default class Practice1 extends React.Component {
@@ -534,7 +536,13 @@ export default class Practice1 extends React.Component {
               <th>(dạng nguyên mẫu) Ví dụ: will, can, may</th>
             </tr>
           </table>
+          <CommentComp
+            colectionName={"Grammer1"}
+            colectionReaction={"Grammer1_RC"}
+          />
         </div>
+
+        <Footer />
       </div>
     );
   }

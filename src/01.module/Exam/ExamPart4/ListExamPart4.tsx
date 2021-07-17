@@ -18,6 +18,7 @@ import moment from "moment";
 
 import { toeicPart4ExamService } from "../../../00.common/02.service/toeicPart4ExamService";
 import { ToeicPart4Exam } from "../../../00.common/01.model/ToeicPart4Exam";
+import { Footer } from "../../Footer/Footer";
 interface ListExamPart4Props {}
 interface ListExamPart4State {
   allData: ToeicPart4Exam[];
@@ -163,9 +164,10 @@ export class ListExamPart4 extends BaseComponent<
   }
   render() {
     return (
-      <div className={styles.Contanier}>
+     <div>
+        <div className={styles.Contanier}>
         <div className={styles.Contanier__leftcontent}>
-          <h3>Series: Bộ đề thi Toeic Part 2 - Có đáp án chi tiết</h3>
+          <h3>Series: Bộ đề thi Toeic Part 4 - Có đáp án chi tiết</h3>
           {this.state.allData.length > 0 &&
             this.state.allData.map((item) => this.renderItem(item))}
         </div>
@@ -184,6 +186,8 @@ export class ListExamPart4 extends BaseComponent<
           />
         </div>
       </div>
+      <Footer/>
+     </div>
     );
   }
 }

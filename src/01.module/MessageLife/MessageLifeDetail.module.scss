@@ -130,6 +130,19 @@
     color: #595959;
     margin-top: 48px;
     padding: 0px 103px;
+    :global {
+      .ck-sticky-panel__content {
+        display: none !important;
+      }
+      .ck-editor__main {
+        color: #333;
+        border: none !important;
+      }
+      .ck-editor__editable {
+        box-shadow: white !important;
+        border: none !important;
+      }
+    }
   }
   .content2 {
     height: 46px;

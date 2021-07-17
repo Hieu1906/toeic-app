@@ -26,6 +26,7 @@ interface FormExamProps {
   dataPart5?: ToeicPart5[];
   dataPart6?: ToeicPart6[];
   dataPart7?: ToeicPart7[];
+  time:number;
 }
 interface FormExamState {
   isPlaying: boolean;
@@ -88,7 +89,7 @@ export class FormExamCom extends BaseComponent<FormExamProps, FormExamState> {
         <span>
           <Oclock
             Size={85}
-            time={100000}
+            time={this.props.time}
             isPlaying={this.state.isPlaying}
             ShowHour={false}
           />
@@ -450,8 +451,8 @@ export class FormExamCom extends BaseComponent<FormExamProps, FormExamState> {
   renderFormItemsPart1(alldata: ToeicPart1[]) {
     return (
       <div style={{ display: "flex", flexDirection: "column", padding: 50 }}>
-        <h1>Mô tả:</h1>
-        <div>
+        <h1 style={{color:"#333"}}>Mô tả:</h1>
+        <div style={{color:"#333"}}>
           TOEIC listening Part 1 - Picture Description (Mô tả tranh) là phần thi
           đầu tiên cũng là phần thi dễ ăn điểm nhất trong bài thi TOEIC. Do đó
           các bạn cần nắm rõ phương pháp và ôn luyện để đạt kết quả tốt nhất.
@@ -474,7 +475,7 @@ export class FormExamCom extends BaseComponent<FormExamProps, FormExamState> {
             >
               Câu hỏi {index + 1}
             </h3>
-            <p style={{ marginBottom: 20 }}>
+            <p style={{ marginBottom: 20, color:"#333" }}>
               Choose the one that best describes what you see in the picture.
             </p>
             <div
@@ -522,8 +523,8 @@ export class FormExamCom extends BaseComponent<FormExamProps, FormExamState> {
   renderFormItemsPart3(alldata: ToeicPart3[]) {
     return (
       <div style={{ display: "flex", flexDirection: "column", padding: 50 }}>
-        <h1>Mô tả:</h1>
-        <div>
+        <h1 style={{color:"#333"}}>Mô tả:</h1>
+         <div style={{color:"#333"}}>
           Trong phần này, thí sinh sẽ được nghe 13 đoạn hội thoại ngắn không in
           trong đề thi. Mỗi đoạn có 03 câu hỏi, mỗi câu hỏi sẽ có 4 đáp án lựa
           chọn và nhiệm vụ của thí sinh là chọn đáp án đúng nhất.
@@ -681,8 +682,8 @@ export class FormExamCom extends BaseComponent<FormExamProps, FormExamState> {
   renderFormItemsPart4(alldata: ToeicPart4[]) {
     return (
       <div style={{ display: "flex", flexDirection: "column", padding: 50 }}>
-        <h1>Mô tả:</h1>
-        <div>
+        <h1 style={{color:"#333"}}>Mô tả:</h1>
+         <div style={{color:"#333"}}>
           Part 4 là phần cuối cùng của trong TOEIC Listening. Đây được coi là
           phần nghe khó nhất đặc biệt là với format đề thi mới. Vậy bạn đã có
           cách luyện nghe TOEIC part 4 hiệu quả chưa? Hãy xem phương pháp học
@@ -840,8 +841,8 @@ export class FormExamCom extends BaseComponent<FormExamProps, FormExamState> {
   renderFormItemsPart6(alldata: ToeicPart6[]) {
     return (
       <div style={{ display: "flex", flexDirection: "column", padding: 50 }}>
-        <h1>Mô tả:</h1>
-        <div>
+        <h1 style={{color:"#333"}}>Mô tả:</h1>
+         <div style={{color:"#333"}}>
           Đặc điểm của Part 6 là bạn phải điền từ vào đoạn văn. Mỗi đoạn gồm 3
           câu hỏi nhỏ với 4 đáp án để lựa chọn khác nhau, bạn cần tìm ra đáp án
           thích hợp nhất để điền vào chỗ trống còn thiếu và đánh dấu vào phiếu
@@ -1020,8 +1021,8 @@ export class FormExamCom extends BaseComponent<FormExamProps, FormExamState> {
   renderFormItemsPart7(alldata: ToeicPart7[]) {
     return (
       <div style={{ display: "flex", flexDirection: "column", padding: 50 }}>
-        <h1>Mô tả:</h1>
-        <div>
+        <h1 style={{color:"#333"}}>Mô tả:</h1>
+         <div style={{color:"#333"}}>
           Nằm trong TOEIC READING, TOEIC PART 7 (Reading Comprehension) kiểm tra
           khả năng cũng như tốc độ Đọc – Hiểu của người học thông qua hình thức
           đọc đoạn văn – trả lời các câu hỏi bằng đáp án A,B,C,D. Có hai loại
@@ -1201,8 +1202,8 @@ export class FormExamCom extends BaseComponent<FormExamProps, FormExamState> {
   renderFormItemsPart2(alldata: ToeicPart2[]) {
     return (
       <div style={{ display: "flex", flexDirection: "column", padding: 50 }}>
-        <h1>Mô tả:</h1>
-        <div>
+        <h1 style={{color:"#333"}}>Mô tả:</h1>
+         <div style={{color:"#333"}}>
           TOEIC Listening Part 2 sẽ gồm 25 câu theo chuẩn fomat mới hiện nay .
           Mỗi câu có 1 câu hỏi và 3 lựa chọn đáp án. Nhiệm vụ là phải chọn ra
           câu trả lời tương thích với câu hỏi trong bài. Đặc biệt rong part 2
@@ -1226,7 +1227,7 @@ export class FormExamCom extends BaseComponent<FormExamProps, FormExamState> {
             >
               Câu hỏi {index + 1}
             </h3>
-            <p style={{ marginBottom: 20 }}>
+            <p style={{ marginBottom: 20, color:"#333" }}>
               Choose the one that best describes what you see in the picture.
             </p>
             <div
@@ -1264,8 +1265,8 @@ export class FormExamCom extends BaseComponent<FormExamProps, FormExamState> {
   renderFormItemsPart5(alldata: ToeicPart5[]) {
     return (
       <div style={{ display: "flex", flexDirection: "column", padding: 50 }}>
-        <h1>Mô tả:</h1>
-        <div>
+        <h1 style={{color:"#333"}}>Mô tả:</h1>
+         <div style={{color:"#333"}}>
           TOEIC Reading Part 5 bao gồm 40 câu trắc nghiệm nhằm kiểm tra khả năng
           đọc hiểu và vận dụng kiến thức ngữ pháp của thí sinh để hoàn thành
           câu. Đối với nhiều bạn, Part 5 được xem như là phần thi “cứu cánh” gỡ
@@ -1448,7 +1449,7 @@ export class FormExamCom extends BaseComponent<FormExamProps, FormExamState> {
                   setTimeout(() => {
                     this.setState({ compeleted: true });
                     message.info("Bạn đã kết thúc bài làm");
-                  }, 10000);
+                  }, this.props.time*1000);
                 }}
               >
                 Bắt đầu
@@ -1485,37 +1486,44 @@ export class FormExamCom extends BaseComponent<FormExamProps, FormExamState> {
         <Spin spinning={this.state.loading} tip="Đang xử lí ">
           <div className={styles.container__content} style={{ marginTop: 10 }}>
             {this.props.dataPart1 &&
-              this.props.dataPart1.length > 0 &&
+              this.props.dataPart1.length > 0 
+              &&this.state.isStart&&
               this.renderFormItemsPart1(this.props.dataPart1)}
           </div>
           <div className={styles.container__content} style={{ marginTop: 10 }}>
             {this.props.dataPart2 &&
               this.props.dataPart2.length > 0 &&
+              this.state.isStart&&
               this.renderFormItemsPart2(this.props.dataPart2)}
           </div>
           <div className={styles.container__content} style={{ marginTop: 10 }}>
             {this.props.dataPart3 &&
               this.props.dataPart3.length > 0 &&
+              this.state.isStart&&
               this.renderFormItemsPart3(this.props.dataPart3)}
           </div>
           <div className={styles.container__content} style={{ marginTop: 10 }}>
             {this.props.dataPart4 &&
               this.props.dataPart4.length > 0 &&
+              this.state.isStart&&
               this.renderFormItemsPart4(this.props.dataPart4)}
           </div>
           <div className={styles.container__content} style={{ marginTop: 10 }}>
             {this.props.dataPart5 &&
               this.props.dataPart5.length > 0 &&
+              this.state.isStart&&
               this.renderFormItemsPart5(this.props.dataPart5)}
           </div>
           <div className={styles.container__content} style={{ marginTop: 10 }}>
             {this.props.dataPart6 &&
               this.props.dataPart6.length > 0 &&
+              this.state.isStart&&
               this.renderFormItemsPart6(this.props.dataPart6)}
           </div>
           <div className={styles.container__content} style={{ marginTop: 10 }}>
             {this.props.dataPart7 &&
               this.props.dataPart7.length > 0 &&
+              this.state.isStart&&
               this.renderFormItemsPart7(this.props.dataPart7)}
           </div>
         </Spin>

@@ -5,6 +5,7 @@ import {
   FormInstance,
   InputNumber,
   Menu,
+  message,
   Modal,
   Row,
 } from "antd";
@@ -222,6 +223,15 @@ export default class ListToeicPart1 extends BaseComponent<
         ...value,
         View: 0,
       } as any);
+      message.success("Tạo mới thành công")
+      this.setState({
+        searchText: "",
+        searchedColumn: "",
+     
+        selectedRowKeys: [],
+        createExam: false,
+        isModalVisible: false,
+      })
       this.formRefModal.current!.resetFields();
     } catch (error) {}
   }

@@ -11,6 +11,7 @@ import { toeicPart5Service } from "../../../00.common/02.service/toeicPart5Servi
 interface ExamPart5Props {}
 interface ListExamPart5State {
   allData: ToeicPart5[];
+  time: number;
   selectedValue: { keyDoc: string; value: string; result: string }[];
 }
 
@@ -23,6 +24,7 @@ export class ExamPart5 extends BaseComponent<
     this.state = {
       allData: [],
       selectedValue: [],
+      time: 360,
     };
     this.onMount(async () => {
       await this.getDataItem();
@@ -43,6 +45,7 @@ export class ExamPart5 extends BaseComponent<
     )) as ToeicPart5[];
     this.setState({
       allData,
+      time: item!.Time as any,
     });
   }
 
@@ -60,7 +63,7 @@ export class ExamPart5 extends BaseComponent<
   render() {
     return (
       <div>
-        <FormExamCom dataPart5={this.state.allData} />
+        <FormExamCom time={this.state.time} dataPart5={this.state.allData} />
       </div>
     );
   }

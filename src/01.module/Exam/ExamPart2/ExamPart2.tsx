@@ -12,6 +12,7 @@ interface ExamPart2Props {}
 interface ListExamPart2State {
   allData: ToeicPart2[];
   selectedValue: { keyDoc: string; value: string; result: string }[];
+  time:number
 }
 
 export class ExamPart2 extends BaseComponent<
@@ -23,6 +24,7 @@ export class ExamPart2 extends BaseComponent<
     this.state = {
       allData: [],
       selectedValue: [],
+      time:360
     };
     this.onMount(async () => {
       await this.getDataItem();
@@ -43,6 +45,7 @@ export class ExamPart2 extends BaseComponent<
     )) as ToeicPart2[];
     this.setState({
       allData,
+      time:item?.Time as any
     });
   }
 
@@ -60,7 +63,9 @@ export class ExamPart2 extends BaseComponent<
   render() {
     return (
       <div>
-        <FormExamCom dataPart2={this.state.allData} />
+        <FormExamCom
+        time={this.state.time}
+        dataPart2={this.state.allData} />
       </div>
     );
   }
